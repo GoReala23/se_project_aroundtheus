@@ -20,4 +20,4 @@ The way you'll do this at work is by exporting images directly from Figma — we
 
 Good luck and have fun!
 
-[Link to github](https://github.com/GoReala23)
+[Link to github](https://goreala23.github.io/se_project_aroundtheus/)
