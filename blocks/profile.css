@@ -84,7 +84,7 @@
   opacity: 0.6;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 615px) {
   .profile {
     display: flex;
     flex-direction: column;
@@ -107,7 +107,7 @@
     line-height: 17px;
   }
 
-  .profile_info {
+  .profile__info {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -136,7 +136,7 @@
   }
 }
 
-@media screen and (max-width: 880px) and (min-width: 481px) {
+@media screen and (max-width: 880px) and (min-width: 616px) {
   .profile {
     display: flex;
     flex-wrap: wrap;

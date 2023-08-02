@@ -20,7 +20,7 @@
   padding: 0 20px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 570px) {
   .page {
     max-width: 480px;
   }
@@ -29,12 +29,12 @@
   }
 }
 
-@media screen and (max-width: 480px) and (min-width: 321px) {
+@media screen and (max-width: 480px) and (min-width: 570px) {
   .page {
-    max-width: 480px;
+    max-width: 570px;
   }
   .page__content {
-    max-width: 480px;
+    max-width: 570px;
   }
 }
 
