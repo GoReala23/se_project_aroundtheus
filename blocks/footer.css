@@ -1,0 +1,14 @@
+.footer {
+  max-width: 880px;
+  max-height: 18px;
+  margin: 0 auto;
+}
+
+.footer__copy-right {
+  color: #545454;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
