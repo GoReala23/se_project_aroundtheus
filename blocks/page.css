@@ -20,7 +20,7 @@
   padding: 0 20px;
 }
 
-@media screen and (max-width: 570px) {
+@media screen and (max-width: 615px) {
   .page {
     max-width: 480px;
   }
@@ -29,17 +29,11 @@
   }
 }
 
-@media screen and (max-width: 480px) and (min-width: 570px) {
+@media screen and (max-width: 919px) and (min-width: 616px) {
   .page {
-    max-width: 570px;
+    max-width: 919px;
   }
   .page__content {
-    max-width: 570px;
-  }
-}
-
-@media screen and (max-width: 880px) and (min-width: 481px) {
-  .page {
-    max-width: 880px;
+    max-width: 919px;
   }
 }
