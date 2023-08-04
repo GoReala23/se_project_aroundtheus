@@ -40,7 +40,6 @@
 }
 
 .card__description {
-  /*grid-area: card__description; */
   background-color: white;
   display: flex;
   justify-content: space-between;
@@ -77,6 +76,14 @@
 
 .card__like-button:hover {
   cursor: pointer;
-  transform: opacity linear 1s;
+
   opacity: 0.6;
+}
+
+@media screen and (max-width: 615px) {
+  .cards {
+    max-width: 282px;
+    height: 2266px;
+    margin: auto;
+  }
 }

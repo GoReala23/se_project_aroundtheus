@@ -23,6 +23,7 @@
 @media screen and (max-width: 615px) {
   .page {
     max-width: 480px;
+    justify-content: center;
   }
   .page__content {
     max-width: 480px;
@@ -35,5 +36,6 @@
   }
   .page__content {
     max-width: 919px;
+    justify-content: center;
   }
 }
