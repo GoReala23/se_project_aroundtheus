@@ -20,4 +20,9 @@ The way you'll do this at work is by exporting images directly from Figma — we
 
 Good luck and have fun!
 
+**Description**
+
+This project is a profile containing a title, image and buttons to edit, and or add, photos. Also displays an albums of photos in columns and rows that have a button to be selected to like photos.
+
+\*\*
 [Link to github](https://goreala23.github.io/se_project_aroundtheus/)
