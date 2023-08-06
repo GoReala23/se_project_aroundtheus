@@ -23,7 +23,7 @@
 @media screen and (max-width: 620px) {
   .header {
     margin-bottom: 40px;
-    max-width: 320px;
+    max-width: 620px;
   }
   .header__image {
     width: 126px;
