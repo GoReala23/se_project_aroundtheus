@@ -24,5 +24,12 @@ Good luck and have fun!
 
 This project is a profile containing a title, image and buttons to edit, and or add, photos. Also displays an albums of photos in columns and rows that have a button to be selected to like photos.
 
-\*\*
+- Some tools that were used were:
+
+* Grid Layout
+* Media queries
+* Buttons
+* BEM Methods
+*
+
 [Link to github](https://goreala23.github.io/se_project_aroundtheus/)

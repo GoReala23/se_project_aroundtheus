@@ -13,10 +13,10 @@
   max-width: 880px;
   flex-shrink: 0;
   margin-top: 51px;
-  margin-bottom: 145px;
+  margin-bottom: 67px;
 }
 
-@media screen and (max-width: 615px) {
+@media screen and (max-width: 620px) {
   .cards {
     max-width: 282px;
     height: 2266px;

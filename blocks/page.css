@@ -20,22 +20,23 @@
   padding: 0 20px;
 }
 
-@media screen and (max-width: 615px) {
+@media screen and (max-width: 620px) {
   .page {
     max-width: 480px;
     justify-content: center;
+    margin: auto;
   }
   .page__content {
     max-width: 480px;
   }
 }
 
-@media screen and (max-width: 919px) and (min-width: 616px) {
+@media screen and (max-width: 919px) and (min-width: 621px) {
   .page {
     max-width: 919px;
   }
   .page__content {
-    max-width: 919px;
+    max-width: 800px;
     justify-content: center;
   }
 }

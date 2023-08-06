@@ -20,7 +20,7 @@
   opacity: 0.7;
 }
 
-@media screen and (max-width: 615px) {
+@media screen and (max-width: 620px) {
   .header {
     margin-bottom: 40px;
     max-width: 320px;
