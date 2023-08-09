@@ -14,6 +14,7 @@
 .header__line {
   display: block;
   flex-grow: 1;
+  opacity: 0.7;
   border-bottom: 1px solid #545454;
   max-width: 880px;
   margin-top: 41px;
@@ -22,11 +23,14 @@
 
 @media screen and (max-width: 620px) {
   .header {
-    margin-bottom: 40px;
-    max-width: 620px;
+    margin-top: 28px;
   }
   .header__image {
     width: 126px;
     height: 24px;
+  }
+
+  .header__line {
+    max-width: 620px;
   }
 }

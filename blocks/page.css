@@ -18,12 +18,12 @@
 
   min-height: 100vh;
   padding: 0 20px;
+  justify-content: center;
 }
 
 @media screen and (max-width: 620px) {
   .page {
     max-width: 620px;
-    justify-content: center;
   }
   .page__content {
     max-width: 480px;
@@ -36,6 +36,5 @@
   }
   .page__content {
     max-width: 919px;
-    justify-content: center;
   }
 }

@@ -23,14 +23,12 @@
   justify-content: space-between;
   align-items: center;
   color: black;
-  padding-top: 25px;
-  padding-bottom: 25px;
+
   padding-left: 15px;
   padding-right: 20px;
   box-sizing: border-box;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  height: 79px;
 }
 
 .card__title {
@@ -38,7 +36,9 @@
   white-space: nowrap;
   overflow: hidden;
   font-family: "Inter", Arial, sans-serif;
-  font-size: 24px;
+  margin-left: 0;
+  margin-right: 0;
+
   font-style: normal;
   font-weight: 900;
   line-height: normal;

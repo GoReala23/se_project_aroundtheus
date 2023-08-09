@@ -22,7 +22,7 @@ Good luck and have fun!
 
 **Description**
 
-This project is a profile containing a title, image and buttons to edit, and or add, photos. Also displays an albums of photos in columns and rows that have a button to be selected to like photos.
+This project is a profile containing a image of your choosing, profile image will have a description of you are. . Also displays an albums of photos in columns and rows that have a button to be selected for users to like photos.
 
 - Some tools that were used were:
 
