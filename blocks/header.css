@@ -16,6 +16,7 @@
 @media screen and (max-width: 620px) {
   .header {
     margin-top: 28px;
+    max-width: 620px;
   }
   .header__image {
     width: 126px;
