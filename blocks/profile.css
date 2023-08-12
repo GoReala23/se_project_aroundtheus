@@ -89,11 +89,12 @@
   flex-shrink: 0;
   margin-left: auto;
   border: 2px solid #fff;
+  border-radius: 2px;
 }
 
 .profile__add-button:hover {
   cursor: pointer;
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 620px) {
@@ -114,7 +115,7 @@
     padding-right: 0;
 
     flex-shrink: 0;
-    object-fit: cover;
+
     background-position: center;
     width: 120px;
     height: 120px;
@@ -133,14 +134,9 @@
     justify-content: center;
     padding-top: 26px;
     max-width: 282px;
-    color: #fff;
     text-align: center;
-    font-family: "Inter", Arial, sans-serif;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
   }
+
   .profile__description {
     text-align: center;
 

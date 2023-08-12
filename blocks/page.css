@@ -26,12 +26,3 @@
     max-width: 620px;
   }
 }
-
-@media screen and (max-width: 919px) and (min-width: 621px) {
-  .page {
-    max-width: 919px;
-  }
-  .page__content {
-    max-width: 880px;
-  }
-}

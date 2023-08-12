@@ -36,14 +36,15 @@
   white-space: nowrap;
   overflow: hidden;
   font-family: "Inter", Arial, sans-serif;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-size: 24px;
   margin-left: 0;
   margin-right: 0;
-  font-size: 24px;
   font-style: normal;
   font-weight: 900;
   line-height: normal;
   max-width: 219px;
-  height: 29px;
 }
 
 .card__like-button {
