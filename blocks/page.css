@@ -20,7 +20,9 @@
 
 @media screen and (max-width: 620px) {
   .page {
+    display: flex;
     max-width: 620px;
+    justify-content: center;
   }
   .page__content {
     max-width: 620px;
