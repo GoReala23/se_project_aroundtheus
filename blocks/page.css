@@ -24,7 +24,12 @@
     max-width: 620px;
     justify-content: center;
   }
+
   .page__content {
     max-width: 620px;
+  }
+
+  .page__section {
+    width: fit-content;
   }
 }
