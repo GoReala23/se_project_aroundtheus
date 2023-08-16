@@ -26,3 +26,9 @@
     padding: 0;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .header__image {
+    margin: 0 0 32px 27px;
+  }
+}
