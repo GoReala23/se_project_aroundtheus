@@ -87,13 +87,13 @@
   color: #fff;
   text-align: center;
   font-family: Inter, arial, sans-serif;
-
+  height: 50px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 620px) {
   .modal {
     width: auto;
   }
@@ -113,7 +113,7 @@
   }
 
   .modal__form_title {
-    max-width: 238px;
+    width: 238px;
     padding-left: 0;
   }
 
