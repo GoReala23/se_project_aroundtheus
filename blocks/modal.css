@@ -35,16 +35,14 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  width: 358px;
 }
 
-.modal__form_title {
+.modal__form-input {
   font-size: 14px;
   border: none;
   border-bottom: 1px solid #000;
   margin-top: 30px;
   padding-bottom: 13px;
-  width: 358px;
 }
 
 .modal__form_description {
@@ -114,14 +112,14 @@
     margin-top: 120px;
   }
 
-  .modal__form_title {
+  .modal__form-input {
     width: 238px;
     padding-left: 0;
   }
 
   .modal__form_description {
     margin: 43px 0;
-    width: 238px;
+
     padding-left: 0;
   }
 
