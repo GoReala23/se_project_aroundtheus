@@ -39,11 +39,15 @@ const editProfilemodal = document.querySelector("#edit-modal");
 const addCardModal = document.querySelector("#add-card-modal");
 const profileEditForm = editProfilemodal.querySelector(".modal__form");
 const addCardForm = addCardModal.querySelector(".modal__form");
+const cardElement = document.querySelector(".card");
 
 // Buttons
 const openProfileEditButton = document.querySelector("#profile-edit-button");
 const openAddNewCardButton = document.querySelector(".profile__add-button");
 const profileModalSaveButton = editProfilemodal.querySelector(".modal__save");
+const likeButton = document.querySelector(".card__like-button");
+console.log(".card__like-button");
+
 const closePopup = function closePopup(modal) {
   modal.classList.remove("modal_opened");
 };
@@ -97,7 +101,12 @@ function getCardElement(cardData) {
 
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector("card__like-button");
+  const likeButton = cardElement.querySelector(".card__like-button");
+
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_active");
+  });
+
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
