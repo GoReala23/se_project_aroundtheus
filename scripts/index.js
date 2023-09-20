@@ -103,6 +103,20 @@ function getCardElement(cardData) {
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
 
+  const deleteButton = cardElement.querySelector(".card__delete-button");
+  deleteButton.addEventListener("click", () => {
+    cardElement.remove();
+    console.log("click");
+  });
+
+  const cardImagePreviewModal = cardElement.querySelector(
+    ".card__preview_image_modal"
+  );
+  cardImageEl.addEventListener("click", () => {
+    openModal(cardImagePreviewModal);
+    console.log("click");
+  });
+
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
   });
