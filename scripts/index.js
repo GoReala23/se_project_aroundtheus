@@ -108,16 +108,17 @@ function getCardElement(cardData) {
     cardElement.remove();
   });
 
-  const imagePreviewModal = document.querySelector(".preview__image_modal");
+  const imagePreviewModal = document.querySelector("#modal-preview-img");
   cardImageEl.addEventListener("click", () => {
-    const previewImageEl = document.querySelector(".preview__modal_imgae");
+    const previewImageEl = document.querySelector(".modal__imgae");
     previewImageEl.src = cardData.link;
     previewImageEl.alt = cardData.name;
     previewImageEl.textContent = cardData.name;
     openModal(imagePreviewModal);
+    console.log("click");
   });
 
-  const previewClose = document.querySelector("#preview-modal-close");
+  const previewClose = document.querySelector(".modal__close");
   previewClose.addEventListener("click", () => {
     imagePreviewModal.classList.remove("modal_opened");
   });
