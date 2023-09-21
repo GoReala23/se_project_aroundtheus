@@ -1,0 +1,30 @@
+.preview_image_modal {
+  max-width: 433px;
+  max-height: 540px;
+  display: flex;
+  display: none;
+  margin: 90px 424px;
+
+  position: absolute;
+  max-width: 433px;
+  max-height: 540px;
+
+  position: absolute;
+}
+
+.preview__modal_close {
+  width: 40px;
+  height: 40px;
+}
+
+@media screen and (max-width: 919px) and (min-width: 621px) {
+  .preview_image_modal {
+    width: 240px;
+    height: 299px;
+  }
+
+  .preview__modal_close {
+    width: 30px;
+    height: 30px;
+  }
+}

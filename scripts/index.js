@@ -106,15 +106,20 @@ function getCardElement(cardData) {
   const deleteButton = cardElement.querySelector(".card__delete-button");
   deleteButton.addEventListener("click", () => {
     cardElement.remove();
-    console.log("click");
   });
 
-  const cardImagePreviewModal = cardElement.querySelector(
-    ".card__preview_image_modal"
-  );
+  const imagePreviewModal = document.querySelector(".preview__image_modal");
   cardImageEl.addEventListener("click", () => {
-    openModal(cardImagePreviewModal);
-    console.log("click");
+    const previewImageEl = document.querySelector(".preview__modal_imgae");
+    previewImageEl.src = cardData.link;
+    previewImageEl.alt = cardData.name;
+    previewImageEl.textContent = cardData.name;
+    openModal(imagePreviewModal);
+  });
+
+  const previewClose = document.querySelector("#preview-modal-close");
+  previewClose.addEventListener("click", () => {
+    imagePreviewModal.classList.remove("modal_opened");
   });
 
   likeButton.addEventListener("click", () => {

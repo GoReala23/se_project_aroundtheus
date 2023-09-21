@@ -18,12 +18,6 @@
   position: relative;
 }
 
-.card__preview_image_modal {
-  width: 433px;
-  height: 540px;
-  display: none;
-}
-
 .card__delete-button {
   background-image: url(../images/Trash.svg);
   width: 18px;
