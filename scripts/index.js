@@ -61,10 +61,10 @@ const closeEditProfilePupUp = editProfilemodal.querySelector(
 // Form Data
 
 const profileTitle = document.querySelector(".profile__title");
-const profileTitleInput = document.querySelector("#profile-title-input");
+const profileTitleInput = document.querySelector("#modal-title-input");
 const profileDescription = document.querySelector(".profile__description");
 const profileDescriptionInput = document.querySelector(
-  "#profile-description-input"
+  "#modal-description-input"
 );
 
 const cardTitleInput = addCardForm.querySelector(
