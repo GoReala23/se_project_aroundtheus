@@ -27,6 +27,7 @@
   flex-shrink: 0;
   border: none;
   color: #fff;
+  background-color: transparent;
 }
 
 .card__description {

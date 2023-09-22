@@ -111,9 +111,13 @@ function getCardElement(cardData) {
   const imagePreviewModal = document.querySelector("#modal-preview-img");
   cardImageEl.addEventListener("click", () => {
     const previewImageEl = imagePreviewModal.querySelector(".modal__image");
+    const previewImageTitleEl =
+      imagePreviewModal.querySelector(".modal__img-title");
     previewImageEl.src = cardData.link;
     previewImageEl.alt = cardData.name;
-    previewImageEl.textContent = cardData.name;
+    previewImageTitleEl.textContent = cardData.name;
+    console.log(previewImageTitleEl.textContent);
+    console.log(cardData.name);
     openModal(imagePreviewModal);
   });
 

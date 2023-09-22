@@ -96,15 +96,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .modal__img-title {
   color: #fff;
-  font-family: Inter;
+  font-family: "Inter", arial, sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  flex-shrink: 0;
   width: 291px;
   height: 12px;
 }
@@ -112,6 +114,7 @@
 .modal__image {
   width: 433px;
   height: 540px;
+  bottom: 10px;
 }
 
 @media screen and (max-width: 620px) {
