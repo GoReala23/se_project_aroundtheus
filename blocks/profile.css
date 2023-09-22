@@ -74,6 +74,7 @@
   height: 24px;
   flex-shrink: 0;
   grid-area: button;
+
   border: 1px solid #fff;
 }
 
