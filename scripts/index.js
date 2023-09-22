@@ -68,9 +68,9 @@ const profileDescriptionInput = document.querySelector(
 );
 
 const cardTitleInput = addCardForm.querySelector(
-  ".modal__form_input_type_title"
+  ".modal__form_input-type-title"
 );
-const cardUrlInput = addCardForm.querySelector(".modal__form_input_type_url");
+const cardUrlInput = addCardForm.querySelector(".modal__form_input-type-url");
 
 const cardListEl = document.querySelector(".cards__list");
 
