@@ -69,10 +69,10 @@ previewClose.addEventListener("click", () => {
 // Form Data
 
 const profileTitle = document.querySelector(".profile__title");
-const profileTitleInput = document.querySelector("#modal-title-input");
+const profileTitleInput = document.querySelector("#modal-input-title");
 const profileDescription = document.querySelector(".profile__description");
 const profileDescriptionInput = document.querySelector(
-  "#modal-description-input"
+  "#modal-input-description"
 );
 
 const cardTitleInput = addCardForm.querySelector(".modal__input_type_title");
