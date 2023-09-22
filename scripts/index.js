@@ -58,6 +58,7 @@ const closeEditProfilePupUp = editProfileModal.querySelector(
   "#modal-close-button"
 );
 
+const modalContainer = document.querySelector("#add-card-modal");
 const imagePreviewModal = document.querySelector("#modal-preview-img");
 
 const previewClose = imagePreviewModal.querySelector(".modal__close");
@@ -88,7 +89,9 @@ function handleProfileEditSubmit(evt) {
 
 function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
-  wrapper.prepend.cardElement;
+  wrapper.prepend(cardElement);
+  //   const cardElement = getCardElement(cardData);
+  //   cardListEl.prepend(cardElement);
 }
 
 function handleAddCardFormSubmit(evt) {
@@ -165,9 +168,13 @@ profileModalSaveButton.addEventListener("submit", () => {
   closePopup(addCardForm);
 });
 
-initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
-  cardListEl.prepend(cardElement);
+closeAddButtonPupUp.addEventListener("click", () => {
+  closePopup(modalContainer);
 });
+
+// initialCards.forEach((cardData) => {
+//   const cardElement = getCardElement(cardData);
+//   cardListEl.prepend(cardElement);
+// });
 
 initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
