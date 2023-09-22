@@ -87,6 +87,33 @@
   line-height: normal;
 }
 
+.modal__pic-container {
+  width: 433px;
+  height: 540px;
+  margin: 90px 232px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal__img-title {
+  color: #fff;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 291px;
+  height: 12px;
+}
+
+.modal__image {
+  width: 433px;
+  height: 540px;
+}
+
 @media screen and (max-width: 620px) {
   .modal {
     width: auto;
@@ -131,5 +158,20 @@
     bottom: 100%;
     left: calc(100% - 30px);
     margin: 0 0 13px 0;
+  }
+
+  .modal__pic-container {
+    width: 240px;
+    height: 299px;
+    margin: 136px 40px;
+  }
+
+  .modal__image {
+    width: 240px;
+    height: 299px;
+  }
+
+  .modal__img-title {
+    width: 240px;
   }
 }

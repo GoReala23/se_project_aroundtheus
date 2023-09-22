@@ -110,15 +110,14 @@ function getCardElement(cardData) {
 
   const imagePreviewModal = document.querySelector("#modal-preview-img");
   cardImageEl.addEventListener("click", () => {
-    const previewImageEl = document.querySelector(".modal__imgae");
+    const previewImageEl = imagePreviewModal.querySelector(".modal__image");
     previewImageEl.src = cardData.link;
     previewImageEl.alt = cardData.name;
     previewImageEl.textContent = cardData.name;
     openModal(imagePreviewModal);
-    console.log("click");
   });
 
-  const previewClose = document.querySelector(".modal__close");
+  const previewClose = imagePreviewModal.querySelector(".modal__close");
   previewClose.addEventListener("click", () => {
     imagePreviewModal.classList.remove("modal_opened");
   });
