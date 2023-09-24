@@ -78,10 +78,11 @@
 
 .modal__close:hover {
   cursor: pointer;
+  fill: rgba(255, 255, 255, 0.6);
 }
 
 .modal__save {
-  width: 358px;
+  width: 100%;
   margin-top: 48px;
   background-color: #000;
   color: #fff;
@@ -98,6 +99,7 @@
 
 .modal__save:hover {
   cursor: pointer;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .modal__pic-container {
@@ -161,7 +163,7 @@
 
   .modal__save {
     height: 46px;
-    width: 238px;
+    width: 100%;
     font-size: 14px;
     margin: 45px auto 25px auto;
   }
