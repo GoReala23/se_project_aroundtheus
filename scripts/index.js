@@ -38,7 +38,7 @@ const cardsWrap = document.querySelector(".cards__list");
 const editProfileModal = document.querySelector("#edit-modal");
 const addCardModal = document.querySelector("#add-card-modal");
 const profileEditForm = editProfileModal.querySelector(".modal__form");
-const addCardForm = addCardModal.querySelector(".modal__form");
+const addCardForm = addCardModal.querySelector("#add-modal-form");
 const cardElement = document.querySelector(".card");
 
 // Buttons
@@ -69,10 +69,10 @@ previewClose.addEventListener("click", () => {
 // Form Data
 
 const profileTitle = document.querySelector(".profile__title");
-const profileTitleInput = document.querySelector("#modal-input-title");
+const profileTitleInput = document.querySelector("#modal-profile-title-input");
 const profileDescription = document.querySelector(".profile__description");
 const profileDescriptionInput = document.querySelector(
-  "#modal-input-description"
+  "#modal-profile-description-input"
 );
 
 const cardTitleInput = addCardForm.querySelector(".modal__input_type_title");
@@ -94,7 +94,6 @@ function renderCard(cardData, wrapper) {
   //   cardListEl.prepend(cardElement);
 }
 
-const modalForm = document.querySelector("#add-modal-form");
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
   const name = cardTitleInput.value;
@@ -103,7 +102,7 @@ function handleAddCardFormSubmit(evt) {
   const cardElement = getCardElement({ name, link }, cardsWrap);
   cardsWrap.prepend(cardElement);
   closePopup(addCardModal);
-  modalForm.reset();
+  addCardForm.reset();
 }
 
 function getCardElement(cardData) {
@@ -159,14 +158,6 @@ openProfileEditButton.addEventListener("click", () => {
 
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 openAddNewCardButton.addEventListener("click", () => openModal(addCardModal));
-
-profileModalSaveButton.addEventListener("click", () =>
-  closePopup(editProfileModal)
-);
-
-closeAddButtonPupUp.addEventListener("click", () => {
-  closePopup(modalContainer);
-});
 
 closeAddButtonPupUp.addEventListener("click", () => closePopup(addCardModal));
 
