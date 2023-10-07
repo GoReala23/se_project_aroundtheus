@@ -130,33 +130,4 @@
 
     padding-left: 0;
   }
-
-  .modal__save {
-    height: 46px;
-    width: 100%;
-    font-size: 14px;
-    margin: 45px auto 25px auto;
-  }
-
-  .modal__close {
-    width: 26px;
-    height: 26px;
-    bottom: 100%;
-    left: calc(100% - 30px);
-    margin: 0 0 13px 0;
-  }
-
-  .modal__pic-container {
-    width: 240px;
-    height: 299px;
-    margin: 136px 40px;
-  }
-
-  .modal__image {
-    height: 299px;
-  }
-
-  .modal__img-title {
-    width: 240px;
-  }
 }
