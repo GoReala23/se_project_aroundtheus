@@ -37,7 +37,7 @@ const cardTemplate =
 const cardsWrap = document.querySelector(".cards__list");
 const editProfileModal = document.querySelector("#edit-modal");
 const addCardModal = document.querySelector("#add-card-modal");
-const profileEditForm = editProfileModal.querySelector(".modal__form");
+const profileEditForm = document.querySelector(".modal__form");
 const addCardForm = addCardModal.querySelector("#add-modal-form");
 const cardElement = document.querySelector(".card");
 
