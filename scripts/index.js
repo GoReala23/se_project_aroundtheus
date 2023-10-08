@@ -66,6 +66,15 @@ previewClose.addEventListener("click", () => {
   closePopup(imagePreviewModal);
 });
 
+const picPreview = document.querySelector(".modal__image");
+imagePreviewModal.addEventListener("click", () => {
+  closePopup(imagePreviewModal);
+});
+
+function keyboardWork(evt) {
+  if (evt.key === "Escape") closePopup(imagePreviewModal);
+}
+
 // Form Data
 
 const profileTitle = document.querySelector(".profile__title");
