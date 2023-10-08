@@ -66,6 +66,9 @@
               class="modal__input"
               type="text"
               name="name"
+              minlength="2"
+              maxlength="40"
+              required
               id="modal-profile-title-input"
               placeholder="Name"
             /><span class="modal__span" id="modal-profile-title-input-error">
@@ -79,6 +82,9 @@
               type="text"
               name="description"
               id="modal-profile-description-input"
+              minlength="2"
+              maxlength="200"
+              required
               placeholder="Description"
             /><span
               class="modal__span"
@@ -87,13 +93,7 @@
             ></label
           >
 
-          <button
-            class="modal__save modal__save_disabled"
-            type="submit"
-            disabled
-          >
-            Save
-          </button>
+          <button class="modal__save" type="submit">Save</button>
         </form>
       </div>
     </div>
@@ -103,7 +103,7 @@
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
         <button
-          class="modal__close modal__button_disabled"
+          class="modal__close"
           type="button"
           id="modal-close-add-button"
         ></button>
@@ -124,7 +124,7 @@
             ></label
           >
 
-          <label>
+          <label class="modal__label">
             <input
               class="modal__input modal__input_type_url"
               type="url"
@@ -137,13 +137,7 @@
             >
           </label>
 
-          <button
-            type="submit"
-            class="modal__save modal__save_disabled"
-            disabled
-          >
-            Save
-          </button>
+          <button type="submit" class="modal__save">Save</button>
         </form>
       </div>
     </div>

@@ -70,7 +70,7 @@
 
 .modal__span_opened {
   visibility: visible;
-  opacity: 1;
+  opacity: inherit;
   pointer-events: all;
   transition: visibility 0s opacity 0.5s linear;
   color: #f00;

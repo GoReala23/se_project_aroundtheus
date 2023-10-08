@@ -35,8 +35,10 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
 }
 
 function activateButton(formEls, submitButton) {
-  if (formEls.validity.valid) {
-    submitButton.remove(inactiveButtonClass);
+  if (!hasInvalidInput(inputEls)) {
+    submitButton.classList.remove(inactiveButtonClass);
+    submitButton.disabled = false;
+    return;
   }
 }
 
@@ -68,7 +70,7 @@ function enableValidation(options) {
 const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__save",
+  submitButton: ".modal__save",
   inactiveButtonClass: ".modal__save_disabled",
   inputErrorClass: ".modal__input_type_error",
   errorClass: ".modal__span_opened",
