@@ -34,6 +34,12 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   }
 }
 
+function activateButton(inputEls) {
+  if (inputEl.validity.valid) {
+    toggleButtonState(inputEl);
+  }
+}
+
 function setEventListeners(formEl, options) {
   const { inputSelector } = options;
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
@@ -56,7 +62,6 @@ function enableValidation(options) {
     });
 
     setEventListeners(formEl, options);
-    checkInputValidity(formEl, options);
   });
 }
 
@@ -64,12 +69,9 @@ const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__save",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__span_opened",
+  inactiveButtonClass: ".modal__button_disabled",
+  inputErrorClass: ".modal__input_type_error",
+  errorClass: ".modal__span_opened",
 };
 
 enableValidation(config);
-setEventListeners();
-showInputError();
-toggleButtonState();
