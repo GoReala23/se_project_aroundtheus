@@ -67,14 +67,11 @@ previewClose.addEventListener("click", () => {
 });
 
 const picPreview = document.querySelector(".modal__image");
-imagePreviewModal.addEventListener("click", () => {
-  closePopup(imagePreviewModal);
+imagePreviewModal.addEventListener("click", (e) => {
+  if (e.target === imagePreviewModal) closePopup(imagePreviewModal);
 });
 
-function keyboardWork(evt) {
-  if (evt.key === "Escape") closePopup(imagePreviewModal);
-}
-
+document.addEventListener("keydown", keyboardWork);
 // Form Data
 
 const profileTitle = document.querySelector(".profile__title");
@@ -149,7 +146,12 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
+function keyboardWork(evt) {
+  if (evt.key === "Escape") closePopup(imagePreviewModal);
+}
+
 function openModal(modal) {
+  imagePreviewModal.addEventListener("keydown", keyboardWork);
   modal.classList.add("modal_opened");
 }
 
