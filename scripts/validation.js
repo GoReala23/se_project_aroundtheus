@@ -28,19 +28,11 @@ function hasInvalidInput(inputList) {
 
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   if (hasInvalidInput(inputEls)) {
+    submitButton.classList.remove(inactiveButtonClass);
+    submitButton.disabled = false;
+  } else {
     submitButton.classList.add(inactiveButtonClass);
     submitButton.disabled = true;
-  } else {
-    submitButton.classList.remove(inactiveButtonClass);
-    submitButton.disabled = false;
-  }
-}
-
-function activateButton(formEls, submitButton) {
-  if (!hasInvalidInput(inputEls)) {
-    submitButton.classList.remove(inactiveButtonClass);
-    submitButton.disabled = false;
-    return;
   }
 }
 

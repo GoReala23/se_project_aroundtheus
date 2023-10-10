@@ -48,7 +48,7 @@ const profileModalSaveButton = editProfileModal.querySelector(".modal__save");
 const likeButton = document.querySelector(".card__like-button");
 console.log(".card__like-button");
 
-const closePopup = function closePopup(modal) {
+const closePopup = function exitPopup(modal) {
   modal.classList.remove("modal_opened");
 };
 const closeAddButtonPupUp = addCardModal.querySelector(
@@ -69,6 +69,7 @@ previewClose.addEventListener("click", () => {
 const picPreview = document.querySelector(".modal__image");
 imagePreviewModal.addEventListener("click", (e) => {
   if (e.target === imagePreviewModal) closePopup(imagePreviewModal);
+  removeEventListener(keyboardWork);
 });
 
 document.addEventListener("keydown", keyboardWork);
