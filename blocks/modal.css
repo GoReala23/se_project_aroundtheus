@@ -71,7 +71,6 @@
   opacity: inherit;
   pointer-events: all;
   transition: visibility 0s opacity 0.5s linear;
-  color: #f00;
 }
 .modal__container {
   background-color: #fff;
@@ -116,15 +115,15 @@
   line-height: normal;
 }
 
+modal__save_disabled {
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+}
+
 .modal__save:hover {
   cursor: pointer;
   opacity: 0.8;
-}
-
-.modal_save_disabled {
-  border-radius: 10px;
-  background: #f00;
-  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
 }
 
 .modal__pic-container {
