@@ -50,6 +50,7 @@ console.log(".card__like-button");
 
 const closePopup = function exitPopup(modal) {
   modal.classList.remove("modal_opened");
+  addCardForm.reset();
 };
 const closeAddButtonPupUp = addCardModal.querySelector(
   "#modal-close-add-button"
