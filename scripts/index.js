@@ -50,7 +50,7 @@ console.log(".card__like-button");
 
 const closePopup = (modal) => {
   modal.classList.remove("modal_opened");
-  document.removeEventListener("keyup", keyboardWork);
+
   addCardForm.reset();
 };
 const closeAddButtonPupUp = addCardModal.querySelector(
@@ -71,7 +71,6 @@ previewClose.addEventListener("click", () => {
 const picPreview = document.querySelector(".modal__image");
 imagePreviewModal.addEventListener("click", (e) => {
   if (e.target === imagePreviewModal) closePopup(imagePreviewModal);
-  document.removeEventListener("keyup", keyboardWork);
 });
 
 document.addEventListener("keydown", keyboardWork);
