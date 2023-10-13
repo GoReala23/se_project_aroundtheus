@@ -3,6 +3,7 @@ const initialCards = [
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
   },
+
   {
     name: "Lake Louise",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
@@ -11,6 +12,7 @@ const initialCards = [
     name: "Bald Mountains",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
   },
+
   {
     name: "Latemar",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
@@ -73,7 +75,6 @@ imagePreviewModal.addEventListener("click", (e) => {
   if (e.target === imagePreviewModal) closePopup(imagePreviewModal);
 });
 
-document.addEventListener("keydown", keyboardWork);
 // Form Data
 
 const profileTitle = document.querySelector(".profile__title");
@@ -149,13 +150,15 @@ function getCardElement(cardData) {
 }
 
 function keyboardWork(evt) {
-  evt.preventDefault();
+  document.addEventListener("keydown", (evt) => {
+    closePopup("modal_opened");
+  });
   if (evt.key === "Escape") closePopup(imagePreviewModal);
 }
 
 function openModal(modal) {
-  imagePreviewModal.addEventListener("keydown", keyboardWork);
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", keyboardWork);
 }
 
 closeEditProfilePupUp.addEventListener("click", () =>
@@ -175,9 +178,9 @@ openAddNewCardButton.addEventListener("click", () => openModal(addCardModal));
 
 closeAddButtonPupUp.addEventListener("click", () => closePopup(addCardModal));
 
-// initialCards.forEach((cardData) => {
-//   const cardElement = getCardElement(cardData);
-//   cardListEl.prepend(cardElement);
-// });
+initialCards.forEach((cardData) => {
+  const cardElement = getCardElement(cardData);
+  cardListEl.prepend(cardElement);
+});
 
 initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
