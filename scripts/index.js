@@ -29,8 +29,6 @@ const initialCards = [
   },
 ];
 
-console.log(initialCards);
-
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
@@ -48,11 +46,10 @@ const openProfileEditButton = document.querySelector("#profile-edit-button");
 const openAddNewCardButton = document.querySelector(".profile__add-button");
 const profileModalSaveButton = editProfileModal.querySelector(".modal__save");
 const likeButton = document.querySelector(".card__like-button");
-console.log(".card__like-button");
 
 const closePopup = (modal) => {
   modal.classList.remove("modal_opened");
-
+  document.removeEventListener("keydown", handleEscape);
   addCardForm.reset();
 };
 const closeAddButtonPupUp = addCardModal.querySelector(
@@ -133,10 +130,7 @@ function getCardElement(cardData) {
     previewImageEl.src = cardData.link;
     previewImageEl.alt = cardData.name;
     previewImageTitleEl.textContent = cardData.name;
-    console.log(previewImageTitleEl.textContent);
-    console.log(cardData.name);
     openModal(imagePreviewModal);
-    console.log("click");
   });
 
   likeButton.addEventListener("click", () => {
@@ -149,16 +143,15 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-function keyboardWork(evt) {
-  document.addEventListener("keydown", (evt) => {
-    closePopup("modal_opened");
-  });
-  if (evt.key === "Escape") closePopup(imagePreviewModal);
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    closePopup(document.querySelector(".modal_opened"));
+  }
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  document.addEventListener("keydown", keyboardWork);
+  document.addEventListener("keydown", handleEscape);
 }
 
 closeEditProfilePupUp.addEventListener("click", () =>
