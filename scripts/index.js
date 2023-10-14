@@ -50,7 +50,6 @@ const likeButton = document.querySelector(".card__like-button");
 const closePopup = (modal) => {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", handleEscape);
-  addCardForm.reset();
 };
 const closeAddButtonPupUp = addCardModal.querySelector(
   "#modal-close-add-button"
@@ -108,6 +107,7 @@ function handleAddCardFormSubmit(evt) {
   const cardElement = getCardElement({ name, link }, cardsWrap);
   cardsWrap.prepend(cardElement);
   closePopup(addCardModal);
+  addCardForm.reset();
 }
 
 function getCardElement(cardData) {
