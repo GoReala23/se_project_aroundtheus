@@ -108,7 +108,6 @@ function handleAddCardFormSubmit(evt) {
   const cardElement = getCardElement({ name, link }, cardsWrap);
   cardsWrap.prepend(cardElement);
   closePopup(addCardModal);
-  addCardForm.reset();
 }
 
 function getCardElement(cardData) {
