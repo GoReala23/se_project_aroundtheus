@@ -170,9 +170,4 @@ openAddNewCardButton.addEventListener("click", () => openModal(addCardModal));
 
 closeAddButtonPupUp.addEventListener("click", () => closePopup(addCardModal));
 
-initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
-  cardListEl.prepend(cardElement);
-});
-
 initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
