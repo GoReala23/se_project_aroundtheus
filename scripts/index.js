@@ -146,8 +146,7 @@ function handleEscape(evt) {
 }
 
 function handleOverlay(e) {
-  const openedModal = document.querySelector(".modal_opened");
-  if (e.target === openedModal) closePopup(openedModal);
+  if (e.target === e.currentTarget) closePopup(e.currentTarget);
 }
 
 function openModal(modal) {
