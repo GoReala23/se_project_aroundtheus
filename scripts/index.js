@@ -51,6 +51,7 @@ const likeButton = document.querySelector(".card__like-button");
 const closePopup = (modal) => {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", handleEscape);
+  modal.removeEventListener("click", handleOverlay);
 };
 const closeAddButtonPupUp = addCardModal.querySelector(
   "#modal-close-add-button"
@@ -144,26 +145,15 @@ function handleEscape(evt) {
   }
 }
 
-containers.addEventListener("click", (e) => {
-  if (e.target === containers) closePopup(".modal_opened");
-});
-console.log(containers);
-
-const picPreview = document.querySelector(".modal__image");
-imagePreviewModal.addEventListener("click", (e) => {
-  if (e.target === imagePreviewModal) closePopup(imagePreviewModal);
-});
-
-const openedModal = document.querySelector(".modal");
-openedModal.addEventListener("click", (e) => {
+function handleOverlay(e) {
+  const openedModal = document.querySelector(".modal_opened");
   if (e.target === openedModal) closePopup(openedModal);
-});
+}
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEscape);
-  document.addEventListener("click", handleOverlay);
-  console.log(openedModal);
+  modal.addEventListener("click", handleOverlay);
 }
 
 closeEditProfilePupUp.addEventListener("click", () =>
