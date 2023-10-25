@@ -1,5 +1,9 @@
-import Card as Card from './Card.js' 
+import Card as Card from "../components/Card.js";
+import FormValidator as FormValidator from "../components/FormValidator.js";
 
+// from formValidation do later
+// const editFormValidator = new FormValidator(settings, editForm);
+//const addFormValidator = new FormValidator( settings, addForm);
 
 const initialCards = [
   {
@@ -32,6 +36,8 @@ const initialCards = [
   },
 ];
 
+const card = new Card(initialCards, "#card-template");
+
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
@@ -43,6 +49,7 @@ const addCardModal = document.querySelector("#add-card-modal");
 const profileEditForm = document.querySelector(".modal__form");
 const addCardForm = addCardModal.querySelector("#add-modal-form");
 const cardElement = document.querySelector(".card");
+// delete modal containers maybe, not needed//
 const containers = document.querySelector(".modal__container");
 
 // Buttons
@@ -63,6 +70,7 @@ const closeEditProfilePupUp = editProfileModal.querySelector(
   "#modal-close-button"
 );
 
+// delete modal containers maybe, not needed//
 const modalContainer = document.querySelector("#add-card-modal");
 const imagePreviewModal = document.querySelector("#modal-preview-img");
 
@@ -110,6 +118,22 @@ function handleAddCardFormSubmit(evt) {
   addCardForm.reset();
 }
 
+const validationSettings = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__save",
+  inactiveButtonClass: "modal__save_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__span_opened",
+};
+
+const editFormElement = editProfileModal.querySelector(".modal__form");
+const addCardElement = addCardModal.querySelector(".modal__form");
+
+const editFormValidator = new FormValidator(validationSettings, editFormElement);
+const addFormValidator = new FormValidator(validationSettings, addCardElement);
+
+
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
 
@@ -117,10 +141,10 @@ function getCardElement(cardData) {
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
 
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
+  // const deleteButton = cardElement.querySelector(".card__delete-button");
+  // deleteButton.addEventListener("click", () => {
+  //   cardElement.remove();
+  // });
 
   cardImageEl.addEventListener("click", () => {
     const previewImageEl = imagePreviewModal.querySelector(".modal__image");
