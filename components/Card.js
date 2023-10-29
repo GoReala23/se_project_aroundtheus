@@ -26,6 +26,7 @@ class Card {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
+    this._handleImageClick = handleImageClick;
   }
 
   _seteventListners() {
@@ -36,12 +37,14 @@ class Card {
       .querySelector(".card__delete-button")
       .addEventListener("click", () => this._handleDeleteCard);
     this._element
-      .querySelector(".card__delete-button")
-      .addEventListener("click", () => this._handlePreviewPicture);
+      .querySelector(".card__image")
+      .addEventListener("click", () => this.handleImageClick);
   }
 
-  _handlePreviewPicture() {
-    this._cardElement.querySelector();
+  handleImageClick() {
+    this._cardElement
+      .querySelector(".card__image")
+      .classList.toggle("#modal-preview-img");
   }
 
   _handleDeleteCard() {
@@ -58,7 +61,7 @@ class Card {
   _getTemplate() {
     cardTemplate = document
       .querySelector(this._cardSelector)
-      .textContent.querySelector(".card")
+      .content.querySelector(".card")
       .cloneNode(true);
     this._likeButton = this._cardElement.querySelector(".card__like-button");
     this._deleteButton = this._cardElement.querySelector(

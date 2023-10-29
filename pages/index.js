@@ -90,27 +90,30 @@ function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEscape);
   modal.addEventListener("click", handleOverlay);
-  modal.addEventListener("click", handleClose);
+  modal.addEventListener("click", (e) => handleClose(e, modal));
 }
 
-const closePopup = (modal) => {
+function closePopup(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", handleEscape);
   modal.removeEventListener("click", handleOverlay);
-};
-
-function handleClose(event) {
-  if (event.target === modalCloseButton) closePopup("modal_opened");
+  modal.removeEventListener("click", handleClose);
 }
 
 function handleEscape(evt) {
   if (evt.key === "Escape") {
-    closePopup(document.querySelector("modal_opened"));
+    closePopup(document.querySelector(".modal_opened"));
   }
 }
 
 function handleOverlay(e) {
   if (e.target === e.currentTarget) closePopup(e.currentTarget);
+}
+
+function handleClose(event, modal) {
+  if (event.target.classList.contains("modal__close")) {
+    closePopup(modal);
+  }
 }
 
 // code above may suffice for code below
