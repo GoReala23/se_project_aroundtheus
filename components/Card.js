@@ -33,7 +33,7 @@
 // official card stuff
 
 class Card {
-  constructor({ name, link }, cardSelector) {
+  constructor({ name, link }, cardSelector, handleImageClick) {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
