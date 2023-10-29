@@ -117,6 +117,8 @@ const cardSelector = cardTemplate;
 
 // VALIDATION
 
+new FormValidator();
+
 const defaultFormConfig = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
@@ -130,11 +132,8 @@ const editProfileModal = document.querySelector("#edit-modal");
 const profileEditForm = document.querySelector(".modal__form");
 const addCardModal = document.querySelector("#add-card-modal");
 
-const editFormValidator = new FormValidator(
-  validationSettings,
-  editFormElement
-);
-const addFormValidator = new FormValidator(validationSettings, addCardElement);
+const editFormValidator = new FormValidator(defaultFormConfig, editF);
+const addFormValidator = new FormValidator(defaultFormConfig, addCardElement);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();

@@ -79,9 +79,6 @@ class FormValidator {
   }
 }
 
-const editForm = document.querySelector("#edit-modal-form");
-const addForm = document.querySelector("#add-modal-form");
-
 const settings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
@@ -90,10 +87,5 @@ const settings = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__span_opened",
 };
-
-const editFormValidator = new FormValidator(settings, editForm);
-const addFormValidator = new FormValidator(settings, addForm);
-
-new FormValidator();
 
 export default FormValidator;

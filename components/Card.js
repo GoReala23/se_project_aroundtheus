@@ -51,7 +51,9 @@ class Card {
       .addEventListener("click", () => this._handlePreviewPicture);
   }
 
-  _handlePreviewPicture() {}
+  _handlePreviewPicture() {
+    this._cardElement.querySelector();
+  }
 
   _handleDeleteCard() {
     this._cardElement.remove();
