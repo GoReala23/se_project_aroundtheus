@@ -133,7 +133,7 @@ const profileEditForm = document.querySelector(".modal__form");
 const addCardModal = document.querySelector("#add-card-modal");
 
 const editFormValidator = new FormValidator(defaultFormConfig, editF);
-const addFormValidator = new FormValidator(defaultFormConfig, addCardElement);
+const addFormValidator = new FormValidator(defaultFormConfig, addForm);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();

@@ -88,4 +88,8 @@ const settings = {
   errorClass: "modal__span_opened",
 };
 
+const editFormValidator = new FormValidator(settings);
+
+new FormValidator(settings);
+
 export default FormValidator;
