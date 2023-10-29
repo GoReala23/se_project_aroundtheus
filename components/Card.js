@@ -1,24 +1,13 @@
-// const imagePreviewModal = document.querySelector("#modal-preview-img");
-// const previewClose = imagePreviewModal.querySelector(".modal__close");
-// previewClose.addEventListener("click", () => {
-//   closePopup(imagePreviewModal);
-// });
+const imageModal = document.querySelector(".modal__image");
+const imagePreviewModal = document.querySelector("#modal-preview-img");
+const previewClose = imagePreviewModal.querySelector(".modal__close");
+previewClose.addEventListener("click", () => {
+  closePopup(imagePreviewModal);
+});
 
-// function handleEscape(evt) {
-//   if (evt.key === "Escape") {
-//     closePopup(document.querySelector(".modal_opened"));
-//   }
-// }
-
-// function handleOverlay(e) {
-//   if (e.target === e.currentTarget) closePopup(e.currentTarget);
-// }
-
-// function openModal(modal) {
-//   modal.classList.add("modal_opened");
-//   document.addEventListener("keydown", handleEscape);
-//   modal.addEventListener("click", handleOverlay);
-// }
+imageModal.addEventListener("click", () => {
+  openModal(imagePreviewModal);
+});
 
 // cardImageEl.addEventListener("click", () => {
 //   const previewImageEl = imagePreviewModal.querySelector(".modal__image");
