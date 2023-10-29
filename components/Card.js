@@ -1,34 +1,34 @@
-const imagePreviewModal = document.querySelector("#modal-preview-img");
-const previewClose = imagePreviewModal.querySelector(".modal__close");
-previewClose.addEventListener("click", () => {
-  closePopup(imagePreviewModal);
-});
+// const imagePreviewModal = document.querySelector("#modal-preview-img");
+// const previewClose = imagePreviewModal.querySelector(".modal__close");
+// previewClose.addEventListener("click", () => {
+//   closePopup(imagePreviewModal);
+// });
 
-function handleEscape(evt) {
-  if (evt.key === "Escape") {
-    closePopup(document.querySelector(".modal_opened"));
-  }
-}
+// function handleEscape(evt) {
+//   if (evt.key === "Escape") {
+//     closePopup(document.querySelector(".modal_opened"));
+//   }
+// }
 
-function handleOverlay(e) {
-  if (e.target === e.currentTarget) closePopup(e.currentTarget);
-}
+// function handleOverlay(e) {
+//   if (e.target === e.currentTarget) closePopup(e.currentTarget);
+// }
 
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", handleEscape);
-  modal.addEventListener("click", handleOverlay);
-}
+// function openModal(modal) {
+//   modal.classList.add("modal_opened");
+//   document.addEventListener("keydown", handleEscape);
+//   modal.addEventListener("click", handleOverlay);
+// }
 
-cardImageEl.addEventListener("click", () => {
-  const previewImageEl = imagePreviewModal.querySelector(".modal__image");
-  const previewImageTitleEl =
-    imagePreviewModal.querySelector(".modal__img-title");
-  previewImageEl.src = cardData.link;
-  previewImageEl.alt = cardData.name;
-  previewImageTitleEl.textContent = cardData.name;
-  openModal(imagePreviewModal);
-});
+// cardImageEl.addEventListener("click", () => {
+//   const previewImageEl = imagePreviewModal.querySelector(".modal__image");
+//   const previewImageTitleEl =
+//     imagePreviewModal.querySelector(".modal__img-title");
+//   previewImageEl.src = cardData.link;
+//   previewImageEl.alt = cardData.name;
+//   previewImageTitleEl.textContent = cardData.name;
+//   openModal(imagePreviewModal);
+// });
 
 // official card stuff
 

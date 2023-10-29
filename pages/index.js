@@ -45,7 +45,6 @@ const cardTemplate =
 
 const cardsWrap = document.querySelector(".cards__list");
 
-const addCardForm = addCardModal.querySelector("#add-modal-form");
 const cardElement = document.querySelector(".card");
 // delete modal containers maybe, not needed//
 const containers = document.querySelector(".modal__container");
@@ -53,7 +52,7 @@ const containers = document.querySelector(".modal__container");
 // Buttons
 const openProfileEditButton = document.querySelector("#profile-edit-button");
 const openAddNewCardButton = document.querySelector(".profile__add-button");
-const profileModalSaveButton = editProfileModal.querySelector(".modal__save");
+
 const likeButton = document.querySelector(".card__like-button");
 
 const closePopup = (modal) => {
@@ -61,12 +60,12 @@ const closePopup = (modal) => {
   document.removeEventListener("keydown", handleEscape);
   modal.removeEventListener("click", handleOverlay);
 };
-const closeAddButtonPupUp = addCardModal.querySelector(
-  "#modal-close-add-button"
-);
-const closeEditProfilePupUp = editProfileModal.querySelector(
-  "#modal-close-button"
-);
+// const closeAddButtonPupUp = addCardModal.querySelector(
+//   "#modal-close-add-button"
+// );
+// const closeEditProfilePupUp = editProfileModal.querySelector(
+//   "#modal-close-button"
+// );
 
 // delete modal containers maybe, not needed//
 const modalContainer = document.querySelector("#add-card-modal");
@@ -80,8 +79,8 @@ const profileDescriptionInput = document.querySelector(
   "#modal-profile-description-input"
 );
 
-const cardTitleInput = addCardForm.querySelector(".modal__input_type_title");
-const cardUrlInput = addCardForm.querySelector(".modal__input_type_url");
+// const cardTitleInput = addCardForm.querySelector(".modal__input_type_title");
+// const cardUrlInput = addCardForm.querySelector(".modal__input_type_url");
 
 const cardListEl = document.querySelector(".cards__list");
 
@@ -113,8 +112,8 @@ function handleAddCardFormSubmit(evt) {
 
 const cardSelector = cardTemplate;
 
-const editFormElement = editProfileModal.querySelector(".modal__form");
-const addCardElement = addCardModal.querySelector(".modal__form");
+// const editFormElement = editProfileModal.querySelector(".modal__form");
+// const addCardElement = addCardModal.querySelector(".modal__form");
 
 // VALIDATION
 
