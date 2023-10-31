@@ -41,7 +41,8 @@ const cardData = {
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
 
-const card = new Card(initialCards, "#card-template");
+const card = new Card(cardData, "#card-template");
+card.getView();
 // profile code
 
 // cardImage Code
@@ -111,9 +112,15 @@ function handleOverlay(e) {
 }
 
 function handleClose(event, modal) {
-  if (event.target.classList.contains("modal__close")) {
+  if (event.target.classList.contains(".modal__close")) {
     closePopup(modal);
   }
+}
+
+function handleImageClick() {
+  this._cardElement
+    .querySelector(".card__image")
+    .classList.toggle("#modal-preview-img");
 }
 
 // code above may suffice for code below
@@ -127,12 +134,10 @@ function handleProfileEditSubmit(evt) {
   closePopup(editProfileModal);
 }
 
-// // function renderCard(data, wrapper) {
-// //   );
+// function renderCard(card, wrapper) {
+//   wrapper.prepend(card.getView());
 
-//   wrapper.prepend(card.generateCard());
-//   //   const cardElement = getCardElement(cardData);
-//   //   cardListEl.prepend(cardElement);
+//   cardListEl.prepend(cardElement);
 // }
 
 function handleAddCardFormSubmit(evt) {
@@ -147,20 +152,6 @@ function handleAddCardFormSubmit(evt) {
 }
 
 //card creation
-
-function generateCard(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardTitle = cardElement.querySelector(".card__title");
-  const card = new Card(cardData, "#card-title", (name, link) => {
-    cardImage.src = cardData.link;
-    cardImage.alt = cardData.name;
-    cardTitle.textContent = cardData.name;
-    openModal(previewImageModal);
-    return card.getView();
-  });
-}
 
 // VALIDATION
 
@@ -184,7 +175,8 @@ const addFormValidator = new FormValidator(addCardForm, defaultFormConfig);
 editFormValidator.enableValidation(profileEditForm, defaultFormConfig);
 addFormValidator.enableValidation(addCardForm, defaultFormConfig);
 
-function getCardElement(cardData) {
+function generateCard(cardData) {
+  const card = new Card(cardData, "#card-template", handleImageClick);
   const cardElement = cardTemplate.cloneNode(true);
 
   const cardImageEl = cardElement.querySelector(".card__image");
@@ -198,7 +190,8 @@ function getCardElement(cardData) {
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
-  return cardElement;
+
+  return card;
 }
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);

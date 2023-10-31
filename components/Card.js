@@ -30,13 +30,13 @@ class Card {
   }
 
   _seteventListners() {
-    this._element
+    this._cardElement
       .querySelector(".card__like-button")
       .addEventListener("click", () => this._handleLikeIcon);
-    this._element
+    this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => this._handleDeleteCard);
-    this._element
+    this._cardElement
       .querySelector(".card__image")
       .addEventListener("click", () => this.handleImageClick);
   }
@@ -58,42 +58,34 @@ class Card {
       .classList.toggle("card__like-button_active");
   }
 
-  _getTemplate() {
-    cardTemplate = document
+  getView() {
+    this._cardElement = document
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
       .cloneNode(true);
-    this._likeButton = this._cardElement.querySelector(".card__like-button");
-    this._deleteButton = this._cardElement.querySelector(
-      ".card__delete-button"
-    );
-  }
 
-  getView() {
-    this._element = this._getTemplate;
+    const cardData = { link: this._link, name: this._name };
+
+    const cardImageElement = this._cardElement.querySelector(".card__image");
+    cardImageElement.src = this._link;
+    cardImageElement.alt = this._name;
+
+    const cardTitleElement = this._cardElement.querySelector(".card__title");
+    cardTitleElement.textContent = cardData.name;
+
+    this._seteventListners();
+
+    return this._cardElement;
 
     // set event listeners
-    this._seteventListners();
+
     // return the card
 
-    this._element.querySelector(".card__image").style.backgroundImage = url(
-      $(this._link)
-    );
+    // this._element.querySelector(".card__image").style.backgroundImage = url(
+    //   $(this._link)
+    // );
 
-    this._element.querySelector("card__title").textContent = this._name;
-  }
-
-  generateCard() {
-    this._element = this._getTemplate();
-    this._seteventListners();
-
-    this._element.querySelector(".card__image").style.backgroundImage = url(
-      $(this._link)
-    );
-
-    this._element.querySelector("card__title").textContent = this._name;
-
-    return this._element;
+    // this._cardElement.querySelector("card__title").textContent = this._name;
   }
 }
 
