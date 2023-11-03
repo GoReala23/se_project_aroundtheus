@@ -1,13 +1,11 @@
-const imageModal = document.querySelector(".modal__image");
-const imagePreviewModal = document.querySelector("#modal-preview-img");
-const previewClose = imagePreviewModal.querySelector(".modal__close");
-previewClose.addEventListener("click", () => {
-  closePopup(imagePreviewModal);
-});
+// const previewClose = imagePreviewModal.querySelector(".modal__close");
+// previewClose.addEventListener("click", () => {
+//   closePopup(imagePreviewModal);
+// });
 
-imageModal.addEventListener("click", () => {
-  openModal(imagePreviewModal);
-});
+// imageModal.addEventListener("click", () => {
+//   openModal(imagePreviewModal);
+// });
 
 // cardImageEl.addEventListener("click", () => {
 //   const previewImageEl = imagePreviewModal.querySelector(".modal__image");
@@ -29,7 +27,7 @@ class Card {
     this._handleImageClick = handleImageClick;
   }
 
-  _seteventListners() {
+  _setEventListeners() {
     this._cardElement
       .querySelector(".card__like-button")
       .addEventListener("click", () => this._handleLikeIcon);
@@ -38,17 +36,20 @@ class Card {
       .addEventListener("click", () => this._handleDeleteCard);
     this._cardElement
       .querySelector(".card__image")
-      .addEventListener("click", () => this.handleImageClick);
+      .addEventListener("click", () =>
+        this._handleImageClick(this._name, this._link)
+      );
   }
 
-  handleImageClick() {
+  _handleImageClick() {
     this._cardElement
       .querySelector(".card__image")
-      .classList.toggle("#modal-preview-img");
+      .classList.add(this._openPreview);
   }
 
   _handleDeleteCard() {
     this._cardElement.remove();
+    console.log("click");
     this._cardElement = null;
   }
 
@@ -58,22 +59,24 @@ class Card {
       .classList.toggle("card__like-button_active");
   }
 
+  _openPreview(modal) {
+    modal.classList.add(".modal_opened");
+  }
+
   getView() {
     this._cardElement = document
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
       .cloneNode(true);
 
-    const cardData = { link: this._link, name: this._name };
-
     const cardImageElement = this._cardElement.querySelector(".card__image");
     cardImageElement.src = this._link;
     cardImageElement.alt = this._name;
 
     const cardTitleElement = this._cardElement.querySelector(".card__title");
-    cardTitleElement.textContent = cardData.name;
+    cardTitleElement.textContent = this._name;
 
-    this._seteventListners();
+    this._setEventListeners();
 
     return this._cardElement;
 

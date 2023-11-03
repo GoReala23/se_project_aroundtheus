@@ -37,25 +37,25 @@ function hasInvalidInput(inputList) {
 // }
 
 function setEventListeners(formEl, options) {
-  // const { inputSelector } = options;
-  // const inputEls = [...formEl.querySelectorAll(inputSelector)];
+  const { inputSelector } = options;
+  const inputEls = [...formEl.querySelectorAll(inputSelector)];
 
-  // const submitButton = formEl.querySelector(options.submitButtonSelector);
+  const submitButton = formEl.querySelector(options.submitButtonSelector);
 
-  // inputEls.forEach((inputEl) => {
-  //   inputEl.addEventListener("input", (e) => {
-  //     checkInputValidity(formEl, inputEl, options);
-  //     toggleButtonState(inputEls, submitButton, options);
-  //   });
-  // });
+  inputEls.forEach((inputEl) => {
+    inputEl.addEventListener("input", (e) => {
+      checkInputValidity(formEl, inputEl, options);
+      toggleButtonState(inputEls, submitButton, options);
+    });
+  });
 }
 
 function enableValidation(options) {
   const formEls = [...document.querySelectorAll(options.formSelector)];
-  // formEls.forEach((formEl) => {
-  //   formEl.addEventListener("submit", (e) => {
-  //     e.preventDefault();
-  //   });
+  formEls.forEach((formEl) => {
+    formEl.addEventListener("submit", (e) => {
+      e.preventDefault();
+    });
 
     setEventListeners(formEl, options);
   });
