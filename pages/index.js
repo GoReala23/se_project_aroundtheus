@@ -146,15 +146,11 @@ function handleAddCardFormSubmit(evt) {
   const cardTitleInput = document.querySelector(".modal__input_type_title");
   const cardUrlInput = document.querySelector(".modal__input_type_url");
 
-  const name = cardTitleInput;
-  const link = cardUrlInput;
+  const name = cardTitleInput.value;
+  const link = cardUrlInput.value;
 
-  cardTitleInput.alt = cardTitleInput.value;
-  cardUrlInput.src = cardUrlInput.value;
-
-  // could be getCardElement({ name, link }, cardsWrap)
-  const card = new Card({ name, link }, "#card-template", handleImageClick);
-  const cardElement = generateCard(card);
+  // const card = new Card({ name, link }, "#card-template", handleImageClick);
+  const cardElement = generateCard({ name, link });
 
   cardsWrap.prepend(cardElement);
   closePopup(addCardModal);
