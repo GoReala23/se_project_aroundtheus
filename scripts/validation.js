@@ -50,16 +50,18 @@ function setEventListeners(formEl, options) {
   });
 }
 
-function enableValidation(options) {
-  const formEls = [...document.querySelectorAll(options.formSelector)];
-  formEls.forEach((formEl) => {
-    formEl.addEventListener("submit", (e) => {
-      e.preventDefault();
-    });
+// below will activate enableVa;idation
 
-    setEventListeners(formEl, options);
-  });
-}
+// function enableValidation(options) {
+//   const formEls = [...document.querySelectorAll(options.formSelector)];
+//   formEls.forEach((formEl) => {
+//     formEl.addEventListener("submit", (e) => {
+//       e.preventDefault();
+//     });
+
+//     setEventListeners(formEl, options);
+//   });
+// }
 
 const config = {
   formSelector: ".modal__form",

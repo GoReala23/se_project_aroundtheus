@@ -212,7 +212,7 @@
   }
 
   .modal__image {
-    height: 299px;
+    width: inherit;
   }
 
   .modal__img-title {
