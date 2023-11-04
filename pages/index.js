@@ -1,5 +1,5 @@
 import Card from "../components/Card.js";
-// import FormValidator from "../components/FormValidator.js";
+import FormValidator from "../components/FormValidator.js";
 
 // from formValidation do later
 // const editFormValidator = new FormValidator(settings, editForm);
@@ -75,7 +75,8 @@ const profileDescriptionInput = document.querySelector(
 
 // const cardTitleInput = addCardForm.querySelector(".modal__input_type_title");
 // const cardUrlInput = addCardForm.querySelector(".modal__input_type_url");
-// const editFormElement = editProfileModal.querySelector(".modal__form");
+//
+
 // const addCardElement = addCardModal.querySelector(".modal__form");
 
 const cardListEl = document.querySelector(".cards__list");
@@ -164,27 +165,14 @@ function handleAddCardFormSubmit(evt) {
 
 // VALIDATION
 
-// const defaultFormConfig = {
-//   formSelector: ".modal__form",
-//   inputSelector: ".modal__input",
-//   submitButtonSelector: ".modal__save",
-//   inactiveButtonClass: "modal__save_disabled",
-//   inputErrorClass: "modal__input_type_error",
-//   errorClass: "modal__span_opened",
-// };
-
-// const editProfileModal = document.querySelector("#edit-modal");
-// const profileEditForm = editProfileModal.querySelector(".modal__form");
-// const addCardModal = document.querySelector("#add-card-modal");
-// const addCardForm = addCardModal.querySelector(".modal__form");
-
-// const editFormValidator = new FormValidator(profileEditForm, defaultFormConfig);
-// const addFormValidator = new FormValidator(addCardForm, defaultFormConfig);
-
-// editFormValidator.enableValidation(profileEditForm, defaultFormConfig);
-// addFormValidator.enableValidation(addCardForm, defaultFormConfig);
-
-// new card
+const defaultFormConfig = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__save",
+  inactiveButtonClass: "modal__save_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__span_opened",
+};
 
 function generateCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
@@ -192,9 +180,18 @@ function generateCard(cardData) {
   return card.getView();
 }
 
+const profileEditForm = document.querySelector("#edit-modal-form");
+const editFormValidator = new FormValidator(profileEditForm, defaultFormConfig);
+const addCardForm = document.querySelector("#add-modal-form");
+const addFormValidator = new FormValidator(addCardForm, defaultFormConfig);
+
+editFormValidator.enableValidation(profileEditForm, defaultFormConfig);
+addFormValidator.enableValidation(addCardForm, defaultFormConfig);
+
+// new card
+
 // forms
 
-const profileEditForm = document.querySelector("#edit-modal-form");
 const editProfileModal = document.querySelector("#edit-modal");
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
@@ -205,7 +202,6 @@ openProfileEditButton.addEventListener("click", () => {
   openModal(editProfileModal);
 });
 
-const addCardForm = document.querySelector("#add-modal-form");
 const addCardModal = document.querySelector("#add-card-modal");
 
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
