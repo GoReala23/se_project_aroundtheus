@@ -14,8 +14,11 @@ class FormValidator {
     const errorMessageElement = this._formElement.querySelector(
       `#${inputElement.id}-error`
     );
+    const errorMessage = document.querySelector(
+      "#modal-profile-description-input-error"
+    );
     inputElement.classList.add(this._inputErrorClass);
-    errorMessageElement.textContent = inputElement.validation;
+    errorMessageElement.textContent = errorMessage;
     errorMessageElement.classList.add(this._errorClass);
   }
 
@@ -30,11 +33,7 @@ class FormValidator {
 
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
-      return this._showInputError(
-        this._formElement,
-        this._inputElement,
-        this.options
-      );
+      return this._showInputError(inputElement);
     }
 
     this._hideInputError(inputElement);
