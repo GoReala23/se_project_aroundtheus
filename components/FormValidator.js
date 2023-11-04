@@ -14,11 +14,9 @@ class FormValidator {
     const errorMessageElement = this._formElement.querySelector(
       `#${inputElement.id}-error`
     );
-    const errorMessage = document.querySelector(
-      "#modal-profile-description-input-error"
-    );
+    const errorMessage = document.querySelector(".modal__span");
     inputElement.classList.add(this._inputErrorClass);
-    errorMessageElement.textContent = errorMessage;
+    errorMessageElement.textContent = inputElement.validationMessage;
     errorMessageElement.classList.add(this._errorClass);
   }
 
@@ -78,7 +76,6 @@ class FormValidator {
   enableValidation() {
     this._formElement.addEventListener("submit", (event) => {
       event.preventDefault();
-      // this._checkInputValidity();
     });
     this._setEventListeners();
   }
