@@ -43,6 +43,11 @@ class FormValidator {
     );
   }
 
+  disableButton() {
+    this._submitButton.classList.add(this._inactiveButtonClass);
+    this._submitButton.disabled = true;
+  }
+
   // function hasInvalidInput(inputList) {
   //   return !inputList.every((inputEl) => inputEl.validity.valid);
   // }
@@ -78,7 +83,7 @@ class FormValidator {
       event.preventDefault();
     });
     this._setEventListeners();
-    this.disableButton;
+    this.disableButton();
   }
 }
 
