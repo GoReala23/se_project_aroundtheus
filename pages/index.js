@@ -154,6 +154,8 @@ function handleAddCardFormSubmit(evt) {
 
   cardsWrap.prepend(cardElement);
   closePopup(addCardModal);
+  addFormValidator.disableButton();
+
   addCardForm.reset();
 }
 
