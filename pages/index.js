@@ -97,7 +97,7 @@ function closePopup(modal) {
 
 function handleEscape(evt) {
   if (evt.key === "Escape") {
-    closePopup(document.querySelector("modal_opened"));
+    closePopup(document.querySelector(".modal_opened"));
   }
 }
 
