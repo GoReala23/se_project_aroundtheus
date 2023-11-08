@@ -85,7 +85,7 @@ function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEscape);
   modal.addEventListener("click", handleOverlay);
-  modal.addEventListener("click", (e) => handleClose(e, modal));
+  modal.addEventListener("click", handleClose);
 }
 
 function closePopup(modal) {
