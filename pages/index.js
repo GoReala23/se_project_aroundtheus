@@ -101,21 +101,25 @@ function handleEscape(evt) {
   }
 }
 
+// handles all modals/popups with closeButton class.
 function handleOverlay(e) {
   if (e.target === e.currentTarget) closePopup(e.currentTarget);
 }
 
-function handleClose(event, modal) {
-  if (event.target.classList.contains("modal__close")) {
-    closePopup(modal);
-  }
+function handleClose() {
+  const closeButtons = document.querySelectorAll(".modal__close");
+
+  closeButtons.forEach((button) => {
+    const modal = button.closest(".modal");
+    button.addEventListener("click", () => closePopup(modal));
+  });
 }
 
 function handleImageClick(name, link) {
   openModal(imagePreviewModal);
 
   imageModal.src = link;
-  imagePreviewTitle.alt = name;
+  imageModal.alt = name;
   imagePreviewTitle.textContent = name;
 }
 
@@ -130,10 +134,6 @@ previewClose.addEventListener("click", () => {
   closePopup(imagePreviewModal);
 });
 
-imageModal.addEventListener("click", () => {
-  openModal(imagePreviewModal);
-});
-
 function handleProfileEditSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
@@ -144,6 +144,7 @@ function handleProfileEditSubmit(evt) {
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
   const cardTitleInput = document.querySelector(".modal__input_type_title");
+
   const cardUrlInput = document.querySelector(".modal__input_type_url");
 
   const name = cardTitleInput.value;
@@ -154,7 +155,7 @@ function handleAddCardFormSubmit(evt) {
 
   cardsWrap.prepend(cardElement);
   closePopup(addCardModal);
-  addFormValidator.disableButton();
+  addCardFormValidator.disableButton();
 
   addCardForm.reset();
 }
@@ -180,12 +181,28 @@ function generateCard(cardData) {
 
 const profileEditForm = document.querySelector("#edit-modal-form");
 const editFormValidator = new FormValidator(profileEditForm, defaultFormConfig);
+const addCardFormValidator = new FormValidator(
+  profileEditForm,
+  defaultFormConfig
+);
+
+const formValidators = {};
+const enableValidation = (defaultFormConfig) => {
+  const formList = Array.from(
+    document.querySelectorAll(defaultFormConfig.formSelector)
+  );
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(formElement, defaultFormConfig);
+    const formName = formElement.getAttribute("name");
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+enableValidation(defaultFormConfig);
 const addCardForm = document.querySelector("#add-modal-form");
-const addFormValidator = new FormValidator(addCardForm, defaultFormConfig);
 
-editFormValidator.enableValidation(profileEditForm, defaultFormConfig);
-addFormValidator.enableValidation(addCardForm, defaultFormConfig);
-
+editFormValidator.enableValidation();
+addCardFormValidator.enableValidation();
 // new card
 
 // forms

@@ -42,12 +42,6 @@ class Card {
       );
   }
 
-  _handleImageClick() {
-    this._cardElement
-      .querySelector(".card__image")
-      .classList.add(this._openPreview);
-  }
-
   _handleDeleteCard() {
     this._cardElement.remove();
 
@@ -58,11 +52,6 @@ class Card {
     this._cardElement
       .querySelector(".card__like-button")
       .classList.toggle("card__like-button_active");
-    console.log("click");
-  }
-
-  _openPreview(modal) {
-    modal.classList.add(".modal_opened");
   }
 
   getView() {
