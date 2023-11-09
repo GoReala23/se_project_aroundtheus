@@ -155,7 +155,6 @@ function handleAddCardFormSubmit(evt) {
 
   cardsWrap.prepend(cardElement);
   closePopup(addCardModal);
-  addCardFormValidator.disableButton();
 
   addCardForm.reset();
 }
@@ -180,11 +179,6 @@ function generateCard(cardData) {
 }
 
 const profileEditForm = document.querySelector("#edit-modal-form");
-const editFormValidator = new FormValidator(profileEditForm, defaultFormConfig);
-const addCardFormValidator = new FormValidator(
-  profileEditForm,
-  defaultFormConfig
-);
 
 const formValidators = {};
 const enableValidation = (defaultFormConfig) => {
@@ -201,8 +195,6 @@ const enableValidation = (defaultFormConfig) => {
 enableValidation(defaultFormConfig);
 const addCardForm = document.querySelector("#add-modal-form");
 
-editFormValidator.enableValidation();
-addCardFormValidator.enableValidation();
 // new card
 
 // forms
