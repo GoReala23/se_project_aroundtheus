@@ -69,10 +69,6 @@ class Card {
     this._likeButton.classList.toggle("card__like-button_active");
   }
 
-  _openPreview() {
-    this._cardImage.add(".modal_opened");
-  }
-
   getView() {
     this._cardElement = document
 
