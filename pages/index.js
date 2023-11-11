@@ -92,18 +92,14 @@ function openModal(modal) {
   document.addEventListener("keydown", handleEscape);
 
   modal.addEventListener("click", handleOverlay);
-
-  document.addEventListener("click", handleClose);
 }
-
+document.addEventListener("click", handleClose);
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
 
   document.removeEventListener("keydown", handleEscape);
 
   modal.removeEventListener("click", handleOverlay);
-
-  document.removeEventListener("click", handleClose);
 }
 
 function handleEscape(evt) {
@@ -146,14 +142,6 @@ const imagePreviewTitle = document.querySelector(".modal__img-title");
 
 const previewClose = imagePreviewModal.querySelector(".modal__close");
 
-previewClose.addEventListener("click", () => {
-  closePopup(imagePreviewModal);
-});
-
-imageModal.addEventListener("click", () => {
-  openModal(imagePreviewModal);
-});
-
 function handleProfileEditSubmit(evt) {
   evt.preventDefault();
 
@@ -172,8 +160,6 @@ function handleAddCardFormSubmit(evt) {
   const name = cardTitleInput.value;
 
   const link = cardUrlInput.value;
-
-  // const card = new Card({ name, link }, "#card-template", handleImageClick);
 
   const cardElement = generateCard({ name, link });
 
