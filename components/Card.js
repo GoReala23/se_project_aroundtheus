@@ -1,37 +1,5 @@
 // const previewClose = imagePreviewModal.querySelector(".modal__close");
 
-// previewClose.addEventListener("click", () => {
-
-//   closePopup(imagePreviewModal);
-
-// });
-
-// imageModal.addEventListener("click", () => {
-
-//   openModal(imagePreviewModal);
-
-// });
-
-// cardImageEl.addEventListener("click", () => {
-
-//   const previewImageEl = imagePreviewModal.querySelector(".modal__image");
-
-//   const previewImageTitleEl =
-
-//     imagePreviewModal.querySelector(".modal__img-title");
-
-//   previewImageEl.src = cardData.link;
-
-//   previewImageEl.alt = cardData.name;
-
-//   previewImageTitleEl.textContent = cardData.name;
-
-//   openModal(imagePreviewModal);
-
-// });
-
-// official card stuff
-
 class Card {
   constructor({ name, link }, cardSelector, handleImageClick) {
     this._name = name;
@@ -41,10 +9,6 @@ class Card {
     this._cardSelector = cardSelector;
 
     this._handleImageClick = handleImageClick;
-    this._element = this.getView();
-
-    this._cardImage = this._element.querySelector(".card__image");
-    this._cardImageTitle = this._element.querySelector(".card__title");
   }
 
   _setEventListeners() {
@@ -87,7 +51,6 @@ class Card {
     this._cardTitle = this._cardElement.querySelector(".card__title");
 
     this._cardTitle.textContent = this._name;
-    this.picPreview = this._cardImage.querySelector(".modal_opened");
 
     this._likeButton = this._cardElement.querySelector(".card__like-button");
     this._deleteButton = this._cardElement.querySelector(

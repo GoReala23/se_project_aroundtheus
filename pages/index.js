@@ -50,8 +50,6 @@ const initialCards = [
 
 // cardImage Code
 
-// const previewImageModal = document.querySelector("#modal-preview-img");
-
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
@@ -69,12 +67,6 @@ const openAddNewCardButton = document.querySelector(".profile__add-button");
 
 const modalCloseButton = document.querySelector(".modal__close");
 
-// modalCloseButton.addEventListener("click", () => {
-
-//   closePopup("modal_opened");
-
-// });
-
 const likeButton = document.querySelector(".card__like-button");
 
 //
@@ -91,18 +83,6 @@ const profileDescriptionInput = document.querySelector(
   "#modal-profile-description-input"
 );
 
-// );
-
-// delete modal containers maybe, not needed//
-
-// const cardTitleInput = addCardForm.querySelector(".modal__input_type_title");
-
-// const cardUrlInput = addCardForm.querySelector(".modal__input_type_url");
-
-//
-
-// const addCardElement = addCardModal.querySelector(".modal__form");
-
 const cardListEl = document.querySelector(".cards__list");
 
 function openModal(modal) {
@@ -111,8 +91,6 @@ function openModal(modal) {
   document.addEventListener("keydown", handleEscape);
 
   modal.addEventListener("click", handleOverlay);
-
-  modal.addEventListener("click", (e) => handleClose(e, modal));
 }
 
 function closePopup(modal) {
