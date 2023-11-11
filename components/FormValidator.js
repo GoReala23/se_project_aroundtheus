@@ -14,7 +14,7 @@ class FormValidator {
     const errorMessageElement = this._formElement.querySelector(
       `#${inputElement.id}-error`
     );
-    const errorMessage = document.querySelector(".modal__span");
+
     inputElement.classList.add(this._inputErrorClass);
     errorMessageElement.textContent = inputElement.validationMessage;
     errorMessageElement.classList.add(this._errorClass);

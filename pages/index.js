@@ -52,6 +52,7 @@ const initialCards = [
 
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
+const cardTitleInput = document.querySelector(".modal__input_type_title");
 
 // Wrappers
 
@@ -65,7 +66,7 @@ const openProfileEditButton = document.querySelector("#profile-edit-button");
 
 const openAddNewCardButton = document.querySelector(".profile__add-button");
 
-const modalCloseButton = document.querySelector(".modal__close");
+const modalCloseButtons = document.querySelectorAll(".modal__close");
 
 const likeButton = document.querySelector(".card__like-button");
 
@@ -91,6 +92,8 @@ function openModal(modal) {
   document.addEventListener("keydown", handleEscape);
 
   modal.addEventListener("click", handleOverlay);
+
+  document.addEventListener("click", handleClose);
 }
 
 function closePopup(modal) {
@@ -100,7 +103,7 @@ function closePopup(modal) {
 
   modal.removeEventListener("click", handleOverlay);
 
-  modal.removeEventListener("click", handleClose);
+  document.removeEventListener("click", handleClose);
 }
 
 function handleEscape(evt) {
@@ -113,10 +116,14 @@ function handleOverlay(e) {
   if (e.target === e.currentTarget) closePopup(e.currentTarget);
 }
 
-function handleClose(event, modal) {
-  if (event.target.classList.contains("modal__close")) {
-    closePopup(modal);
-  }
+function handleClose() {
+  modalCloseButtons.forEach((button) => {
+    const popup = button.closest(".modal");
+
+    button.addEventListener("click", () => {
+      closePopup(popup);
+    });
+  });
 }
 
 function handleImageClick(name, link) {
@@ -124,7 +131,7 @@ function handleImageClick(name, link) {
 
   imageModal.src = link;
 
-  imagePreviewTitle.alt = name;
+  imageModal.alt = name;
 
   imagePreviewTitle.textContent = name;
 }
@@ -159,8 +166,6 @@ function handleProfileEditSubmit(evt) {
 
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
-
-  const cardTitleInput = document.querySelector(".modal__input_type_title");
 
   const cardUrlInput = document.querySelector(".modal__input_type_url");
 
@@ -213,9 +218,9 @@ const addCardForm = document.querySelector("#add-modal-form");
 
 const addFormValidator = new FormValidator(addCardForm, defaultFormConfig);
 
-editFormValidator.enableValidation(profileEditForm, defaultFormConfig);
+editFormValidator.enableValidation();
 
-addFormValidator.enableValidation(addCardForm, defaultFormConfig);
+addFormValidator.enableValidation();
 
 // new card
 
