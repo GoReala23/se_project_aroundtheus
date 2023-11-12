@@ -93,7 +93,7 @@ function openModal(modal) {
 
   modal.addEventListener("click", handleOverlay);
 }
-document.addEventListener("click", handleClose);
+
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
 
@@ -121,6 +121,8 @@ function handleClose() {
     });
   });
 }
+
+handleClose();
 
 function handleImageClick(name, link) {
   openModal(imagePreviewModal);
