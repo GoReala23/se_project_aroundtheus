@@ -1,5 +1,5 @@
 import Card from "../components/Card.js";
-
+import Section from "../components/Section.js";
 import FormValidator from "../components/FormValidator.js";
 // import ".pages/index.css";
 
@@ -238,3 +238,6 @@ initialCards.forEach((data) => {
 
   cardListEl.prepend(cardEl);
 });
+
+const section = new Section({ items: initialCards, renderer: () => {} });
+console.log(section);

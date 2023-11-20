@@ -1,0 +1,21 @@
+export function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    closePopup(document.querySelector(".modal_opened"));
+  }
+}
+
+export function handleOverlay(e) {
+  if (e.target === e.currentTarget) closePopup(e.currentTarget);
+}
+
+export function handleClose() {
+  modalCloseButtons.forEach((button) => {
+    const popup = button.closest(".modal");
+
+    button.addEventListener("click", () => {
+      closePopup(popup);
+    });
+  });
+}
+
+handleClose();
