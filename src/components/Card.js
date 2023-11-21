@@ -1,5 +1,3 @@
-// const previewClose = imagePreviewModal.querySelector(".modal__close");
-
 class Card {
   constructor({ name, link }, cardSelector, handleImageClick) {
     this._name = name;

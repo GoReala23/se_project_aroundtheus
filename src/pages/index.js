@@ -1,6 +1,8 @@
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import FormValidator from "../components/FormValidator.js";
+import "../styles/index.css";
+import { UserInfo } from "../components/userInfo.js";
 // import ".pages/index.css";
 
 // from formValidation do later
@@ -241,3 +243,5 @@ initialCards.forEach((data) => {
 
 const section = new Section({ items: initialCards, renderer: () => {} });
 console.log(section);
+
+const userInfo = new UserInfo({ profileTitle, profileDescription });
