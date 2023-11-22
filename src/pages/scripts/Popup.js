@@ -1,4 +1,4 @@
-import { modalCloseButtons } from "../../utils/constants.js";
+import { modalCloseButtons, openButtons } from "../../utils/constants.js";
 import { handleClose } from "../../utils/utils,js";
 
 export default class Popup {
@@ -8,7 +8,8 @@ export default class Popup {
 
   open() {
     //opens popup
-    this._popupElement.classList.add("modal_opened");
+
+    this._popupElement.classList.add(".modal_opened");
   }
 
   close() {
@@ -26,7 +27,7 @@ export default class Popup {
     // listens for escape button
     const openedPopup = document.querySelector(".modal_opened");
     if (event.key === "Escape") {
-      this._popupElement.classList.remove("modal_opened");
+      this._popupElement.classList.remove(openedPopup);
     }
   }
 
@@ -36,7 +37,11 @@ export default class Popup {
     }
 
     modalCloseButtons.addEventListener("click", () => {
-      handleClose;
+      utils.handleClose();
+    });
+
+    openButtons.addEventListener("click", () => {
+      this.open();
     });
   }
 }

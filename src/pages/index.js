@@ -166,7 +166,7 @@ function handleOverlay(e) {
 
 // insatnces
 
-// const popup = new Popup(popupSelector);
+const popup = new Popup({});
 const section = new Section({ items: initialCards, renderer: () => {} });
 // console.log(section);
 
@@ -231,14 +231,14 @@ openProfileEditButton.addEventListener("click", () => {
 
   profileDescriptionInput.value = profileDescription.textContent;
 
-  openModal(editProfileModal);
+  popup.open(editProfileModal);
 });
 
 const addCardModal = document.querySelector("#add-card-modal");
 
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
-openAddNewCardButton.addEventListener("click", () => openModal(addCardModal));
+openAddNewCardButton.addEventListener("click", () => Popup.open(addCardModal));
 
 initialCards.forEach((data) => {
   const cardEl = generateCard(data, cardsWrap);
