@@ -3,13 +3,11 @@ import Section from "../components/Section.js";
 import FormValidator from "../components/FormValidator.js";
 import "../styles/index.css";
 import { UserInfo } from "../components/userInfo.js";
+import Popup from "./scripts/Popup.js";
+import { PopupWithForm } from "./scripts/PopupWithForm.js";
+import { cardTitleInput } from "../utils/constants.js";
+
 // import ".pages/index.css";
-
-// from formValidation do later
-
-// const editFormValidator = new FormValidator(settings, editForm);
-
-//const addFormValidator = new FormValidator( settings, addForm);
 
 const initialCards = [
   {
@@ -55,7 +53,6 @@ const initialCards = [
 
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
-const cardTitleInput = document.querySelector(".modal__input_type_title");
 
 // Wrappers
 
@@ -68,8 +65,6 @@ const cardElement = document.querySelector(".card");
 const openProfileEditButton = document.querySelector("#profile-edit-button");
 
 const openAddNewCardButton = document.querySelector(".profile__add-button");
-
-const modalCloseButtons = document.querySelectorAll(".modal__close");
 
 const likeButton = document.querySelector(".card__like-button");
 
@@ -89,43 +84,35 @@ const profileDescriptionInput = document.querySelector(
 
 const cardListEl = document.querySelector(".cards__list");
 
-function openModal(modal) {
-  modal.classList.add("modal_opened");
+// function openModal(modal) {
+//   modal.classList.add("modal_opened");
 
-  document.addEventListener("keydown", handleEscape);
+//   document.addEventListener("keydown", handleEscape);
 
-  modal.addEventListener("click", handleOverlay);
-}
+//   modal.addEventListener("click", handleOverlay);
+// }
 
-function closePopup(modal) {
-  modal.classList.remove("modal_opened");
+// function closePopup(modal) {
+//   modal.classList.remove("modal_opened");
 
-  document.removeEventListener("keydown", handleEscape);
+//   document.removeEventListener("keydown", handleEscape);
 
-  modal.removeEventListener("click", handleOverlay);
-}
+//   modal.removeEventListener("click", handleOverlay);
+// }
 
-function handleEscape(evt) {
-  if (evt.key === "Escape") {
-    closePopup(document.querySelector(".modal_opened"));
-  }
-}
+// function handleClose() {
+//   modalCloseButtons.forEach((button) => {
+//     const popup = button.closest(".modal");
 
-function handleOverlay(e) {
-  if (e.target === e.currentTarget) closePopup(e.currentTarget);
-}
+//     button.addEventListener("click", () => {
+//       closePopup(popup);
+//     });
+//   });
+// }
 
-function handleClose() {
-  modalCloseButtons.forEach((button) => {
-    const popup = button.closest(".modal");
+//handlers
 
-    button.addEventListener("click", () => {
-      closePopup(popup);
-    });
-  });
-}
-
-handleClose();
+function handleClose(popupSelector) {}
 
 function handleImageClick(name, link) {
   openModal(imagePreviewModal);
@@ -136,16 +123,6 @@ function handleImageClick(name, link) {
 
   imagePreviewTitle.textContent = name;
 }
-
-// image  modal
-
-const imageModal = document.querySelector(".modal__image");
-
-const imagePreviewModal = document.querySelector("#modal-preview-img");
-
-const imagePreviewTitle = document.querySelector(".modal__img-title");
-
-const previewClose = imagePreviewModal.querySelector(".modal__close");
 
 function handleProfileEditSubmit(evt) {
   evt.preventDefault();
@@ -176,6 +153,34 @@ function handleAddCardFormSubmit(evt) {
 
   addCardForm.reset();
 }
+
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    closePopup(document.querySelector(".modal_opened"));
+  }
+}
+
+function handleOverlay(e) {
+  if (e.target === e.currentTarget) closePopup(e.currentTarget);
+}
+
+// insatnces
+
+// const popup = new Popup(popupSelector);
+const section = new Section({ items: initialCards, renderer: () => {} });
+// console.log(section);
+
+const userInfo = new UserInfo({ profileTitle, profileDescription });
+
+// image  modal
+
+const imageModal = document.querySelector(".modal__image");
+
+const imagePreviewModal = document.querySelector("#modal-preview-img");
+
+const imagePreviewTitle = document.querySelector(".modal__img-title");
+
+const previewClose = imagePreviewModal.querySelector(".modal__close");
 
 //card creation
 
@@ -240,8 +245,3 @@ initialCards.forEach((data) => {
 
   cardListEl.prepend(cardEl);
 });
-
-const section = new Section({ items: initialCards, renderer: () => {} });
-console.log(section);
-
-const userInfo = new UserInfo({ profileTitle, profileDescription });
