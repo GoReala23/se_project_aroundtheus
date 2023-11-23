@@ -1,5 +1,5 @@
-import { modalCloseButtons, openButtons } from "../../utils/constants.js";
-import { handleClose, openModal } from "../../utils/utils,js";
+import { modalCloseButtons, openButtons } from "../utils/constants.js";
+import { handleClose } from "../utils/utils,js";
 
 export default class Popup {
   constructor({ popupSelector }) {
@@ -13,7 +13,7 @@ export default class Popup {
   }
 
   close() {
-    utils.setEventListeners.handleClose();
+    handleClose();
   }
 
   _handleEscClose(event) {

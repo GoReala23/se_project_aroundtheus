@@ -3,8 +3,8 @@ import Section from "../components/Section.js";
 import FormValidator from "../components/FormValidator.js";
 import "../styles/index.css";
 import { UserInfo } from "../components/userInfo.js";
-import Popup from "./scripts/Popup.js";
-import { PopupWithForm } from "./scripts/PopupWithForm.js";
+import Popup from "../components/Popup.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
 import { cardTitleInput } from "../utils/constants.js";
 
 // import ".pages/index.css";
@@ -84,13 +84,13 @@ const profileDescriptionInput = document.querySelector(
 
 const cardListEl = document.querySelector(".cards__list");
 
-// function openModal(modal) {
-//   modal.classList.add("modal_opened");
+function openModal(modal) {
+  modal.classList.add("modal_opened");
 
-//   document.addEventListener("keydown", handleEscape);
+  document.addEventListener("keydown", handleEscape);
 
-//   modal.addEventListener("click", handleOverlay);
-// }
+  modal.addEventListener("click", handleOverlay);
+}
 
 // function closePopup(modal) {
 //   modal.classList.remove("modal_opened");
@@ -99,6 +99,11 @@ const cardListEl = document.querySelector(".cards__list");
 
 //   modal.removeEventListener("click", handleOverlay);
 // }
+
+// insatnces
+
+const popup = new Popup({});
+const section = new Section({ items: initialCards, renderer: () => {} });
 
 // function handleClose() {
 //   modalCloseButtons.forEach((button) => {
@@ -111,8 +116,6 @@ const cardListEl = document.querySelector(".cards__list");
 // }
 
 //handlers
-
-function handleClose(popupSelector) {}
 
 function handleImageClick(name, link) {
   openModal(imagePreviewModal);
@@ -164,10 +167,6 @@ function handleOverlay(e) {
   if (e.target === e.currentTarget) closePopup(e.currentTarget);
 }
 
-// insatnces
-
-const popup = new Popup({});
-const section = new Section({ items: initialCards, renderer: () => {} });
 // console.log(section);
 
 const userInfo = new UserInfo({ profileTitle, profileDescription });
@@ -218,6 +217,8 @@ editFormValidator.enableValidation();
 
 addFormValidator.enableValidation();
 
+const modal = document.querySelector(".modal");
+
 // new card
 
 // forms
@@ -238,7 +239,7 @@ const addCardModal = document.querySelector("#add-card-modal");
 
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
-openAddNewCardButton.addEventListener("click", () => Popup.open(addCardModal));
+openAddNewCardButton.addEventListener("click", () => popup.open());
 
 initialCards.forEach((data) => {
   const cardEl = generateCard(data, cardsWrap);
