@@ -1,39 +1,41 @@
-import { modalCloseButtons } from "./constants";
+// import { modal, modalCloseButtons } from "./constants";
 
-export function handleEscape(evt) {
-  if (evt.key === "Escape") {
-    closePopup(document.querySelector(".modal_opened"));
-  }
-}
+// export function handleEscape(evt) {
+//   if (evt.key === "Escape") {
+//     closePopup(document.querySelector(".modal_opened"));
+//   }
+// }
 
-export function handleOverlay(e) {
-  if (e.target === e.currentTarget) closePopup(e.currentTarget);
-}
+// export function handleOverlay(e) {
+//   if (e.target === e.currentTarget) closePopup(e.currentTarget);
+// }
 
-export function handleClose() {
-  modalCloseButtons.forEach((button) => {
-    const popup = button.closest(".modal");
+// export function handleClose() {
+//   modalCloseButtons.forEach((button) => {
+//     const popup = button.closest(".modal");
 
-    button.addEventListener("click", () => {
-      closePopup(popup);
-    });
-  });
-}
+//     button.addEventListener("click", () => {
+//       closePopup(popup);
+//     });
+//   });
+// }
 
-function closePopup(modal) {
-  modal.classList.remove("modal_opened");
+// export function closePopup(modal) {
+//   modal.classList.remove("modal_opened");
 
-  document.removeEventListener("keydown", handleEscape);
+//   document.removeEventListener("keydown", handleEscape);
 
-  modal.removeEventListener("click", handleOverlay);
-}
+//   modal.removeEventListener("click", handleOverlay);
+// }
 
-function openModal(modal) {
-  modal.classList.add("modal_opened");
+// export function openModal(modal) {
+//   modal.classList.add("modal_opened");
 
-  document.addEventListener("keydown", handleEscape);
+//   document.addEventListener("keydown", handleEscape);
 
-  modal.addEventListener("click", handleOverlay);
-}
+//   modal.addEventListener("click", handleOverlay);
+// }
 
-handleClose();
+// openModal();
+
+// handleClose();

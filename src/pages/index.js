@@ -3,11 +3,28 @@ import Section from "../components/Section.js";
 import FormValidator from "../components/FormValidator.js";
 import "../styles/index.css";
 import { UserInfo } from "../components/userInfo.js";
-import Popup from "../components/Popup.js";
+//import Popup from "../components/Popup.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { cardTitleInput } from "../utils/constants.js";
 
+import { profileEditButton, profileAddButton } from "../utils/constants.js";
+
+profileEditButton.addEventListener("click", () => {
+  editPopup.open();
+});
+
+profileAddButton.addEventListener("click", () => {
+  addCardPopup.open();
+});
+
 // import ".pages/index.css";
+const editPopup = new PopupWithForm("#edit-modal", handleProfileEditSubmit);
+editPopup.setEventListeners();
+const addCardPopup = new PopupWithForm(
+  "#add-card-modal",
+  handleAddCardFormSubmit
+);
+addCardPopup.setEventListeners();
 
 const initialCards = [
   {
@@ -62,8 +79,6 @@ const cardElement = document.querySelector(".card");
 
 // Buttons
 
-const openProfileEditButton = document.querySelector("#profile-edit-button");
-
 const openAddNewCardButton = document.querySelector(".profile__add-button");
 
 const likeButton = document.querySelector(".card__like-button");
@@ -87,7 +102,7 @@ const cardListEl = document.querySelector(".cards__list");
 function openModal(modal) {
   modal.classList.add("modal_opened");
 
-  document.addEventListener("keydown", handleEscape);
+  document.addEventListener("keydown", popup.handleEscape());
 
   modal.addEventListener("click", handleOverlay);
 }
@@ -102,7 +117,8 @@ function openModal(modal) {
 
 // insatnces
 
-const popup = new Popup({});
+//const popup = new Popup({});
+//popup.setEventListeners();
 const section = new Section({ items: initialCards, renderer: () => {} });
 
 // function handleClose() {
@@ -130,11 +146,10 @@ function handleImageClick(name, link) {
 function handleProfileEditSubmit(evt) {
   evt.preventDefault();
 
-  profileTitle.textContent = profileTitleInput.value;
+  editUserInfo.setUserInfo(profileTitle, profileDescription);
+  editFormValidator.disableButton();
 
-  profileDescription.textContent = profileDescriptionInput.value;
-
-  closePopup(editProfileModal);
+  editPopup.close(editProfileModal);
 }
 
 function handleAddCardFormSubmit(evt) {
@@ -150,26 +165,20 @@ function handleAddCardFormSubmit(evt) {
 
   cardsWrap.prepend(cardElement);
 
-  closePopup(addCardModal);
+  addCardPopup.close(addCardModal);
 
   addFormValidator.disableButton();
 
   addCardForm.reset();
 }
 
-function handleEscape(evt) {
-  if (evt.key === "Escape") {
-    closePopup(document.querySelector(".modal_opened"));
-  }
-}
-
 function handleOverlay(e) {
-  if (e.target === e.currentTarget) closePopup(e.currentTarget);
+  if (e.target === e.currentTarget) popup.close(e.currentTarget);
 }
 
 // console.log(section);
 
-const userInfo = new UserInfo({ profileTitle, profileDescription });
+const editUserInfo = new UserInfo(".profile__title", ".profile__description");
 
 // image  modal
 
@@ -227,19 +236,21 @@ const editProfileModal = document.querySelector("#edit-modal");
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
+const openProfileEditButton = document.querySelector("#profile-edit-button");
+
 openProfileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-
-  profileDescriptionInput.value = profileDescription.textContent;
-
-  popup.open(editProfileModal);
+  // profileTitleInput.value = profileTitle.textContent;
+  // profileDescriptionInput.value = profileDescription.textContent;
+  // editPopup.open(editProfileModal);
+  editUserInfo.getUserInfo();
+  editPopup.open();
 });
 
 const addCardModal = document.querySelector("#add-card-modal");
 
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
-openAddNewCardButton.addEventListener("click", () => popup.open());
+openAddNewCardButton.addEventListener("click", () => addCardPopup.open());
 
 initialCards.forEach((data) => {
   const cardEl = generateCard(data, cardsWrap);

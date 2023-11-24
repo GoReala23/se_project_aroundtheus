@@ -7,8 +7,10 @@ export const modal = document.querySelector(".modal");
 export const profileEditButton = document.querySelector(
   ".profile__edit-button"
 );
-export const profileAddButton = document.querySelector("profile__add-button");
-export const openButtons = {
-  profileAddButton,
-  profileEditButton,
-};
+export const profileAddButton = document.querySelector(".profile__add-button");
+export const openButtons = profileAddButton || profileEditButton;
+export const profileTitle = document.querySelector(".profile__title");
+export const profileDescription = document.querySelector(
+  ".profile__description"
+);
+export const saveButtons = document.querySelectorAll(".modal__save");

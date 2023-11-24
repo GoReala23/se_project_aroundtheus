@@ -8,16 +8,16 @@
 // );
 export class UserInfo {
   constructor({ profileTitle, profileDescription }) {
-    this.profileTitle = profileTitle.textContext;
-    this.profileDescription = profileDescription.textContext;
+    this.profileTitle.textContext = profileTitle.textContext;
+    this.profileDescription.textContent = profileDescription.textContext;
   }
 
   getUserInfo() {
     return this.profileTitle, this.profileDescription;
   }
 
-  setUserInfo(profileTitleInput, profileDescriptionInput) {
-    this.profileTitle.textContext = profileTitleInput.value;
-    this.profileDescription.textContext = profileDescriptionInput.value;
+  setUserInfo(profileTitle, profileDescription) {
+    this.profileTitleInput.value = this.profileTitle.value;
+    this.profileDescriptionInput.value = this.profileDescriptionInput.value;
   }
 }
