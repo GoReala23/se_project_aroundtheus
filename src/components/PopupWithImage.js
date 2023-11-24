@@ -2,11 +2,11 @@ import { card } from "../utils/constants";
 import Popup from "./Popup";
 
 export default class PopupWithImage extends Popup {
-  constructor(handleImageClick) {
-    super({ handleImageClick });
+  constructor(popupSelector) {
+    super({ popupSelector });
     this.photo = document.querySelector(".card__image");
   }
-  open(data) {
+  open(handleImageClick) {
     super.open();
     return data.link, data.alt;
   }

@@ -5,14 +5,16 @@ import { handleClose } from "../utils/utils,js";
 console.log(modalCloseButtons);
 
 export default class Popup {
-  constructor({ popupSelector }) {
-    this._popupElement = document.querySelector(popupSelector);
+  constructor(popupSelector) {
+    this._popupElement = popupSelector.querySelector(".modal__image");
   }
 
   open() {
     //opens popup
 
     this._popupElement.classList.add("modal_opened");
+
+    document.addEventListener("keydown", this._handleEscClose);
   }
 
   close(modal) {
