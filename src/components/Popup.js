@@ -22,8 +22,6 @@ export default class Popup {
       button.addEventListener("click", () => {
         popup.classList.remove("modal_opened");
       });
-
-      console.log("blue");
     });
   }
 

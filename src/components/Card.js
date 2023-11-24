@@ -1,3 +1,5 @@
+import { PopupWithImage } from "./PopupWithImage";
+
 class Card {
   constructor({ name, link }, cardSelector, handleImageClick) {
     this._name = name;

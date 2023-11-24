@@ -3,13 +3,14 @@ import Section from "../components/Section.js";
 import FormValidator from "../components/FormValidator.js";
 import "../styles/index.css";
 import { UserInfo } from "../components/userInfo.js";
-//import Popup from "../components/Popup.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { cardTitleInput } from "../utils/constants.js";
-
+import Popup from "../components/Popup.js";
 import { profileEditButton, profileAddButton } from "../utils/constants.js";
 
 profileEditButton.addEventListener("click", () => {
+  editUserInfo.getUserInfo;
   editPopup.open();
 });
 
@@ -102,9 +103,9 @@ const cardListEl = document.querySelector(".cards__list");
 function openModal(modal) {
   modal.classList.add("modal_opened");
 
-  document.addEventListener("keydown", popup.handleEscape());
+  document.addEventListener("keydown", editPopup.handleEscape());
 
-  modal.addEventListener("click", handleOverlay);
+  modal.addEventListener("click", handleOverlay());
 }
 
 // function closePopup(modal) {
@@ -133,20 +134,17 @@ const section = new Section({ items: initialCards, renderer: () => {} });
 
 //handlers
 
-function handleImageClick(name, link) {
-  openModal(imagePreviewModal);
+const imagePopup = new PopupWithImage(".card__image", handleImageClick);
 
-  imageModal.src = link;
-
-  imageModal.alt = name;
-
-  imagePreviewTitle.textContent = name;
+function handleImageClick(link, name) {
+  imagePopup.open(imagePreviewModal);
 }
 
 function handleProfileEditSubmit(evt) {
   evt.preventDefault();
+  editFormValidator.disableButton();
 
-  editUserInfo.setUserInfo(profileTitle, profileDescription);
+  editUserInfo.setUserInfo();
 
   editPopup.close(editProfileModal);
 }
@@ -234,17 +232,6 @@ const modal = document.querySelector(".modal");
 const editProfileModal = document.querySelector("#edit-modal");
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-
-const openProfileEditButton = document.querySelector("#profile-edit-button");
-
-openProfileEditButton.addEventListener("click", () => {
-  // profileTitleInput.value = profileTitle.textContent;
-  // profileDescriptionInput.value = profileDescription.textContent;
-  // editPopup.open(editProfileModal);
-  editUserInfo.getUserInfo();
-
-  editPopup.open();
-});
 
 const addCardModal = document.querySelector("#add-card-modal");
 
