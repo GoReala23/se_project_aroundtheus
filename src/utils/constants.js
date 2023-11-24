@@ -14,3 +14,4 @@ export const profileDescription = document.querySelector(
   ".profile__description"
 );
 export const saveButtons = document.querySelectorAll(".modal__save");
+export const card = document.querySelectorAll(".modal__card");

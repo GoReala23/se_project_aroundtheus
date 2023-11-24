@@ -147,7 +147,6 @@ function handleProfileEditSubmit(evt) {
   evt.preventDefault();
 
   editUserInfo.setUserInfo(profileTitle, profileDescription);
-  editFormValidator.disableButton();
 
   editPopup.close(editProfileModal);
 }
@@ -178,7 +177,7 @@ function handleOverlay(e) {
 
 // console.log(section);
 
-const editUserInfo = new UserInfo(".profile__title", ".profile__description");
+const editUserInfo = new UserInfo(profileTitleInput, profileDescriptionInput);
 
 // image  modal
 
@@ -243,6 +242,7 @@ openProfileEditButton.addEventListener("click", () => {
   // profileDescriptionInput.value = profileDescription.textContent;
   // editPopup.open(editProfileModal);
   editUserInfo.getUserInfo();
+
   editPopup.open();
 });
 
