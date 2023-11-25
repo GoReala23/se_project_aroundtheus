@@ -10,10 +10,10 @@ import { UserInfo } from "./userInfo.js";
 
 export class PopupWithForm extends Popup {
   constructor(
-    popupSelector,
-    handleFormSubmit // this is where you declas/setup methods
+    { popupSelector, handleFormSubmit } // this is where you declas/setup methods
   ) {
     super({ popupSelector }); // { popupSelector: "#add-card-modal"}
+    this.popupSelector = document.querySelector(".modal");
     this._handleFormSubmit = handleFormSubmit;
     this._popupForm = this._popupElement.querySelector(".modal__form");
     this._saveButtons = saveButtons;
@@ -42,13 +42,13 @@ export class PopupWithForm extends Popup {
         this._getInputValue();
       });
     });
-    super.setEventListeners;
+    super.setEventListeners();
   }
 }
 
 // index.js
 
-const newCardPopup = new PopupWithForm("#add-card-modal", () => {});
-newCardPopup.open();
+// const newCardPopup = new PopupWithForm("#add-card-modal", () => {});
+// newCardPopup.open();
 
-newCardPopup.close();
+// newCardPopup.close();
