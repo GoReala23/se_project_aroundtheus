@@ -66,8 +66,6 @@ const cardElement = document.querySelector(".card");
 
 const openAddNewCardButton = document.querySelector(".profile__add-button");
 
-const likeButton = document.querySelector(".card__like-button");
-
 //
 
 // Form Data
@@ -81,6 +79,8 @@ const profileDescriptionInput = document.querySelector(
 const cardListEl = document.querySelector(".cards__list");
 
 //Popup
+
+const popup = new Popup({ popupSelector: ".modal" });
 
 // add popup //
 
@@ -96,7 +96,11 @@ profileAddButton.addEventListener("click", () => {
 });
 
 // edit popup
-const editPopup = new PopupWithForm("#edit-modal", handleProfileEditSubmit);
+const editPopup = new PopupWithForm({
+  popupSelector: "#edit-modal",
+  handleFormSubmit: handleProfileEditSubmit,
+});
+editPopup.setEventListeners();
 
 profileEditButton.addEventListener("click", () => {
   editUserInfo.getUserInfo;
@@ -112,10 +116,10 @@ function handleProfileEditSubmit(evt) {
   editPopup.close();
 }
 
-//ima pop up
+//image pop up
 
 const imagePopup = new PopupWithImage({
-  popupSelector: ".modal__image",
+  popupSelector: "#modal-preview-img",
   handleImageClick: handleImageClick,
 });
 
@@ -192,17 +196,18 @@ addFormValidator.enableValidation();
 
 // functions
 
-function popup(modal) {
-  modal.classList.add(".modal_opened");
+// function popup(modal) {
+//   modal.classList.add(".modal_opened");
 
-  document.addEventListener("keydown", editPopup.handleEscape());
+//   document.addEventListener("keydown", editPopup.handleEscape());
 
-  modal.addEventListener("click", handleOverlay());
-}
-popup();
-function handleOverlay(e) {
-  if (e.target === e.currentTarget) popup.close(e.currentTarget);
-}
+//   modal.addEventListener("click", handleOverlay());
+// }
+
+// function handleOverlay(e) {
+//   if (e.target === e.currentTarget) popup.close(e.currentTarget);
+// }
+// modal.addEventListener("click", handleOverlay());
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
 

@@ -6,7 +6,7 @@ console.log(modalCloseButtons);
 
 export default class Popup {
   constructor({ popupSelector }) {
-    this._popupElement = document.querySelector(".modal");
+    this._popupElement = document.querySelector(popupSelector);
   }
 
   open() {
@@ -17,7 +17,7 @@ export default class Popup {
     document.addEventListener("keydown", this._handleEscClose);
   }
 
-  close(modal) {
+  close() {
     modalCloseButtons.forEach((button) => {
       const popup = button.closest(".modal");
 
@@ -25,6 +25,7 @@ export default class Popup {
         popup.classList.remove("modal_opened");
       });
     });
+    document.removeEventListener("keydown", this._handleEscClose);
   }
 
   _handleEscClose(event) {

@@ -13,9 +13,9 @@ export class PopupWithForm extends Popup {
     { popupSelector, handleFormSubmit } // this is where you declas/setup methods
   ) {
     super({ popupSelector }); // { popupSelector: "#add-card-modal"}
-    this.popupSelector = document.querySelector(".modal");
+
     this._handleFormSubmit = handleFormSubmit;
-    this._popupForm = this._popupElement.querySelector(".modal__form");
+    this._popupForm = document.querySelector(".modal__form");
     this._saveButtons = saveButtons;
   }
 
@@ -24,7 +24,7 @@ export class PopupWithForm extends Popup {
   }
 
   close() {
-    this._popupForm.reset();
+    // this._popupForm.reset();
     super.close();
   }
 
