@@ -5,10 +5,7 @@ export default class PopupWithImage extends Popup {
   constructor({ popupSelector }) {
     super({ popupSelector });
   }
-  open() {
-    super.open();
+  open(data) {
+    super.open(data);
   }
 }
-
-const imagePopup = new PopupWithImage(".modal__image");
-imagePopup.open();

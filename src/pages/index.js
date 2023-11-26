@@ -97,7 +97,6 @@ profileAddButton.addEventListener("click", () => {
 
 // edit popup
 const editPopup = new PopupWithForm("#edit-modal", handleProfileEditSubmit);
-editPopup.setEventListeners();
 
 profileEditButton.addEventListener("click", () => {
   editUserInfo.getUserInfo;
@@ -110,15 +109,18 @@ function handleProfileEditSubmit(evt) {
 
   editUserInfo.setUserInfo();
 
-  editPopup.close(editProfileModal);
+  editPopup.close();
 }
 
 //ima pop up
 
-const imagePopup = new PopupWithImage(".card__image", handleImageClick);
+const imagePopup = new PopupWithImage({
+  popupSelector: ".modal__image",
+  handleImageClick: handleImageClick,
+});
 
-function handleImageClick(link, name) {
-  imagePopup.open(imagePreviewModal);
+function handleImageClick(popupSelector) {
+  imagePopup.open(popupSelector);
 }
 
 // section
@@ -190,13 +192,14 @@ addFormValidator.enableValidation();
 
 // functions
 
-function openModal(modal) {
-  modal.classList.add("modal_opened");
+function popup(modal) {
+  modal.classList.add(".modal_opened");
 
   document.addEventListener("keydown", editPopup.handleEscape());
 
   modal.addEventListener("click", handleOverlay());
 }
+popup();
 function handleOverlay(e) {
   if (e.target === e.currentTarget) popup.close(e.currentTarget);
 }
