@@ -5,9 +5,10 @@ import "../styles/index.css";
 import { UserInfo } from "../components/userInfo.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
-import { cardTitleInput } from "../utils/constants.js";
+import { card, cardTitleInput } from "../utils/constants.js";
 import Popup from "../components/Popup.js";
 import { profileEditButton, profileAddButton } from "../utils/constants.js";
+import { data } from "autoprefixer";
 
 // import ".pages/index.css";
 
@@ -123,12 +124,12 @@ const imagePopup = new PopupWithImage({
   handleImageClick: handleImageClick,
 });
 
-function handleImageClick(popupSelector) {
-  imagePopup.open(popupSelector);
+function handleImageClick(data) {
+  imagePopup.open(data.link, data.name);
 }
 
 // section
-const section = new Section({ items: initialCards, renderer: () => {} });
+const section = new Section({ items: initialCards, renderer: generateCard });
 
 //handlers
 
@@ -196,18 +197,6 @@ addFormValidator.enableValidation();
 
 // functions
 
-// function popup(modal) {
-//   modal.classList.add(".modal_opened");
-
-//   document.addEventListener("keydown", editPopup.handleEscape());
-
-//   modal.addEventListener("click", handleOverlay());
-// }
-
-// function handleOverlay(e) {
-//   if (e.target === e.currentTarget) popup.close(e.currentTarget);
-// }
-// modal.addEventListener("click", handleOverlay());
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
 

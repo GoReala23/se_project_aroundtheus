@@ -1,9 +1,4 @@
-import {
-  modalCloseButtons,
-  profileTitle,
-  profileDescription,
-  saveButtons,
-} from "../utils/constants.js";
+import { saveButtons } from "../utils/constants.js";
 import Popup from "./Popup.js";
 
 import { UserInfo } from "./userInfo.js";
@@ -15,7 +10,7 @@ export class PopupWithForm extends Popup {
     super({ popupSelector }); // { popupSelector: "#add-card-modal"}
 
     this._handleFormSubmit = handleFormSubmit;
-    this._popupForm = document.querySelector(".modal__form");
+    this._popupForm = this._popupElement.querySelectorAll(".modal__form");
     this._saveButtons = saveButtons;
   }
 
@@ -24,25 +19,29 @@ export class PopupWithForm extends Popup {
   }
 
   close() {
-    // this._popupForm.reset();
+    this._popupForm.reset();
     super.close();
   }
 
   _getInputValue() {
     const inputInfos = this._popupForm.querySelectorAll(".modal__input");
+    const info = {};
 
     inputInfos.forEach((input) => {
-      return input;
+      info[input.name] = input.value;
+
+      return info;
     });
   }
 
   setEventListeners() {
     this._saveButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        this._getInputValue();
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        this._handleFormSubmit(this._getInputValue());
+        this.close();
       });
     });
-    super.setEventListeners();
   }
 }
 

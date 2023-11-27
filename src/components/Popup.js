@@ -1,6 +1,4 @@
 import { modalCloseButtons, openButtons } from "../utils/constants.js";
-import { handleEscape } from "../utils/utils,js";
-import { handleClose } from "../utils/utils,js";
 
 console.log(modalCloseButtons);
 
@@ -13,8 +11,10 @@ export default class Popup {
     //opens popup
 
     this._popupElement.classList.add("modal_opened");
+    document.addEventListener("click", this.close);
 
     document.addEventListener("keydown", this._handleEscClose);
+    document.addEventListener("click", this._handleOverlay);
   }
 
   close() {
@@ -26,16 +26,22 @@ export default class Popup {
       });
     });
     document.removeEventListener("keydown", this._handleEscClose);
+    document.removeEventListener("click", this._handleOverlay);
   }
 
   _handleEscClose(event) {
     // listens for escape button
     // const openedPopup = document.querySelector("modal_opened");
-    if (event.target === event.currentTarget) handleEscape();
+  }
+  _handleOverlay(event) {
+    if (event.target === event.currentTarget) {
+      this.close();
+    }
   }
 
   setEventListeners() {
     document.addEventListener("keydown", this._handleEscClose);
+    this.open();
 
     this.close();
 

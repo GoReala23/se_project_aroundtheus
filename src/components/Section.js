@@ -3,15 +3,13 @@ export default class Section {
     this._items = items;
     this.renderer = renderer;
     // this._cardSelector = document.querySelector("#card-template");
-    this._cardSelector = document.querySelector(".cards__list");
+    this._cardSelector = document.querySelector(cardSelector);
     this.addItem = this.addItem;
   }
 
   renderItems() {
     this._items.forEach((data) => {
-      const cardElement = this.addItem(data, this._cardSelector);
-
-      cardElement;
+      this.addItem(data, this._cardSelector);
     });
   }
 

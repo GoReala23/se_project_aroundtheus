@@ -31,16 +31,16 @@ class FormValidator {
 
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
-      return this._showInputError(inputElement);
+      this._showInputError(inputElement);
+    } else {
+      this._hideInputError(inputElement);
     }
-
-    this._hideInputError(inputElement);
   }
 
   _hasInvalidInput() {
-    return !this._inputElements.every(
-      (inputElement) => inputElement.validity.valid
-    );
+    return !this._inputElements.every((inputElement) => {
+      return inputElement.validity.valid;
+    });
   }
 
   disableButton() {
