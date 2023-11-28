@@ -7,21 +7,17 @@
 //   "#modal-profile-description-input"
 // );
 export class UserInfo {
-  constructor(profileTitleSelector, profileDescriptionSelector) {
-    this._profileTitleElement = profileTitleSelector.querySelector(
-      "#modal-profile-title-input"
+  constructor({ profileTitleSelector, profileDescriptionSelector }) {
+    this._profileTitleElement = document.querySelector(profileTitleSelector);
+    this._profileDescriptionElement = document.querySelector(
+      profileDescriptionSelector
     );
-    this._profileDescriptionElement = profileDescriptionSelector.querySelector(
-      "#modal-profile-description-input"
-    );
-    this._profileTitle = profileTitleSelector.name;
-    this._profileDescription = profileDescriptionSelector.name;
   }
 
   getUserInfo() {
     return {
-      title: this._profileTitle.textContext,
-      description: this._profileDescription.textContext,
+      title: this._profileTitleElement.textContext,
+      description: this._profileDescriptionElement.textContext,
     };
   }
 

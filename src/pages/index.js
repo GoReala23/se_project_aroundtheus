@@ -124,21 +124,32 @@ const imagePopup = new PopupWithImage({
   handleImageClick: handleImageClick,
 });
 
-function handleImageClick(data) {
-  imagePopup.open(data.link, data.name);
-}
-
 // section
-const section = new Section({ items: initialCards, renderer: generateCard });
+const section = new Section(
+  { items: initialCards, renderer: generateCard },
+  "#card-template"
+);
+section.renderItems();
+
+// user
 
 //handlers
 
 // userInfo
-const editUserInfo = new UserInfo(profileTitleInput, profileDescriptionInput);
+const editUserInfo = new UserInfo({
+  profileTitleInput: profileTitleInput,
+  profileDescriptionInput: profileDescriptionInput,
+});
 
 // image  modal
 
 const imagePreviewModal = document.querySelector("#modal-preview-img");
+imagePreviewModal.addEventListener("click", () => {
+  handleImageClick();
+});
+function handleImageClick(data) {
+  imagePopup.open(data);
+}
 
 //card creation
 
@@ -156,8 +167,6 @@ const defaultFormConfig = {
   errorClass: "modal__span_opened",
 };
 
-const modal = document.querySelector(".modal");
-
 // new card
 function generateCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
@@ -165,11 +174,11 @@ function generateCard(cardData) {
   return card.getView();
 }
 
-initialCards.forEach((data) => {
-  const cardEl = generateCard(data, cardsWrap);
+// initialCards.forEach((data) => {
+//   const cardEl = generateCard(data, cardsWrap);
 
-  cardListEl.prepend(cardEl);
-});
+//   cardListEl.prepend(cardEl);
+// });
 
 // forms
 
@@ -188,14 +197,22 @@ openAddNewCardButton.addEventListener("click", () => addCardPopup.open());
 
 // VALIDATION
 
-const addFormValidator = new FormValidator(addCardForm, defaultFormConfig);
-const editFormValidator = new FormValidator(profileEditForm, defaultFormConfig);
+const addFormValidator = new FormValidator(
+  {
+    addCardForm: addCardForm,
+  },
+  defaultFormConfig
+);
+const editFormValidator = new FormValidator(
+  {
+    profileEditForm: profileEditForm,
+  },
+  defaultFormConfig
+);
 
 editFormValidator.enableValidation();
 
 addFormValidator.enableValidation();
-
-// functions
 
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
@@ -206,15 +223,13 @@ function handleAddCardFormSubmit(evt) {
 
   const link = cardUrlInput.value;
 
-  const cardElement = generateCard({ name, link });
-
-  cardsWrap.prepend(cardElement);
+  section.addItem(name, link);
 
   addCardPopup.close(addCardModal);
 
   addFormValidator.disableButton();
 
-  addCardForm.reset();
+  addFormValidator.reset();
 }
 
 // function handleClose() {

@@ -9,7 +9,7 @@ export default class Section {
 
   renderItems() {
     this._items.forEach((data) => {
-      this.addItem(data, this._cardSelector);
+      this.addItem(data);
     });
   }
 

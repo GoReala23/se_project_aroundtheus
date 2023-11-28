@@ -2,9 +2,7 @@ import { PopupWithImage } from "./PopupWithImage";
 
 class Card {
   constructor({ name, link }, cardSelector, handleImageClick) {
-    this._name = name;
-
-    this._link = link;
+    this._data = { name: name, link: link };
 
     this._cardSelector = cardSelector;
 
@@ -19,7 +17,7 @@ class Card {
     );
 
     this._cardImage.addEventListener("click", () =>
-      this._handleImageClick(this._name, this._link)
+      this._handleImageClick(this.data)
     );
   }
 

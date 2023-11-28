@@ -1,13 +1,38 @@
+// constructor({ formElement, settings }) {
+//   this._inputSelector = settings.inputSelector;
+
+//   this._submitButtonSelector = settings.submitButtonSelector;
+//   this._inactiveButtonClass = settings.inactiveButtonClass;
+//   this._inputErrorClass = settings.inputErrorClass;
+//   this._errorClass = settings.errorClass;
+
+//   this._formElement = formElement;
+// }
+
+// const defaultFormConfig = {
+//   formSelector: ".modal__form",
+
+//   inputSelector: ".modal__input",
+
+//   submitButtonSelector: ".modal__save",
+
+//   inactiveButtonClass: "modal__save_disabled",
+
+//   inputErrorClass: "modal__input_type_error",
+
+//   errorClass: "modal__span_opened",
+// };
+
 class FormValidator {
-  constructor(formElement, settings) {
-    this._inputSelector = settings.inputSelector;
+  constructor({ formSelector }, settings) {
+    this._inputSelector = settings;
 
     this._submitButtonSelector = settings.submitButtonSelector;
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._inputErrorClass = settings.inputErrorClass;
     this._errorClass = settings.errorClass;
 
-    this._formElement = formElement;
+    this._formElement = formSelector;
   }
 
   _showInputError(inputElement) {
@@ -77,8 +102,9 @@ class FormValidator {
     });
   }
 
-  enableValidation() {
-    this._formElement.addEventListener("submit", (event) => {
+  enableValidation(formElement) {
+    console.log(this._submitButton);
+    this._submitButton.addEventListener("submit", (event) => {
       event.preventDefault();
     });
     this._setEventListeners();

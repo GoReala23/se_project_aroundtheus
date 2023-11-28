@@ -30,6 +30,10 @@ export default class Popup {
   }
 
   _handleEscClose(event) {
+    if (event.key === "Escape") {
+      this.close();
+      document.removeEventListener("click", this._handleOverlay);
+    }
     // listens for escape button
     // const openedPopup = document.querySelector("modal_opened");
   }
