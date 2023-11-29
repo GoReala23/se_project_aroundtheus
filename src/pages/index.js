@@ -127,7 +127,7 @@ const imagePopup = new PopupWithImage({
 // section
 const section = new Section(
   { items: initialCards, renderer: generateCard },
-  "#card-template"
+  cardListEl
 );
 section.renderItems();
 
@@ -199,13 +199,13 @@ openAddNewCardButton.addEventListener("click", () => addCardPopup.open());
 
 const addFormValidator = new FormValidator(
   {
-    addCardForm: addCardForm,
+    formElement: addCardForm,
   },
   defaultFormConfig
 );
 const editFormValidator = new FormValidator(
   {
-    profileEditForm: profileEditForm,
+    formElement: profileEditForm,
   },
   defaultFormConfig
 );
