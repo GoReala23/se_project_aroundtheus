@@ -7,22 +7,22 @@
 //   "#modal-profile-description-input"
 // );
 export class UserInfo {
-  constructor({ profileTitleSelector, profileDescriptionSelector }) {
-    this._profileTitleElement = document.querySelector(profileTitleSelector);
+  constructor({ profileTitleSelector, ProfileDescriptionSelector }) {
+    this._profileTitleElement = document.querySelector(".profile__title");
     this._profileDescriptionElement = document.querySelector(
-      profileDescriptionSelector
+      ".profile__description"
     );
   }
 
   getUserInfo() {
     return {
-      title: this._profileTitleElement.textContext,
-      description: this._profileDescriptionElement.textContext,
+      name: this._profileTitlelement.textContext,
+      job: this._profileDescriptionElement.textContext,
     };
   }
 
-  setUserInfo() {
-    this._profileTitleElement.textContext = this.getUserInfo.title;
-    this._profileDescriptionElement.textContext = this.getUserInfo.description;
+  setUserInfo(name, job) {
+    this._profileTitleElement.textContext = name;
+    this._profileDescriptionElement.textContext = job;
   }
 }

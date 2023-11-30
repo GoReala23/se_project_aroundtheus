@@ -71,17 +71,18 @@ const openAddNewCardButton = document.querySelector(".profile__add-button");
 
 // Form Data
 
-const profileTitleInput = document.querySelector("#modal-profile-title-input");
+// const "#modal-profile-title-input" = document.querySelector("#modal-profile-title-input");
 
-const profileDescriptionInput = document.querySelector(
-  "#modal-profile-description-input"
-);
+// const profileDescriptionInput = document.querySelector(
+//   "#modal-profile-description-input"
+// );
 
 const cardListEl = document.querySelector(".cards__list");
 
 //Popup
 
 const popup = new Popup({ popupSelector: ".modal" });
+popup.setEventListeners();
 
 // add popup //
 
@@ -104,7 +105,7 @@ const editPopup = new PopupWithForm({
 editPopup.setEventListeners();
 
 profileEditButton.addEventListener("click", () => {
-  editUserInfo.getUserInfo;
+  editUserInfo.getUserInfo();
   editPopup.open();
 });
 
@@ -137,8 +138,8 @@ section.renderItems();
 
 // userInfo
 const editUserInfo = new UserInfo({
-  profileTitleInput: profileTitleInput,
-  profileDescriptionInput: profileDescriptionInput,
+  nameSelector: "#modal-profile-title-input",
+  jobSelector: "#modal-profile-description-input",
 });
 
 // image  modal
@@ -180,40 +181,16 @@ function generateCard(cardData) {
 //   cardListEl.prepend(cardEl);
 // });
 
-// forms
+// add
 
-const profileEditForm = document.querySelector("#edit-modal-form");
 const addCardForm = document.querySelector("#add-modal-form");
-
-const editProfileModal = document.querySelector("#edit-modal");
-
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-
-const addCardModal = document.querySelector("#add-card-modal");
 
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
-openAddNewCardButton.addEventListener("click", () => addCardPopup.open());
-
-// VALIDATION
-
-const addFormValidator = new FormValidator(
-  {
-    formElement: addCardForm,
-  },
-  defaultFormConfig
-);
-const editFormValidator = new FormValidator(
-  {
-    formElement: profileEditForm,
-  },
-  defaultFormConfig
-);
-
-editFormValidator.enableValidation();
-
+const addFormValidator = new FormValidator(addCardForm, defaultFormConfig);
 addFormValidator.enableValidation();
 
+openAddNewCardButton.addEventListener("click", () => addCardPopup.open());
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
 
@@ -231,6 +208,18 @@ function handleAddCardFormSubmit(evt) {
 
   addFormValidator.reset();
 }
+
+// edit
+const editProfileModal = document.querySelector("#edit-modal");
+
+const profileEditForm = document.querySelector("#edit-modal-form");
+
+// VALIDATION
+
+const editFormValidator = new FormValidator(profileEditForm, defaultFormConfig);
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+
+editFormValidator.enableValidation();
 
 // function handleClose() {
 //   modalCloseButtons.forEach((button) => {

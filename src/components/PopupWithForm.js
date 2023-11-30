@@ -10,12 +10,8 @@ export class PopupWithForm extends Popup {
     super({ popupSelector }); // { popupSelector: "#add-card-modal"}
 
     this._handleFormSubmit = handleFormSubmit;
-    this._popupForm = this._popupElement.querySelectorAll(".modal__form");
+    this._popupForm = this._popupElement.querySelector(".modal__form");
     this._saveButtons = saveButtons;
-  }
-
-  open() {
-    super.open();
   }
 
   close() {

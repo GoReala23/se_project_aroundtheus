@@ -2,7 +2,8 @@ import { PopupWithImage } from "./PopupWithImage";
 
 class Card {
   constructor({ name, link }, cardSelector, handleImageClick) {
-    this._data = { name: name, link: link };
+    this._name = name;
+    this._link = link;
 
     this._cardSelector = cardSelector;
 
@@ -43,11 +44,11 @@ class Card {
 
     this._cardImage = this._cardElement.querySelector(".card__image");
 
-    this._cardImage.src = this._data.link;
+    this._cardImage.src = this._link;
 
-    this._cardImage.alt = this._data.name;
+    this._cardImage.alt = this._name;
 
-    this._cardImage.textContent = this._data.name;
+    this._cardImage.textContent = this._name;
 
     this._likeButton = this._cardElement.querySelector(".card__like-button");
     this._deleteButton = this._cardElement.querySelector(

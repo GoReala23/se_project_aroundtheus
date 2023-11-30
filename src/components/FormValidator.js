@@ -24,14 +24,15 @@
 // };
 
 class FormValidator {
-  constructor({ formElement }, settings) {
-    this._inputSelector = settings;
+  constructor(formElement, settings) {
+    this._formElement = formElement;
+    this._inputSelector = settings.inputSelector;
 
     this._submitButtonSelector = settings.submitButtonSelector;
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._inputErrorClass = settings.inputErrorClass;
     this._errorClass = settings.errorClass;
-    this._formElement = formElement;
+
     this._inputElements = [
       ...this._formElement.querySelectorAll(".modal__input"),
     ];
@@ -79,8 +80,8 @@ class FormValidator {
   //   return !inputList.every((inputEl) => inputEl.validity.valid);
   // }
 
-  _toggleButtonState(formElement) {
-    if (this._hasInvalidInput(formElement)) {
+  _toggleButtonState() {
+    if (this._hasInvalidInput(this._formElement)) {
       this.disableButton();
     } else {
       this._submitButton.classList.remove(this._inactiveButtonClass);
