@@ -15,9 +15,6 @@ export class PopupWithForm extends Popup {
   }
 
   close() {
-    console.log(this._popupForm);
-    // this._popupForm.reset();
-
     super.close();
   }
 
@@ -40,6 +37,8 @@ export class PopupWithForm extends Popup {
         this.close();
       });
     });
+
+    Popup.setEventListeners;
   }
 }
 

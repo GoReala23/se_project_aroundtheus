@@ -5,9 +5,14 @@
 // ).textContent;
 // const newDescription = document.querySelector(
 //   "#modal-profile-description-input"
+
+import { profileDescription } from "../utils/constants";
+
 // );
 export class UserInfo {
   constructor({ profileTitleSelector, ProfileDescriptionSelector }) {
+    this.profileTitleSelector = profileTitleSelector;
+    this.ProfileDescriptionSelector = ProfileDescriptionSelector;
     this._profileTitleElement = document.querySelector(".profile__title");
     this._profileDescriptionElement = document.querySelector(
       ".profile__description"
@@ -16,7 +21,7 @@ export class UserInfo {
 
   getUserInfo() {
     return {
-      name: this._profileTitlelement.textContext,
+      name: this._profileTitleElement.textContext,
       job: this._profileDescriptionElement.textContext,
     };
   }
