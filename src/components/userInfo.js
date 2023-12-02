@@ -22,10 +22,14 @@ export class UserInfo {
   getUserInfo(title, job) {
     // let title = title;
     // let job = job;
-    return {
-      title: this._profileTitleElement.textContext,
-      job: this._profileDescriptionElement.textContext,
-    };
+    title = this._profileTitleElement.textContent;
+    job = this._profileDescriptionElement.textContent;
+    // return {
+    //   //  let title = this._profileTitleElement.textContent,
+    //   title,
+    //   job,
+    //   // job: this._profileDescriptionElement.textContent,
+    // };
   }
 
   setUserInfo(title, job) {

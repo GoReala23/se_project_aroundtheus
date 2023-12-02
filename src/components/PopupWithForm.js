@@ -29,7 +29,7 @@ export class PopupWithForm extends Popup {
   _handleFormSubmit() {
     let title = document.getElementById("#modal-input-title");
     let job = document.getElementById("#modal-input-description");
-    return title, jobs;
+    return title, job;
   }
 
   setEventListeners() {
@@ -43,8 +43,14 @@ export class PopupWithForm extends Popup {
 
     this._popupForm.addEventListener("submit", (e) => {
       e.preventDefault();
+      let title = this._popupForm.querySelector(
+        "#modal-profile-title-input"
+      ).value;
+      let job = this._popupForm.querySelector(
+        "#modal-profile-description-input"
+      ).value;
 
-      this._handleFormSubmit(this._getInputValue("title", "job"));
+      this._handleFormSubmit(this._getInputValue(title, job));
       this.close();
     });
 
