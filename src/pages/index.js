@@ -81,6 +81,7 @@ const addCardPopup = new PopupWithForm({
 });
 
 const cardListEl = document.querySelector(".cards__list");
+const cardTitle = document.querySelector(".card__title");
 const defaultFormConfig = {
   formSelector: ".modal__form",
 
@@ -114,6 +115,8 @@ const openAddNewCardButton = document.querySelector(".profile__add-button");
 
 const popup = new Popup({ popupSelector: ".modal" });
 
+const cardImage = document.querySelector(".modal__image");
+
 const profileEditForm = document.querySelector("#edit-modal-form");
 const section = new Section(
   { items: initialCards, renderer: generateCard },
@@ -139,7 +142,11 @@ function handleAddCardFormSubmit() {
 }
 
 function generateCard(cardData) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
+  const card = new Card(cardData, "#card-template", () => {
+    cardImage.src = cardData.link;
+    cardImage.alt = cardData.name;
+    initialCards.name = cardData.name;
+  });
 
   return card.getView();
 }
@@ -151,12 +158,12 @@ function handleProfileEditSubmit(evt) {
   // evt.preventDefault();
   editFormValidator.disableButton();
 
-  editUserInfo.setUserInfo();
+  editUserInfo.setUserInfo("title", "job");
 
   editPopup.close();
 }
 
-addCardForm.addEventListener("submit", handleAddCardFormSubmit);
+// addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
 imagePreviewModal.addEventListener("click", () => {
   handleImageClick();
@@ -174,7 +181,7 @@ profileEditButton.addEventListener("click", (event) => {
   editPopup.open();
 });
 
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+// profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 editPopup.setEventListeners();
 

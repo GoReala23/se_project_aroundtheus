@@ -11,34 +11,44 @@ export class PopupWithForm extends Popup {
 
     this._handleFormSubmit = handleFormSubmit;
     this._popupForm = this._popupElement.querySelector(".modal__form");
-    this._saveButtons = saveButtons;
+    // this._saveButtons = saveButtons;
   }
 
   close() {
     super.close();
   }
 
-  _getInputValue() {
+  _getInputValue(title, job) {
     const inputInfos = this._popupForm.querySelectorAll(".modal__input");
-    const info = {};
 
-    inputInfos.forEach((input) => {
-      info[input.name] = input.value;
+    inputInfos.name = title;
+    inputInfos.job = job;
+    return title, job;
+  }
 
-      return info;
-    });
+  _handleFormSubmit() {
+    let title = document.getElementById("#modal-input-title");
+    let job = document.getElementById("#modal-input-description");
+    return title, jobs;
   }
 
   setEventListeners() {
-    this._saveButtons.forEach((button) => {
-      button.addEventListener("click", (e) => {
-        e.preventDefault();
-        this._handleFormSubmit(this._getInputValue());
-        this.close();
-      });
+    // this._saveButtons.forEach((button) => {
+    //   button.addEventListener("click", (e) => {
+    //     e.preventDefault();
+    //     this._handleFormSubmit(this._getInputValue());
+    //     this.close();
+    //   });
+    // });
+
+    this._popupForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      this._handleFormSubmit(this._getInputValue("title", "job"));
+      this.close();
     });
 
-    Popup.setEventListeners;
+    super.setEventListeners();
   }
 }
 

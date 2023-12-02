@@ -19,15 +19,17 @@ export class UserInfo {
     );
   }
 
-  getUserInfo() {
+  getUserInfo(title, job) {
+    let title = title;
+    let job = job;
     return {
-      name: this._profileTitleElement.textContext,
+      title: this._profileTitleElement.textContext,
       job: this._profileDescriptionElement.textContext,
     };
   }
 
-  setUserInfo(name, job) {
-    this._profileTitleElement.textContext = name;
+  setUserInfo(title, job) {
+    this._profileTitleElement.textContext = title;
     this._profileDescriptionElement.textContext = job;
   }
 }

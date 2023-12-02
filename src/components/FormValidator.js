@@ -78,7 +78,7 @@ class FormValidator {
   // }
 
   _toggleButtonState() {
-    if (this._hasInvalidInput(this._formElement)) {
+    if (this._hasInvalidInput()) {
       this.disableButton();
     } else {
       this._submitButton.classList.remove(this._inactiveButtonClass);
@@ -111,7 +111,6 @@ class FormValidator {
       event.preventDefault();
     });
     this._setEventListeners();
-    this.disableButton();
   }
 }
 

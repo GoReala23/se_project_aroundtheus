@@ -45,7 +45,12 @@ export default class Popup {
 
   setEventListeners() {
     document.addEventListener("keydown", this._handleEscClose);
-    this.open();
+    document
+      .querySelector(".profile__button")
+      .addEventListener("click", (e) => {
+        e.preventDefault();
+        this.open;
+      });
 
     this.close();
 
