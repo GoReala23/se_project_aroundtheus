@@ -17,8 +17,10 @@ class Card {
       this._handleDeleteCard()
     );
 
-    this._cardImage.addEventListener("click", () =>
-      this._handleImageClick({ name: this._name, link: this._link })
+    this._cardImage.addEventListener(
+      "click",
+      () => this._handleImageClick(this._name, this._link)
+      // this._handleImageClick({this._name, this._link})
     );
   }
 
@@ -48,8 +50,8 @@ class Card {
 
     this._cardImage.alt = this._name;
 
-    this._cardTitleElement = document.querySelector(".card__title");
-    this._cardTitleElement = cardData.name;
+    this._cardTitle = this._cardElement.querySelector(".card__title");
+    this._cardTitle.textContent = cardData.name;
 
     this._likeButton = this._cardElement.querySelector(".card__like-button");
     this._deleteButton = this._cardElement.querySelector(

@@ -20,8 +20,8 @@ export class UserInfo {
   }
 
   getUserInfo(title, job) {
-    let title = title;
-    let job = job;
+    // let title = title;
+    // let job = job;
     return {
       title: this._profileTitleElement.textContext,
       job: this._profileDescriptionElement.textContext,
