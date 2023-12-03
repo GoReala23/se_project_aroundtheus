@@ -10,30 +10,20 @@ import { profileDescription } from "../utils/constants";
 
 // );
 export class UserInfo {
-  constructor({ profileTitleSelector, ProfileDescriptionSelector }) {
-    this.profileTitleSelector = profileTitleSelector;
-    this.ProfileDescriptionSelector = ProfileDescriptionSelector;
-    this._profileTitleElement = document.querySelector(".profile__title");
-    this._profileDescriptionElement = document.querySelector(
-      ".profile__description"
-    );
+  constructor({ nameSelector, jobSelector }) {
+    this._nameElement = document.querySelector(nameSelector);
+    this._jobElement = document.querySelector(jobSelector);
   }
 
-  getUserInfo(title, job) {
-    // let title = title;
-    // let job = job;
-    title = this._profileTitleElement.textContent;
-    job = this._profileDescriptionElement.textContent;
-    // return {
-    //   //  let title = this._profileTitleElement.textContent,
-    //   title,
-    //   job,
-    //   // job: this._profileDescriptionElement.textContent,
-    // };
+  getUserInfo() {
+    return {
+      title: this._nameElement.textContent,
+      about: this._jobElement.textContent,
+    };
   }
 
-  setUserInfo(title, job) {
-    this._profileTitleElement.textContext = title;
-    this._profileDescriptionElement.textContext = job;
+  setUserInfo(title, about) {
+    this._nameElement.textContent = title;
+    this._jobElement.textContent = about;
   }
 }

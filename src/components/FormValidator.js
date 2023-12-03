@@ -39,7 +39,6 @@ class FormValidator {
     this.inputElement = document.querySelector(".modal__input");
 
     this._errorMessageElement = document.querySelector(".modal__span");
-    console.log(this._formElement);
   }
 
   _showInputError(inputElement) {

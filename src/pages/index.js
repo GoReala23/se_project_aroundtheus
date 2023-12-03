@@ -5,7 +5,12 @@ import "../styles/index.css";
 import { UserInfo } from "../components/userInfo.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
-import { card, cardTitleInput } from "../utils/constants.js";
+import {
+  card,
+  cardTitleInput,
+  profileDescription,
+  profileTitle,
+} from "../utils/constants.js";
 import Popup from "../components/Popup.js";
 import { profileEditButton, profileAddButton } from "../utils/constants.js";
 import { data } from "autoprefixer";
@@ -102,8 +107,8 @@ const editPopup = new PopupWithForm({
 });
 const editProfileModal = document.querySelector("#edit-modal");
 const editUserInfo = new UserInfo({
-  nameSelector: "#modal-profile-title-input",
-  jobSelector: "#modal-profile-description-input",
+  nameSelector: ".profile__title",
+  jobSelector: ".profile__description",
 });
 const imagePopup = new PopupWithImage({
   popupSelector: "#modal-preview-img",
@@ -154,11 +159,14 @@ function handleImageClick(data) {
   imagePopup.open(data);
 }
 
-function handleProfileEditSubmit(evt) {
-  // evt.preventDefault();
+function handleProfileEditSubmit(title, about) {
   editFormValidator.disableButton();
+  profileTitle.textContent = title;
+  profileDescription.textContent = about;
 
-  editUserInfo.setUserInfo("title", "job");
+  // const userName = title.title;
+  // const editUserInfo.setUserInfo(title, about);
+  editUserInfo.setUserInfo(profileTitle, profileDescription);
 
   editPopup.close();
 }
@@ -177,8 +185,8 @@ addCardPopup.setEventListeners();
 
 profileEditButton.addEventListener("click", (event) => {
   event.preventDefault;
-  editUserInfo.getUserInfo();
-  editPopup.open();
+  const user = editUserInfo.getUserInfo();
+  editPopup.open(user);
 });
 
 // profileEditForm.addEventListener("submit", handleProfileEditSubmit);
