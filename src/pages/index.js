@@ -161,12 +161,14 @@ function handleImageClick(data) {
 
 function handleProfileEditSubmit(title, about) {
   editFormValidator.disableButton();
-  profileTitle.textContent = title;
-  profileDescription.textContent = about;
+  const editData = {
+    title: title,
+    about: about,
+  };
 
   // const userName = title.title;
   // const editUserInfo.setUserInfo(title, about);
-  editUserInfo.setUserInfo(profileTitle, profileDescription);
+  editUserInfo.setUserInfo(editData);
 
   editPopup.close();
 }
