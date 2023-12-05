@@ -1,65 +1,39 @@
-import { modalCloseButtons, openButtons } from "../utils/constants.js";
-
-console.log(modalCloseButtons);
-
 export default class Popup {
   constructor({ popupSelector }) {
     this._popupElement = document.querySelector(popupSelector);
   }
 
   open() {
-    //opens popup
-
     this._popupElement.classList.add("modal_opened");
-    document.addEventListener("click", this.close);
-
-    document.addEventListener("keydown", this._handleEscClose);
-    document.addEventListener("click", this._handleOverlay);
+    document.addEventListener("click", close);
+    document.addEventListener("click", this._handleEscClose);
+    console.log("click");
+    console.log(this._popupElement);
   }
 
-  close() {
-    modalCloseButtons.forEach((button) => {
-      const popup = button.closest(".modal");
+  close = () => {
+    this._popupElement.classList.remove("modal_opened");
+    document.removeEventListener("click", this.close);
+    document.removeEventListener("click", this._handleEscClose);
+  };
 
-      button.addEventListener("click", () => {
-        popup.classList.remove("modal_opened");
-      });
-    });
-    document.removeEventListener("keydown", this._handleEscClose);
-    document.removeEventListener("click", this._handleOverlay);
-  }
+  // const close = () {
+  //   this._popupElement.classList.remove("modal_opened");
+  //   document.removeEventListener("click", this.close);
+  //   document.removeEventListener("click", this._handleEscClose);
+  // }
 
   _handleEscClose(event) {
     if (event.key === "Escape") {
-      this.close();
-      document.removeEventListener("click", this._handleOverlay);
-    }
-    // listens for escape button
-    // const openedPopup = document.querySelector("modal_opened");
-  }
-  _handleOverlay(event) {
-    if (event.target === event.currentTarget) {
-      this.close();
+      this._popupElement.classList.remove("modal_opened");
     }
   }
 
   setEventListeners() {
-    document.addEventListener("keydown", this._handleEscClose);
-    document
-      .querySelector(".profile__button")
-      .addEventListener("click", (e) => {
-        e.preventDefault();
-        this.open;
+    this._popupElement
+      .querySelector(".modal__close")
+      .addEventListener("click", () => {
+        this.close();
       });
-
-    this.close();
-
-    // modalCloseButtons.addEventListener("click", () => {
-    //   close();
-    // });
-
-    // openButtons.addEventListener("click", () => {
-    //   this.open();
-    // });
   }
 }

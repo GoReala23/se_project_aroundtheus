@@ -17,7 +17,10 @@ export class PopupWithForm extends Popup {
   }
 
   _close() {
+    const popupForm = this._inputs.values;
+    popupForm.value = "";
     super.close();
+    return popupForm;
   }
 
   _getInputValue() {
@@ -36,13 +39,12 @@ export class PopupWithForm extends Popup {
     //   });
     // });
 
-    this._popupForm.addEventListener("submit", (e) => {
-      e.preventDefault();
+    this._popupForm.addEventListener("submit", (event) => {
+      event.preventDefault();
 
       this._handleFormSubmit(this._getInputValue(inputValues));
       this._close();
     });
-
     super.setEventListeners();
   }
 }

@@ -87,6 +87,7 @@ const addCardPopup = new PopupWithForm({
 
 const cardListEl = document.querySelector(".cards__list");
 const cardTitle = document.querySelector(".card__title");
+
 const defaultFormConfig = {
   formSelector: ".modal__form",
 
@@ -128,22 +129,8 @@ const section = new Section(
   cardListEl
 );
 
-function handleAddCardFormSubmit() {
-  // event.preventDefault();
-
-  const cardUrlInput = document.querySelector(".modal__input_type_url");
-
-  const name = cardTitleInput.value;
-
-  const link = cardUrlInput.value;
-
-  section.addItem(name, link);
-
-  addCardPopup.close(addCardModal);
-
-  addFormValidator.disableButton();
-
-  addFormValidator.resetValidation();
+function handleAddCardFormSubmit(event) {
+  event.preventDefault();
 }
 
 function generateCard(cardData) {
@@ -156,27 +143,28 @@ function generateCard(cardData) {
   return card.getView();
 }
 function handleImageClick(data) {
-  imagePopup.open(data);
+  cardImage.src = data.link;
+  cardImage.alt = data.name;
+  imagePopup.open(imagePreviewModal);
+  console.log("click");
 }
 
-function handleProfileEditSubmit(title, about) {
+function handleProfileEditSubmit(inputValues) {
   editFormValidator.disableButton();
-  const editData = {
-    title: title,
-    about: about,
-  };
 
   // const userName = title.title;
   // const editUserInfo.setUserInfo(title, about);
-  editUserInfo.setUserInfo(editData);
+  editUserInfo.setUserInfo(inputValues.name, inputValues.description);
 
   editPopup.close();
 }
 
 // addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
-imagePreviewModal.addEventListener("click", () => {
+imagePopup._popupImage.addEventListener("click", () => {
   handleImageClick();
+  imagePreviewModal.open;
+  console.log("click");
 });
 
 profileAddButton.addEventListener("click", () => {
@@ -188,10 +176,8 @@ addCardPopup.setEventListeners();
 profileEditButton.addEventListener("click", (event) => {
   event.preventDefault;
   const user = editUserInfo.getUserInfo();
-  editPopup.open(user);
+  editPopup.open();
 });
-
-// profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 editPopup.setEventListeners();
 
@@ -202,31 +188,10 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 section.renderItems();
 
-//image pop up
-
-// section
-
-// user
-
-//handlers
-
-// userInfo
-
-// image  modal
-
-//card creation
-
-// new card
-
 // initialCards.forEach((data) => {
 //   const cardEl = generateCard(data, cardsWrap);
 
 //   cardListEl.prepend(cardEl);
-// });
-
-// add
-
-// edit
 
 // function handleClose() {
 //   modalCloseButtons.forEach((button) => {

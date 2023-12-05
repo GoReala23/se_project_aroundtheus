@@ -19,7 +19,11 @@ class Card {
 
     this._cardImage.addEventListener(
       "click",
-      () => this._handleImageClick(this._name, this._link)
+      () => {
+        this._handleImageClick(this._name, this._link);
+        console.log("click");
+      }
+
       // this._handleImageClick({this._name, this._link})
     );
   }
