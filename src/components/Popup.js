@@ -19,13 +19,14 @@ export default class Popup {
   //   document.removeEventListener("click", this._handleEscClose);
   // }
 
-  _handleEscClose(key) {
-    key == document.event;
-    if (key === "Escape") {
-      this.close();
-      console.log("activated");
-    }
-  }
+  _handleEscClose = () => {
+    document.addEventListener("keyup", (event) => {
+      if (event.key === "Escape") {
+        this.close();
+        console.log(event);
+      }
+    });
+  };
 
   setEventListeners() {
     this._popupElement
