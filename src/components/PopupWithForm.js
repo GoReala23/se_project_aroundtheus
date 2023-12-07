@@ -14,14 +14,16 @@ export class PopupWithForm extends Popup {
       .querySelector(popupSelector)
       .querySelector(".modal__form");
     this._inputs = [...this._popupElement.querySelectorAll("input")];
+    this._closeButton = document
+      .querySelector(popupSelector)
+      .querySelector(".modal__close");
   }
 
-  _close() {
-    const popupForm = this._inputs.values;
-    popupForm.value = "";
+  close = () => {
+    console.log(this._popupForm);
+    this._popupForm.reset();
     super.close();
-    return popupForm;
-  }
+  };
 
   _getInputValue() {
     const inputValues = {};
@@ -31,19 +33,13 @@ export class PopupWithForm extends Popup {
   }
 
   setEventListeners(inputValues) {
-    // this._saveButtons.forEach((button) => {
-    //   button.addEventListener("click", (e) => {
-    //     e.preventDefault();
-    //     this._handleFormSubmit(this._getInputValue());
-    //     this.close();
-    //   });
-    // });
+    this._closeButton.addEventListener("click", this.close);
 
     this._popupForm.addEventListener("submit", (event) => {
       event.preventDefault();
 
       this._handleFormSubmit(this._getInputValue(inputValues));
-      this._close();
+      this.close();
     });
     super.setEventListeners();
   }
