@@ -39,7 +39,7 @@ class Card {
   }
 
   getView() {
-    const cardData = { link: this._link, name: this._name };
+    // const cardData = { link: this._link, name: this._name };
     this._cardElement = document
 
       .querySelector(this._cardSelector)
@@ -55,7 +55,7 @@ class Card {
     this._cardImage.alt = this._name;
 
     this._cardTitle = this._cardElement.querySelector(".card__title");
-    this._cardTitle.textContent = cardData.name;
+    this._cardTitle.textContent = this._name;
 
     this._likeButton = this._cardElement.querySelector(".card__like-button");
     this._deleteButton = this._cardElement.querySelector(

@@ -128,15 +128,21 @@ console.log(cardImage);
 
 const profileEditForm = document.querySelector("#edit-modal-form");
 const section = new Section(
-  { items: initialCards, renderer: generateCard },
+  {
+    items: initialCards,
+    renderer: (data) => {
+      const card = generateCard(data);
+      section.addItem(card);
+    },
+  },
   cardListEl
 );
 
 function handleAddCardFormSubmit(inputValues) {
-  const addedCard = generateCard(inputValues);
-  console.log(inputValues);
-  const name = inputValues.name;
-  const link = inputValues.link;
+  const addedCard = generateCard({
+    name: inputValues.title,
+    link: inputValues.URL,
+  });
 
   // section.addItem(card());
   section.addItem(addedCard);
@@ -149,6 +155,7 @@ function generateCard(cardData) {
   const card = new Card(cardData, "#card-template", () => {
     const name = cardData.name;
     const link = cardData.link;
+    // code below could be why image wont close
     imagePopup.open(name, link);
   });
 
@@ -219,7 +226,6 @@ profileEditButton.addEventListener("click", (event) => {
 editPopup.setEventListeners();
 addCardPopup.setEventListeners();
 // document.addEventListener("keyup", handleOverlay());
-document.addEventListener("click", handleOverlay());
 
 popup.setEventListeners();
 const addFormValidator = new FormValidator(addCardForm, defaultFormConfig);
