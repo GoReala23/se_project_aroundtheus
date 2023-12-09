@@ -214,7 +214,6 @@ profileAddButton.addEventListener("click", (event) => {
   console.log("i opened this");
 });
 // openAddNewCardButton.addEventListener("click", () => addCardPopup.open());
-addCardPopup.setEventListeners();
 
 profileEditButton.addEventListener("click", (event) => {
   event.preventDefault;
