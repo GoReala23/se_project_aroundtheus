@@ -10,7 +10,7 @@ export default class Popup {
 
   close() {
     this._popupElement.classList.remove("modal_opened");
-    document.removeEventListener(this.setEventListeners);
+    document.removeEventListener("click", this.setEventListeners);
   }
 
   // const close = () {
