@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      content="width=device-width, user-scalable=no, initial-scale=1.0"
+      name="viewport"
+    />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Around the U.S.</title>
+  </head>
+  <body class="page">
+    <div class="page__content">
+      <header class="header page__section">
+        <img
+          class="header__image"
+          src="<%=require('./images/Vector.svg')%>"
+          alt="Around the U.S. logo"
+        />
+      </header>
+
+      <main class="content">
+        <section class="profile page__section">
+          <img
+            class="profile__image"
+            src="<%=require('./images/jacques-cousteau@3x.png')%>"
+            alt="Avatar"
+          />
+          <div class="profile__info">
+            <h1 class="profile__title">Jacques Cousteau</h1>
+            <button
+              type="button"
+              class="profile button profile__edit-button"
+              id="profile-edit-button"
+            ></button>
+            <p class="profile__description">Explorer</p>
+          </div>
+
+          <button
+            type="button"
+            class="profile__button profile__add-button"
+            id="open-button"
+          ></button>
+        </section>
+        <section class="cards page__section">
+          <ul class="cards__list"></ul>
+        </section>
+      </main>
+      <footer class="footer page__section">
+        <p class="footer__copy-right">&copy; 2023 Hassan Porter</p>
+      </footer>
+    </div>
+
+    <!-- Edit Profile Modal-->
+
+    <div class="modal" id="edit-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          type="button"
+          id="modal-close-button"
+        ></button>
+        <h2 class="modal__heading">Edit Profile</h2>
+        <form class="modal__form" id="edit-modal-form">
+          <label class="modal__label">
+            <input
+              class="modal__input"
+              type="text"
+              name="name"
+              minlength="2"
+              maxlength="40"
+              required
+              id="modal-profile-title-input"
+              placeholder="Name"
+              modal-
+            /><span class="modal__span" id="profile-title-input-error">
+              Please fill out this field</span
+            ></label
+          >
+
+          <label class="modal__label">
+            <input
+              class="modal__input"
+              type="text"
+              name="description"
+              id="modal-profile-description-input"
+              minlength="2"
+              maxlength="200"
+              required
+              placeholder="Description"
+            /><span
+              class="modal__span"
+              id="modal-profile-description-input-error"
+              >Please fill out field</span
+            ></label
+          >
+
+          <button class="modal__save" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Add card Modal-->
+
+    <div class="modal" id="add-card-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          type="button"
+          id="modal-close-add-button"
+        ></button>
+        <h2 class="modal__heading">New Place</h2>
+        <form class="modal__form" id="add-modal-form">
+          <label class="modal__label">
+            <input
+              class="modal__input modal__input_type_title"
+              type="text"
+              name="title"
+              id="modal-input-title"
+              minlength="1"
+              maxlength="30"
+              required
+              placeholder="Title"
+            /><span class="modal__span" id="modal-input-title-error"
+              >Please fill out this field</span
+            ></label
+          >
+
+          <label class="modal__label">
+            <input
+              class="modal__input modal__input_type_url"
+              type="url"
+              name="URL"
+              required
+              id="modal-input-description"
+              placeholder="Image URL"
+            /><span class="modal__span" id="modal-input-description-error">
+              Please enter a web address</span
+            >
+          </label>
+
+          <button
+            type="submit"
+            disabled="disabled"
+            class="modal__save modal__save_disabled"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" id="modal-preview-img">
+      <div class="modal__pic-container">
+        <img class="modal__image" src="#" alt="" id="modal-img-popup" />
+        <button class="modal__close"></button>
+        <h2 class="modal__img-title"></h2>
+      </div>
+    </div>
+
+    <template id="card-template">
+      <li class="card">
+        <img class="card__image" src="" alt="" id="card-photo" />
+        <button class="card__delete-button" type="submit"></button>
+        <div class="card__description">
+          <h2 class="card__title"></h2>
+          <button type="button" class="card__like-button"></button>
+        </div>
+      </li>
+    </template>
+  </body>
+</html>
