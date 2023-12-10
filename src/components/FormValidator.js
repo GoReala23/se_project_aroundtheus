@@ -36,9 +36,11 @@ class FormValidator {
     this._inputElements = [
       ...this._formElement.querySelectorAll(".modal__input"),
     ];
-    this.inputElement = document.querySelector(".modal__input");
 
     this._errorMessageElement = document.querySelector(".modal__span");
+    this._submitButton = this._formElement.querySelector(
+      this._submitButtonSelector
+    );
   }
 
   _showInputError(inputElement) {
@@ -86,10 +88,6 @@ class FormValidator {
   }
 
   _setEventListeners() {
-    this._submitButton = this._formElement.querySelector(
-      this._submitButtonSelector
-    );
-
     this._inputElements.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);

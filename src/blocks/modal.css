@@ -129,6 +129,11 @@
   opacity: 0.8;
 }
 
+.modal__button:hover:not(:disabled) {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .modal__pic-container {
   width: 433px;
   height: 540px;
