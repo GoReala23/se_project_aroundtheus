@@ -35,8 +35,6 @@ export default class Popup {
     this._popupElement
       .querySelector(".modal__close")
       .addEventListener("click", () => this.close());
-    // this._closeButton.addEventListener("click", this.close);
-    // document.addEventListener("keyup", this._handleEscClose());
 
     document.addEventListener("keyup", this._handleEscClose);
 

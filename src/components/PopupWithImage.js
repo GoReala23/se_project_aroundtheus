@@ -1,4 +1,3 @@
-import { card } from "../utils/constants";
 import Popup from "./Popup";
 
 export default class PopupWithImage extends Popup {
