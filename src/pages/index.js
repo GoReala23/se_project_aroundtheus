@@ -140,7 +140,6 @@ profileAddButton.addEventListener("click", (event) => {
 });
 
 profileEditButton.addEventListener("click", (event) => {
-  //   profileTitle.textContent;
   const profileTitleInput = document.getElementById(
     "modal-profile-title-input"
   );
