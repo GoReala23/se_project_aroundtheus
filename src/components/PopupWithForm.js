@@ -14,7 +14,7 @@ export class PopupWithForm extends Popup {
   close = () => {
     this._popupForm.reset();
     super.close();
-    document.removeEventListener("submit", this.handleSubmit);
+    this._popupForm.removeEventListener("submit", this.handleSubmit);
   };
 
   _getInputValue() {

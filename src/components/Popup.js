@@ -16,7 +16,9 @@ export default class Popup {
     this._popupElement.classList.remove("modal_opened");
     document.removeEventListener("click", this._handleOverlay);
     document.removeEventListener("keyup", this._handleEscClose);
-    document.removeEventListener("click", this.close);
+    this._popupElement
+      .querySelector(".modal__close")
+      .removeEventListener("click", this.close);
   }
 
   _handleEscClose = (event) => {
