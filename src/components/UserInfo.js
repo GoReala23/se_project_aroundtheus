@@ -6,8 +6,8 @@ export class UserInfo {
 
   getUserInfo() {
     return {
-      name: this._nameElement.textContent,
-      job: this._jobElement.textContent,
+      userName: this._nameElement.value,
+      userJob: this._jobElement.value,
     };
   }
 

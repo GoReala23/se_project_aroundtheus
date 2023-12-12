@@ -140,18 +140,19 @@ profileAddButton.addEventListener("click", (event) => {
 });
 
 profileEditButton.addEventListener("click", (event) => {
-  // document.getElementById("modal-profile-title-input").value =
   //   profileTitle.textContent;
-  // document.getElementById("modal-profile-description-input").value =
-  //   profileDescription.textContent;
+  const profileTitleInput = document.getElementById(
+    "modal-profile-title-input"
+  );
+  const profileDescriptionInput = document.getElementById(
+    "modal-profile-description-input"
+  );
 
-  const { profileTitle, profileDescription } = editUserInfo.getUserInfo();
+  const { userName, userJob } = editUserInfo.getUserInfo();
 
-  // profileNameInput.value = userName;
-  // profileDescriptionInput.value = userJob;
+  profileTitleInput.value = userName;
+  profileDescriptionInput.value = userJob;
 
-  userName = profileTitle.textContent;
-  userJob = profileDescription.textContent;
   editPopup.open();
 });
 
