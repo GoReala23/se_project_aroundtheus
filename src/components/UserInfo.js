@@ -4,9 +4,11 @@ export class UserInfo {
     this._jobElement = document.querySelector(jobSelector);
   }
 
-  getUserInfo(title, about) {
-    (title = this._nameElement.textContent),
-      (about = this._jobElement.textContent);
+  getUserInfo() {
+    return {
+      name: this._nameElement.textContent,
+      job: this._jobElement.textContent,
+    };
   }
 
   setUserInfo(title, about) {

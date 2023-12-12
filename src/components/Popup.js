@@ -16,6 +16,7 @@ export default class Popup {
     this._popupElement.classList.remove("modal_opened");
     document.removeEventListener("click", this._handleOverlay);
     document.removeEventListener("keyup", this._handleEscClose);
+    document.removeEventListener("click", this.close);
   }
 
   _handleEscClose = (event) => {
@@ -34,7 +35,7 @@ export default class Popup {
   setEventListeners() {
     this._popupElement
       .querySelector(".modal__close")
-      .addEventListener("click", () => this.close());
+      .addEventListener("click", this.close);
 
     document.addEventListener("keyup", this._handleEscClose);
 

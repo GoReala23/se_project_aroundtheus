@@ -37,22 +37,27 @@ class FormValidator {
       ...this._formElement.querySelectorAll(".modal__input"),
     ];
 
-    this._errorMessageElement = document.querySelector(".modal__span");
     this._submitButton = this._formElement.querySelector(
       this._submitButtonSelector
     );
   }
 
   _showInputError(inputElement) {
+    const errorMessageElement = this._formElement.querySelector(
+      `#${inputElement.id}-error`
+    );
     inputElement.classList.add(this._inputErrorClass);
-    this._errorMessageElement.textContent = inputElement.validationMessage;
-    this._errorMessageElement.classList.add(this._errorClass);
+    errorMessageElement.textContent = inputElement.validationMessage;
+    errorMessageElement.classList.add(this._errorClass);
   }
 
   _hideInputError(inputElement) {
+    const errorMessageElement = this._formElement.querySelector(
+      `#${inputElement.id}-error`
+    );
     inputElement.classList.remove(this._inputErrorClass);
-    this._errorMessageElement.textContent = "";
-    this._errorMessageElement.classList.remove(this._errorClass);
+    errorMessageElement.textContent = "";
+    errorMessageElement.classList.remove(this._errorClass);
   }
 
   _checkInputValidity(inputElement) {
