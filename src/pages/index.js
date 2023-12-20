@@ -14,6 +14,7 @@ import {
 import Popup from "../components/Popup.js";
 import { profileEditButton, profileAddButton } from "../utils/constants.js";
 import { data } from "autoprefixer";
+import Api from "../components/API.js";
 
 const initialCards = [
   {
@@ -61,6 +62,17 @@ const addCardPopup = new PopupWithForm({
 });
 
 const cardListEl = document.querySelector(".cards__list");
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "e49d7980-6617-4b33-a68a-365a4432a600",
+    "Content-Type": "application/json",
+  },
+});
+
+api.getUserInfo();
+api.getCards();
+api.editProfile();
 
 const defaultFormConfig = {
   formSelector: ".modal__form",
