@@ -1,5 +1,5 @@
 export default class Api {
-  constructor(baseUrl) {
+  constructor(l) {
     // constructor body
     //around-api.en.tripleten-services.com/v1 = con
     this._baseUrl = "https://around-api.en.tripleten-services.com/v1";
@@ -33,12 +33,26 @@ export default class Api {
     fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: {
-        authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6",
+        authorization: "e49d7980-6617-4b33-a68a-365a4432a600",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name: "Marie Skłodowska Curie",
         about: "Physicist and Chemist",
+      }),
+    });
+  }
+
+  addNewCard() {
+    fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: {
+        authorization: "e49d7980-6617-4b33-a68a-365a4432a600",
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name: "",
+        link: "",
       }),
     });
   }

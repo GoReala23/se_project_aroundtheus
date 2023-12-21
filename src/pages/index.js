@@ -73,6 +73,7 @@ const api = new Api({
 api.getUserInfo();
 api.getCards();
 api.editProfile();
+api.addNewCard();
 
 const defaultFormConfig = {
   formSelector: ".modal__form",
