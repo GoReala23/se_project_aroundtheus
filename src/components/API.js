@@ -1,8 +1,9 @@
 export default class Api {
-  constructor(l) {
+  constructor() {
     // constructor body
     //around-api.en.tripleten-services.com/v1 = con
     this._baseUrl = "https://around-api.en.tripleten-services.com/v1";
+    this.addform = document.getElementById("#add-modal-form");
   }
 
   getUserInfo() {
@@ -43,16 +44,16 @@ export default class Api {
     });
   }
 
-  addNewCard() {
-    fetch(`${this._baseUrl}/cards`, {
+  addNewCard({ name, link }) {
+    return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: {
         authorization: "e49d7980-6617-4b33-a68a-365a4432a600",
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        name: "",
-        link: "",
+        name: name,
+        link: link,
       }),
     });
   }

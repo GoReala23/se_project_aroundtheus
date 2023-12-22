@@ -71,9 +71,8 @@ const api = new Api({
 });
 
 api.getUserInfo();
-api.getCards();
+
 api.editProfile();
-api.addNewCard();
 
 const defaultFormConfig = {
   formSelector: ".modal__form",
@@ -123,7 +122,14 @@ function handleAddCardFormSubmit(inputValues) {
   });
 
   section.addItem(addedCard);
-
+  api
+    .addNewCard({ addedCard })
+    .then((card) => {
+      section.addItem(card);
+    })
+    .then((card) => {
+      console.log(card);
+    });
   addCardPopup.close();
 }
 
