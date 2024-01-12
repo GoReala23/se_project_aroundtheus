@@ -37,7 +37,32 @@
   align-items: center;
   gap: 9px 17px;
 }
+.profile__image-container:hover .profile__image-edit {
+  display: block;
+}
 
+.profile__image-edit {
+  position: absolute;
+
+  transform: translate(-80%, -50%);
+  display: none;
+  background-color: transparent;
+  cursor: pointer;
+  left: 9%;
+
+  bottom: 50px;
+
+  z-index: 10;
+
+  width: 24px;
+  height: 24px;
+  background: url("../images/editphotoimg.png") center/cover no-repeat;
+  border: none;
+}
+
+.profile__image-container:hover .profile__image-edit {
+  display: block;
+}
 .profile__image {
   width: 120px;
   height: 120px;

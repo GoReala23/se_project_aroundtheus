@@ -1,60 +1,59 @@
 export default class Api {
   constructor() {
-    // constructor body
-    //around-api.en.tripleten-services.com/v1 = con
     this._baseUrl = "https://around-api.en.tripleten-services.com/v1";
-    this.addform = document.getElementById("#add-modal-form");
+    this._headers = {
+      authorization: "a3463d08-6e72-4e13-8ab0-0823077948c4",
+      "Content-type": "application/json",
+    };
+  }
+
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
+  }
+
+  getInitialCards() {
+    return fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers,
+    }).then(this._checkResponse);
   }
 
   getUserInfo() {
-    fetch(`${this._baseUrl}/users/me`, {
-      headers: {
-        authorization: "e49d7980-6617-4b33-a68a-365a4432a600",
-      },
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-      });
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
+    }).then(this._checkResponse);
   }
 
-  getCards() {
-    fetch(`${this._baseUrl}/cards`, {
-      headers: {
-        authorization: "e49d7980-6617-4b33-a68a-365a4432a600",
-      },
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-      });
-  }
-
-  editProfile() {
-    fetch(`${this._baseUrl}/users/me`, {
+  editProfile(name, description) {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
-      headers: {
-        authorization: "e49d7980-6617-4b33-a68a-365a4432a600",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: "Marie Skłodowska Curie",
-        about: "Physicist and Chemist",
-      }),
-    });
+      headers: this._headers,
+      body: JSON.stringify({ name, description }),
+    }).then(this._checkResponse);
   }
 
-  addNewCard({ name, link }) {
+  addNewCard(name, link) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: {
-        authorization: "e49d7980-6617-4b33-a68a-365a4432a600",
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        name: name,
-        link: link,
-      }),
-    });
+      headers: this._headers,
+      body: JSON.stringify({ name, link }),
+    }).then(this._checkResponse);
+  }
+
+  deleteCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this._checkResponse);
+  }
+
+  changeAvatar(avatarUrl) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({ avatarUrl: avatarUrl }),
+    }).then(this._checkResponse);
   }
 }

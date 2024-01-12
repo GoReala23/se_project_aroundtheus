@@ -1,3 +1,4 @@
+import { cli } from "webpack-dev-server";
 import Popup from "./Popup.js";
 
 export class PopupWithForm extends Popup {
@@ -22,6 +23,10 @@ export class PopupWithForm extends Popup {
     this._inputs.forEach((input) => (inputValues[input.name] = input.value));
 
     return inputValues;
+  }
+
+  setSubmit(click) {
+    this.handleFormSubmit = click;
   }
 
   handleSubmit = (event) => {
