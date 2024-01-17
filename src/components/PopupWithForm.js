@@ -1,4 +1,3 @@
-import { cli } from "webpack-dev-server";
 import Popup from "./Popup.js";
 
 export class PopupWithForm extends Popup {
@@ -25,11 +24,11 @@ export class PopupWithForm extends Popup {
     return inputValues;
   }
 
-  setSubmit(click) {
-    this.handleFormSubmit = click;
-  }
+  // setFormSubmitHandler(click) {
+  //   this.handleFormSubmit = click;
+  // }
 
-  handleSubmit = (event) => {
+  _handleSubmit = (event) => {
     event.preventDefault();
 
     this._handleFormSubmit(this._getInputValue());
@@ -37,8 +36,8 @@ export class PopupWithForm extends Popup {
   };
 
   setEventListeners() {
-    this._popupForm.addEventListener("submit", this.handleSubmit);
-    // this.handleSubmit();
+    this._popupForm.addEventListener("submit", this._handleSubmit);
+
     super.setEventListeners();
   }
 }

@@ -19,13 +19,7 @@ import { profileEditButton, profileAddButton } from "../utils/constants.js";
 import { data } from "autoprefixer";
 
 document.addEventListener(`DOMContentLoaded`, () => {
-  const api = new Api({
-    baseUrl: "https://around-api.en.tripleten-services.com/v1",
-    headers: {
-      authorization: "a3463d08-6e72-4e13-8ab0-0823077948c4",
-      "Content-Type": "application/json",
-    },
-  });
+  const api = new Api({});
   const cardListEl = document.querySelector(".cards__list");
 
   const profileEditForm = document.querySelector("#edit-modal-form");
@@ -99,13 +93,13 @@ document.addEventListener(`DOMContentLoaded`, () => {
     handleFormSubmit: handleProfileEditSubmit,
   });
 
-  const imagePopup = new PopupWithImage({
-    popupSelector: "#modal-preview-img",
+  const confirmDeletePopup = new PopupWithForm({
+    popupSelector: "#modal-confirm-yes",
+    handleFormSubmit: () => {},
   });
 
-  const confirmDeletePopup = new PopupWithForm({
-    popupSelector: ".modal__confirm-yes",
-    handleFormSubmit: () => {},
+  const imagePopup = new PopupWithImage({
+    popupSelector: "#modal-preview-img",
   });
 
   const editUserInfo = new UserInfo({
@@ -124,8 +118,8 @@ document.addEventListener(`DOMContentLoaded`, () => {
     cardListEl
   );
 
-  profileEditForm.addEventListener(`submit`, handleProfileEditSubmit);
-  addCardForm.addEventListener(`submit`, handleAddCardFormSubmit);
+  // profileEditForm.addEventListener(`submit`, handleProfileEditSubmit);
+  // addCardForm.addEventListener(`submit`, handleAddCardFormSubmit);
 
   api.getUserInfo().then((UserInfo) => {
     editUserInfo.setUserInfo(UserInfo.name, UserInfo.description);
@@ -140,25 +134,31 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
   // handlers
 
-  function handleProfileEditSubmit(FormData) {
+  function handleProfileEditSubmit(formData) {
+    console.log(formData);
     api
-      .editProfile(FormData.name, FormData.description)
+      .editProfile(formData.name, formData.description)
       .then((UserInfo) => {
-        editUserInfo.setUserInfo(UserInfo.name, UserInfo.about);
+        editUserInfo.setUserInfo(UserInfo.name, UserInfo.description); //UserInfo.description
         editPopup.close();
       })
       .catch((error) => console.error(`Error:`, error));
   }
 
   function handleAddCardFormSubmit(formData) {
-    api.newCard(formData.name, formData.link).then((newCard) => {
-      const cardElemet = generateCard(newCard);
-      section.addItem(cardElemet);
-      addCardPopup.close();
-    });
+    console.log(`add form data:`, formData);
+    api
+      .addNewCard(formData)
+      .then((newCard) => {
+        const cardElement = generateCard(newCard);
+        section.addItem(cardElement);
+        addCardPopup.close();
+      })
+      .catch((error) => console.error(`Error:`, error));
   }
 
   function handleChangeAvatarSubmit(formData) {
+    console.log(`Add Form data:`, formData);
     api
       .changeAvatar(formData.avatarUrl)
       .then(() => {
@@ -170,24 +170,26 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
   const popup = new Popup({ popupSelector: ".modal" });
 
-  // profileEditForm.addEventListener.add(`submit`, (event) => {
-  //   event.preventDefault();
-  //   const name = event.target.querySelector(`#name-input`).value;
-  //   const description = event.target.querySelector(`#description-input`).value;
-  //   api
-  //     .editProfile(name, description)
-  //     .then((updateInfo) => {})
-  //     .catch((error) => console.error(`Error:`, error));
-  // });
+  profileAddButton.addEventListener("click", (event) => {
+    addFormValidator.resetValidation();
 
-  addCardForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const name = event.target.querySelector(`#card-name-input`).value;
-    const link = event.target.querySelector(`#card-link-input`);
-    api
-      .addNewCard(name, link)
-      .then((newCard) => {})
-      .catch((error) => console.error(`Error:`, error));
+    addCardPopup.open();
+  });
+
+  profileEditButton.addEventListener("click", (event) => {
+    const profileTitleInput = document.getElementById(
+      "modal-profile-title-input"
+    );
+    const profileDescriptionInput = document.getElementById(
+      "modal-profile-description-input"
+    );
+
+    const { userName, userJob } = editUserInfo.getUserInfo();
+
+    profileTitleInput.value = userName;
+    profileDescription.value = userJob;
+
+    editPopup.open();
   });
 
   changeAvatarForm.addEventListener(`submit`, (event) => {

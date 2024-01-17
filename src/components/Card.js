@@ -36,6 +36,7 @@ class Card {
     this._cardElement.remove();
 
     this._cardElement = null;
+    console.log("click");
   }
 
   _handleLikeIcon() {

@@ -2,7 +2,7 @@ export default class Api {
   constructor() {
     this._baseUrl = "https://around-api.en.tripleten-services.com/v1";
     this._headers = {
-      authorization: "a3463d08-6e72-4e13-8ab0-0823077948c4",
+      authorization: "8e58f962-4a24-4e9f-912b-0a765e77e7dc",
       "Content-type": "application/json",
     };
   }
@@ -34,11 +34,11 @@ export default class Api {
     }).then(this._checkResponse);
   }
 
-  addNewCard(name, link) {
+  addNewCard(formData) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
-      body: JSON.stringify({ name, link }),
+      body: JSON.stringify({ title: formData.title, Url: formData.Url }),
     }).then(this._checkResponse);
   }
 
