@@ -122,7 +122,7 @@ document.addEventListener(`DOMContentLoaded`, () => {
   // addCardForm.addEventListener(`submit`, handleAddCardFormSubmit);
 
   api.getUserInfo().then((UserInfo) => {
-    editUserInfo.setUserInfo(UserInfo.name, UserInfo.description);
+    editUserInfo.setUserInfo(UserInfo.name, UserInfo.about);
   });
 
   api.getInitialCards().then((cards) => {
@@ -134,21 +134,40 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
   // handlers
 
-  function handleProfileEditSubmit(formData) {
-    console.log(formData);
+  function handleProfileEditSubmit(inputValues) {
     api
-      .editProfile(formData.name, formData.description)
-      .then((UserInfo) => {
-        editUserInfo.setUserInfo(UserInfo.name, UserInfo.description); //UserInfo.description
+      .editProfile(inputValues.name, inputValues.description)
+      .then((userInfo) => {
+        editUserInfo.setUserInfo(
+          userInfo.name,
+          userInfo.about,
+          userInfo.avatar
+        );
         editPopup.close();
       })
-      .catch((error) => console.error(`Error:`, error));
+      .catch((error) => {
+        console.error("Error:", error);
+        if (error instanceof Response) {
+          error
+            .json()
+            .then((body) => {
+              console.error("Error response body:", body);
+            })
+            .catch((jsonError) => {
+              console.error("Error parsing JSON from response:", jsonError);
+            });
+        }
+      });
   }
 
-  function handleAddCardFormSubmit(formData) {
-    console.log(`add form data:`, formData);
+  function handleAddCardFormSubmit(inputValues) {
+    console.log(`add form data:`, inputValues);
+
     api
-      .addNewCard(formData)
+      .addNewCard({
+        name: inputValues.name,
+        link: inputValues.link,
+      })
       .then((newCard) => {
         const cardElement = generateCard(newCard);
         section.addItem(cardElement);
@@ -157,7 +176,7 @@ document.addEventListener(`DOMContentLoaded`, () => {
       .catch((error) => console.error(`Error:`, error));
   }
 
-  function handleChangeAvatarSubmit(formData) {
+  function handleChangeAvatarSubmit(inputValues) {
     console.log(`Add Form data:`, formData);
     api
       .changeAvatar(formData.avatarUrl)
@@ -177,20 +196,19 @@ document.addEventListener(`DOMContentLoaded`, () => {
   });
 
   profileEditButton.addEventListener("click", (event) => {
-    const profileTitleInput = document.getElementById(
-      "modal-profile-title-input"
-    );
-    const profileDescriptionInput = document.getElementById(
-      "modal-profile-description-input"
-    );
-
-    const { userName, userJob } = editUserInfo.getUserInfo();
-
-    profileTitleInput.value = userName;
-    profileDescription.value = userJob;
-
+    editFormValidator.resetValidation();
     editPopup.open();
   });
+
+  // profileEditForm.addEventListener("submit", (event) => {
+  //   event.preventDefault();
+  //   const inputValues = {
+  //     name: document.querySelector("#modal-profile-title-input").value,
+  //     description: document.querySelector("#modal-profile-description-input")
+  //       .value,
+  //   };
+  //   handleProfileEditSubmit(inputValues);
+  // });
 
   changeAvatarForm.addEventListener(`submit`, (event) => {
     event.preventDefault();
@@ -209,18 +227,25 @@ document.addEventListener(`DOMContentLoaded`, () => {
   }
 
   function generateCard(cardData) {
-    const card = new Card(cardData, "#card-template", (cardId) => {
-      confirmDeletePopup.setSubmit(() => {
-        api
-          .deleteCard(cardId)
-          .then(() => {
-            confirmDeletePopup.close();
-            card.remove();
-          })
-          .catch((error) => console.error(`Error:`, error));
-      });
-      confirmDeletePopup.open();
-    });
+    const card = new Card(
+      {
+        name: cardData.name,
+        link: cardData.link,
+      },
+      "#card-template",
+      (cardId) => {
+        confirmDeletePopup.setSubmit(() => {
+          api
+            .deleteCard(cardId)
+            .then(() => {
+              confirmDeletePopup.close();
+              card.remove();
+            })
+            .catch((error) => console.error(`Error:`, error));
+        });
+        confirmDeletePopup.open();
+      }
+    );
 
     return card.getView();
   }

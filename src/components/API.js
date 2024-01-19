@@ -30,15 +30,15 @@ export default class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({ name, description }),
+      body: JSON.stringify({ name, description: description }),
     }).then(this._checkResponse);
   }
 
-  addNewCard(formData) {
+  addNewCard({ name, link }) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
-      body: JSON.stringify({ title: formData.title, Url: formData.Url }),
+      body: JSON.stringify({ name: name, link: link }),
     }).then(this._checkResponse);
   }
 

@@ -3,13 +3,14 @@ export class UserInfo {
     this._nameElement = document.querySelector(nameSelector);
     this._jobElement = document.querySelector(jobSelector);
     this._avatarElement = document.querySelector(avatarSelector);
+    console.log(this._jobElement);
   }
 
   getUserInfo() {
     return {
       name: this._nameElement.textContent,
       description: this._jobElement.textContent,
-      avatar: this.avatarElement.src,
+      avatar: this._avatarElement.src,
     };
   }
 
