@@ -1,11 +1,17 @@
 class Card {
-  constructor({ name, link }, cardSelector, handleImageClick) {
+  constructor(
+    { name, link },
+    cardSelector,
+    handleImageClick,
+    handleDeleteCard
+  ) {
     this._name = name;
     this._link = link;
 
     this._cardSelector = cardSelector;
 
     this._handleImageClick = handleImageClick;
+    this._handleDeleteCard = handleDeleteCard;
   }
 
   _setEventListeners() {
@@ -30,6 +36,7 @@ class Card {
     this._cardElement.remove();
 
     this._cardElement = null;
+    console.log("click");
   }
 
   _handleLikeIcon() {
