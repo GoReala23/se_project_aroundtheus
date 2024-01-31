@@ -21,7 +21,7 @@ import { data } from "autoprefixer";
 
 document.addEventListener(`DOMContentLoaded`, () => {
   const api = new Api({
-    baseUrl: "https://around-api.en.tripleten-services.com/v1://",
+    baseUrl: "https://around-api.en.tripleten-services.com/v1",
     headers: {
       authorization: "8e58f962-4a24-4e9f-912b-0a765e77e7dc",
       "Content-type": "application/json",
@@ -37,37 +37,37 @@ document.addEventListener(`DOMContentLoaded`, () => {
   const initialCards = [
     {
       name: "Yosemite Valley",
-
+      id: "iC1",
       link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
     },
 
     {
       name: "Lake Louise",
-
+      id: "iC2",
       link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
     },
 
     {
       name: "Bald Mountains",
-
+      id: "iC3",
       link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
     },
 
     {
       name: "Latemar",
-
+      id: "iC4",
       link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
     },
 
     {
       name: "Vanoise National Park",
-
+      id: "iC5",
       link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
     },
 
     {
       name: "Lago di Braies",
-
+      id: "iC6",
       link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg ",
     },
   ];
@@ -135,19 +135,21 @@ document.addEventListener(`DOMContentLoaded`, () => {
     cardListEl
   );
 
+  let currentId;
   api
     .getUserInfo()
-    .then((UserInfo) => {
-      editUserInfo.setUserInfo(UserInfo.name, UserInfo.about, UserInfo.avatar);
+    .then((userInfo) => {
+      currentId = userInfo._id;
+      editUserInfo.setUserInfo(userInfo.name, userInfo.about, userInfo.avatar);
     })
     .catch((error) => console.error(`Error fetching user info: ${error}`));
 
   api
     .getInitialCards()
     .then((cards) => {
-      console.log("Initial Cards R:", cards);
-      cards.forEach((cardData) => {
-        const cardElement = generateCard(cardData);
+      console.log("api response:", cards);
+      cards.forEach((cardData, index) => {
+        const cardElement = generateCard(cardData, index);
         section.addItem(cardElement.view);
       });
     })
@@ -155,17 +157,40 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
   // handlers
 
-  saveButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const saveButtonText = button.textContent;
-      button.textContent = "Saving";
+  function handleLikeIcon(card, cardId) {
+    const isliked = card.isLiked();
 
-      setTimeout(() => {
-        button.textContent = saveButtonText;
-      }, 1000);
+    if (isliked) {
+      api
+        .removeLike(cardId)
+        .then(() => {
+          card.handleLikeIcon();
+        })
+        .catch((error) => console.error("Error removing like:", error));
+    } else {
+      api
+        .addLike(cardId)
+        .then(() => {
+          card.handleLikeIcon();
+        })
+        .catch((error) => console.error("Error adding like:", error));
+    }
+  }
+
+  function handleSaveButtons() {
+    saveButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const saveButtonText = button.textContent;
+        button.textContent = "Saving";
+
+        setTimeout(() => {
+          button.textContent = saveButtonText;
+        }, 1000);
+      });
     });
-  });
+  }
   function handleProfileEditSubmit(inputValues) {
+    const saveButton = document.querySelector("#edit-modal .modal__save");
     api
       .editProfile(inputValues.name, inputValues.about)
       .then((userInfo) => {
@@ -175,6 +200,7 @@ document.addEventListener(`DOMContentLoaded`, () => {
           userInfo.avatar
         );
         editPopup.close();
+        saveButton.textContent = "Save";
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -188,6 +214,7 @@ document.addEventListener(`DOMContentLoaded`, () => {
               console.error("Error parsing JSON from response:", jsonError);
             });
         }
+        saveButton.textContent = "Save";
       });
   }
 
@@ -253,17 +280,18 @@ document.addEventListener(`DOMContentLoaded`, () => {
   //   });
   // });
 
-  function handleDeleteCard(cardId, cardInstance) {
+  function handleDeleteCard(cardId, card) {
     api
       .deleteCard(cardId)
       .then(() => {
-        cardInstance.remove();
+        card.remove();
         confirmDeletePopup.close();
       })
       .catch((error) => console.error(`Error:`, error));
   }
 
   function generateCard(cardData) {
+    console.log(cardData, cardData.name, cardData.link);
     const card = new Card(
       {
         name: cardData.name,
@@ -272,13 +300,10 @@ document.addEventListener(`DOMContentLoaded`, () => {
         handleImageClick: (data) => {
           imagePopup.open(data.name, data.link);
         },
-        handleLikeIcon: () => {
-          card.handleLikeIcon();
-        },
-        handleDeleteCard: () => {
+        handleLikeIcon: () => handleLikeIcon(card, cardData._id),
+        handleDeleteCard: (cardId) => {
           confirmDeletePopup.setSubmitAction(() => {
-            handleDeleteCard(cardData._id, card);
-            card.remove();
+            handleDeleteCard(cardId, card);
           });
           confirmDeletePopup.open();
         },
