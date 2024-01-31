@@ -24,15 +24,9 @@ export class PopupWithForm extends Popup {
     return inputValues;
   }
 
-  // setFormSubmitHandler(click) {
-  //   this.handleFormSubmit = click;
-  // }
-
   _handleSubmit = (event) => {
     event.preventDefault();
-
     this._handleFormSubmit(this._getInputValue());
-    this.close();
   };
 
   setEventListeners() {
