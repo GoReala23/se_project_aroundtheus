@@ -30,7 +30,7 @@ document.addEventListener(`DOMContentLoaded`, () => {
   const cardListEl = document.querySelector(".cards__list");
   const editPicButton = document.getElementById("profile-image-edit-button");
   const changeAvatarModal = document.getElementById("change-avatar-modal");
-  const saveButtons = document.querySelectorAll(".modal__save");
+
   const profileEditForm = document.querySelector("#edit-modal-form");
   const addCardForm = document.querySelector("#add-modal-form");
   const changeAvatarForm = document.querySelector("#change-avatar-form");
@@ -177,20 +177,9 @@ document.addEventListener(`DOMContentLoaded`, () => {
     }
   }
 
-  function handleSaveButtons() {
-    saveButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const saveButtonText = button.textContent;
-        button.textContent = "Saving";
-
-        setTimeout(() => {
-          button.textContent = saveButtonText;
-        }, 1000);
-      });
-    });
-  }
   function handleProfileEditSubmit(inputValues) {
     const saveButton = document.querySelector("#edit-modal .modal__save");
+    saveButton.textContent = "Saving...";
     api
       .editProfile(inputValues.name, inputValues.about)
       .then((userInfo) => {
@@ -200,26 +189,14 @@ document.addEventListener(`DOMContentLoaded`, () => {
           userInfo.avatar
         );
         editPopup.close();
-        saveButton.textContent = "Save";
       })
-      .catch((error) => {
-        console.error("Error:", error);
-        if (error instanceof Response) {
-          error
-            .json()
-            .then((body) => {
-              console.error("Error response body:", body);
-            })
-            .catch((jsonError) => {
-              console.error("Error parsing JSON from response:", jsonError);
-            });
-        }
-        saveButton.textContent = "Save";
-      });
+      .catch((error) => console.error("Error:", error))
+      .finally(() => (saveButton.textContent = "Save"));
   }
 
   function handleAddCardFormSubmit(inputValues) {
-    console.log(`add form data:`, inputValues);
+    const saveButton = document.querySelector("#add-card-modal .modal__save");
+    saveButton.textContent = "Saving...";
 
     api
       .addNewCard({
@@ -231,10 +208,15 @@ document.addEventListener(`DOMContentLoaded`, () => {
         section.addItem(cardElement.view);
         addCardPopup.close();
       })
-      .catch((error) => console.error(`Error:`, error));
+      .catch((error) => console.error(`Error:`, error))
+      .finally(() => (saveButton.textContent = "Save"));
   }
 
   function handleChangeAvatarSubmit(inputValues) {
+    const saveButton = document.querySelector(
+      "#change-avatar-modal .modal__save"
+    );
+    saveButton.textContent = "Saving...";
     const currentProfileInfo = editUserInfo.getUserInfo();
     api
       .changeAvatar(inputValues.link)
@@ -248,7 +230,9 @@ document.addEventListener(`DOMContentLoaded`, () => {
         changeAvatarPopup.close();
       })
       .catch((error) => {
-        console.error("Error changing avatar:", error);
+        console
+          .error("Error changing avatar:", error)
+          .finally(() => (saveButton.textContent = "Save"));
       });
   }
   // const editProfileModal = document.querySelector("#edit-modal");
