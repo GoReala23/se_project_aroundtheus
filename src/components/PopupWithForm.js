@@ -2,12 +2,15 @@ import Popup from "./Popup.js";
 
 export class PopupWithForm extends Popup {
   constructor(
-    { popupSelector, handleFormSubmit } // this is where you declas/setup methods
+    { popupSelector, loadingButtonText, handleFormSubmit } // this is where you declas/setup methods
   ) {
     super({ popupSelector }); // { popupSelector: "#add-card-modal"}
 
     this._handleFormSubmit = handleFormSubmit;
+    this._submitButton = this._popupElement.querySelector(".modal__save");
+    this._buttonText = this._submitButton.textContent;
     this._popupForm = this._popupElement.querySelector(".modal__form");
+    this._loadingButtonText = loadingButtonText;
     this._inputs = [...this._popupElement.querySelectorAll("input")];
   }
 
@@ -22,6 +25,14 @@ export class PopupWithForm extends Popup {
     this._inputs.forEach((input) => (inputValues[input.name] = input.value));
 
     return inputValues;
+  }
+
+  showLoading() {
+    this._submitButton.textContent = this._loadingButtonText;
+  }
+
+  hideLoading() {
+    this._submitButton.textContent = this._buttonText;
   }
 
   _handleSubmit = (event) => {

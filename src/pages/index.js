@@ -100,16 +100,19 @@ document.addEventListener(`DOMContentLoaded`, () => {
   const changeAvatarPopup = new PopupWithForm({
     popupSelector: "#change-avatar-modal",
     handleFormSubmit: handleChangeAvatarSubmit,
+    loadingButtonText: "Saving",
   });
 
   const addCardPopup = new PopupWithForm({
     popupSelector: "#add-card-modal",
     handleFormSubmit: handleAddCardFormSubmit,
+    loadingButtonText: "Saving...",
   });
 
   const editPopup = new PopupWithForm({
     popupSelector: "#edit-modal",
     handleFormSubmit: handleProfileEditSubmit,
+    loadingButtonText: "Saving...",
   });
 
   const confirmDeletePopup = new ConfirmPopup("#modal-confirm-yes");
@@ -178,8 +181,7 @@ document.addEventListener(`DOMContentLoaded`, () => {
   }
 
   function handleProfileEditSubmit(inputValues) {
-    const saveButton = document.querySelector("#edit-modal .modal__save");
-    saveButton.textContent = "Saving...";
+    editPopup.showLoading();
     api
       .editProfile(inputValues.name, inputValues.about)
       .then((userInfo) => {
@@ -191,12 +193,13 @@ document.addEventListener(`DOMContentLoaded`, () => {
         editPopup.close();
       })
       .catch((error) => console.error("Error:", error))
-      .finally(() => (saveButton.textContent = "Save"));
+      .finally(() => {
+        editPopup.hideLoading();
+      });
   }
 
   function handleAddCardFormSubmit(inputValues) {
-    const saveButton = document.querySelector("#add-card-modal .modal__save");
-    saveButton.textContent = "Saving...";
+    addCardPopup.showLoading();
 
     api
       .addNewCard({
@@ -209,14 +212,13 @@ document.addEventListener(`DOMContentLoaded`, () => {
         addCardPopup.close();
       })
       .catch((error) => console.error(`Error:`, error))
-      .finally(() => (saveButton.textContent = "Save"));
+      .finally(() => {
+        addCardPopup.hideLoading();
+      });
   }
 
   function handleChangeAvatarSubmit(inputValues) {
-    const saveButton = document.querySelector(
-      "#change-avatar-modal .modal__save"
-    );
-    saveButton.textContent = "Saving...";
+    changeAvatarPopup.showLoading();
     const currentProfileInfo = editUserInfo.getUserInfo();
     api
       .changeAvatar(inputValues.link)
@@ -230,9 +232,9 @@ document.addEventListener(`DOMContentLoaded`, () => {
         changeAvatarPopup.close();
       })
       .catch((error) => {
-        console
-          .error("Error changing avatar:", error)
-          .finally(() => (saveButton.textContent = "Save"));
+        console.error("Error changing avatar:", error).finally(() => {
+          changeAvatarPopup.hideLoading();
+        });
       });
   }
   // const editProfileModal = document.querySelector("#edit-modal");
