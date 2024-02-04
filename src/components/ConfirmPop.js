@@ -31,7 +31,5 @@ export class ConfirmPopup extends Popup {
   _handleYesButtonClick = (event) => {
     event.preventDefault();
     this._handleSubmit();
-
-    this.close();
   };
 }

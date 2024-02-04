@@ -19,7 +19,7 @@ export default class Api {
         name: info.name,
         about: info.about,
       }),
-    }).then((res) => res.json());
+    }).then(this._checkResponse);
   }
 
   addLike(cardId) {

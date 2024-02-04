@@ -21,7 +21,7 @@ export class UserInfo {
     }
   }
 
-  setAvatar(avatarUrl) {
-    this._avatarElement.src = avatarUrl;
+  setAvatar(avatar) {
+    this._avatarElement.src = avatar;
   }
 }

@@ -167,14 +167,14 @@ document.addEventListener(`DOMContentLoaded`, () => {
       api
         .removeLike(cardId)
         .then(() => {
-          card.handleLikeIcon();
+          card.setIsLiked(false);
         })
         .catch((error) => console.error("Error removing like:", error));
     } else {
       api
         .addLike(cardId)
         .then(() => {
-          card.handleLikeIcon();
+          card.setIsLiked(true);
         })
         .catch((error) => console.error("Error adding like:", error));
     }
@@ -219,15 +219,11 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
   function handleChangeAvatarSubmit(inputValues) {
     changeAvatarPopup.showLoading();
-    const currentProfileInfo = editUserInfo.getUserInfo();
+
     api
       .changeAvatar(inputValues.link)
       .then((res) => {
-        editUserInfo.setUserInfo(
-          currentProfileInfo.name,
-          currentProfileInfo.about,
-          inputValues.link
-        );
+        editUserInfo.setAvatar(res.avatar);
 
         changeAvatarPopup.close();
       })
@@ -283,6 +279,7 @@ document.addEventListener(`DOMContentLoaded`, () => {
         name: cardData.name,
         link: cardData.link,
         cardId: cardData._id,
+        isliked: cardData.isLiked,
         handleImageClick: (data) => {
           imagePopup.open(data.name, data.link);
         },
