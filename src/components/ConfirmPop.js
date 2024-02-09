@@ -10,26 +10,25 @@ export class ConfirmPopup extends Popup {
   }
 
   setSubmitAction(action) {
-    this._handleSubmit = action;
+    this._handleSubmit = (event) => {
+      event.preventDefault();
+      action();
+    };
   }
 
   open() {
-    this._yesButton.disabled = false;
-    this._yesButton.classList.remove("modal__save_disabled");
-    this._yesButton.addEventListener("click", this._handleYesButtonClick, {
-      once: true,
-    });
+    this._yesButton.addEventListener("click", this._handleSubmit);
     super.open();
   }
 
   close() {
-    this._yesButton.removeEventListener("click", this._handleYesButtonClick);
+    this._yesButton.removeEventListener("click", this._handleSubmit);
 
     super.close();
   }
 
-  _handleYesButtonClick = (event) => {
-    event.preventDefault();
-    this._handleSubmit();
-  };
+  // _handleYesButtonClick = (event) => {
+  //   event.preventDefault();
+  //   this._handleSubmit();
+  // };
 }

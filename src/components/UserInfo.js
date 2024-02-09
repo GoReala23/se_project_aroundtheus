@@ -13,12 +13,9 @@ export class UserInfo {
     };
   }
 
-  setUserInfo(title, about, avatar) {
+  setUserInfo(title, about) {
     this._nameElement.textContent = title;
     this._jobElement.textContent = about;
-    if (avatar) {
-      this._avatarElement.src = avatar;
-    }
   }
 
   setAvatar(avatar) {

@@ -129,7 +129,7 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
   const section = new Section(
     {
-      items: initialCards,
+      items: [],
       renderer: (data) => {
         const card = generateCard(data);
         section.addItem(card.view);
@@ -150,11 +150,8 @@ document.addEventListener(`DOMContentLoaded`, () => {
   api
     .getInitialCards()
     .then((cards) => {
-      console.log("api response:", cards);
-      cards.forEach((cardData, index) => {
-        const cardElement = generateCard(cardData, index);
-        section.addItem(cardElement.view);
-      });
+      section.setItems(cards);
+      section.renderItems();
     })
     .catch((error) => console.error(`Error fetching initial cards: ${error}`));
 
@@ -228,9 +225,10 @@ document.addEventListener(`DOMContentLoaded`, () => {
         changeAvatarPopup.close();
       })
       .catch((error) => {
-        console.error("Error changing avatar:", error).finally(() => {
-          changeAvatarPopup.hideLoading();
-        });
+        console.error("Error changing avatar:", error);
+      })
+      .finally(() => {
+        changeAvatarPopup.hideLoading();
       });
   }
   // const editProfileModal = document.querySelector("#edit-modal");
@@ -249,6 +247,11 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
   profileEditButton.addEventListener("click", (event) => {
     editFormValidator.resetValidation();
+
+    const userInfo = editUserInfo.getUserInfo();
+    profileEditForm.querySelector("[name='name']").value = userInfo.name;
+    profileEditForm.querySelector("[name='about']").value = userInfo.about;
+
     editPopup.open();
   });
 
