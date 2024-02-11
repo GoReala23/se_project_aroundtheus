@@ -143,7 +143,9 @@ document.addEventListener(`DOMContentLoaded`, () => {
     .getUserInfo()
     .then((userInfo) => {
       currentId = userInfo._id;
-      editUserInfo.setUserInfo(userInfo.name, userInfo.about, userInfo.avatar);
+      editUserInfo.setUserInfo(userInfo.name, userInfo.about);
+
+      editUserInfo.setAvatar(userInfo.avatar);
     })
     .catch((error) => console.error(`Error fetching user info: ${error}`));
 
@@ -158,9 +160,9 @@ document.addEventListener(`DOMContentLoaded`, () => {
   // handlers
 
   function handleLikeIcon(card, cardId) {
-    const isliked = card.isLiked();
+    const isLiked = card.isLiked();
 
-    if (isliked) {
+    if (isLiked) {
       api
         .removeLike(cardId)
         .then(() => {
@@ -250,7 +252,8 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
     const userInfo = editUserInfo.getUserInfo();
     profileEditForm.querySelector("[name='name']").value = userInfo.name;
-    profileEditForm.querySelector("[name='about']").value = userInfo.about;
+    profileEditForm.querySelector("[name='about']").value =
+      userInfo.description;
 
     editPopup.open();
   });
@@ -266,13 +269,17 @@ document.addEventListener(`DOMContentLoaded`, () => {
   // });
 
   function handleDeleteCard(cardId, card) {
+    confirmDeletePopup.showLoading("Deleting...");
     api
       .deleteCard(cardId)
       .then(() => {
         card.remove();
         confirmDeletePopup.close();
       })
-      .catch((error) => console.error(`Error:`, error));
+      .catch((error) => console.error(`Error:`, error))
+      .finally(() => {
+        confirmDeletePopup.hideLoading();
+      });
   }
 
   function generateCard(cardData) {

@@ -18,11 +18,13 @@ class Card {
     this._handleLikeIcon = handleLikeIcon;
     this._handleDeleteCard = handleDeleteCard;
     this._isLiked = isLiked;
-    this._renderLikes();
+    this._cardSelector = cardSelector;
+  }
 
+  getView() {
     this._cardElement = document
 
-      .querySelector(cardSelector)
+      .querySelector(this._cardSelector)
 
       .content.querySelector(".card")
 
@@ -38,9 +40,6 @@ class Card {
     this._deleteButton = this._cardElement.querySelector(
       ".card__delete-button"
     );
-  }
-
-  getView() {
     this._likeButton.addEventListener("click", () => {
       this._handleLikeIcon(this._cardId);
     });
@@ -76,8 +75,8 @@ class Card {
     return this._isLiked;
   }
 
-  setIsLiked(isliked) {
-    this._isLiked = isliked;
+  setIsLiked(isLiked) {
+    this._isLiked = isLiked;
     this._renderLikes();
   }
 
