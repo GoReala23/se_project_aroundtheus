@@ -81,12 +81,10 @@ class Card {
   }
 
   _renderLikes() {
-    if (this._likeButton) {
-      if (this.isLiked()) {
-        this._likeButton.classList.add("card__like-button_active");
-      } else {
-        this._likeButton.classList.remove("card__like-button_active");
-      }
+    if (this.isLiked()) {
+      this._likeButton.classList.add("card__like-button_active");
+    } else {
+      this._likeButton.classList.remove("card__like-button_active");
     }
   }
 }
