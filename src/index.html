@@ -8,7 +8,10 @@
     />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+    <!-- <script
+      defer
+      src="https://around-api.en.tripleten-services.com/v1"
+    ></script> -->
     <title>Around the U.S.</title>
   </head>
   <body class="page">
@@ -23,16 +26,21 @@
 
       <main class="content">
         <section class="profile page__section">
-          <img
-            class="profile__image"
-            src="<%=require('./images/jacques-cousteau@3x.png')%>"
-            alt="Avatar"
-          />
+          <div class="profile__image-container">
+            <img
+              class="profile__image"
+              src="<%=require('./images/jacques-cousteau@3x.png')%>"
+              alt="Avatar"
+            />
+            <button class="profile__image-edit" id="profile-image-edit-button">
+              <img src="" />
+            </button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
               type="button"
-              class="profile button profile__edit-button"
+              class="profile__button profile__edit-button"
               id="profile-edit-button"
             ></button>
             <p class="profile__description">Explorer</p>
@@ -51,6 +59,40 @@
       <footer class="footer page__section">
         <p class="footer__copy-right">&copy; 2023 Hassan Porter</p>
       </footer>
+    </div>
+
+    <!--Change Avatar Modal-->
+
+    <div class="modal" id="change-avatar-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          type="button"
+          id="modal-close-button"
+        ></button>
+        <h2 class="modal__heading">Change Profile Picture</h2>
+        <form class="modal__form" id="change-avatar-form">
+          <label class="modal__label">
+            <input
+              class="modal__input modal__input_type_url"
+              type="url"
+              name="link"
+              required
+              id="modal-input-avatar-url"
+              placeholder="https://somewebsite.com/someimage.png"
+            /><span class="modal__span" id="modal-input-avatar-url-error">
+            </span>
+          </label>
+
+          <button
+            type="submit"
+            disabled="disabled"
+            class="modal__save modal__save_disabled"
+          >
+            Save
+          </button>
+        </form>
+      </div>
     </div>
 
     <!-- Edit Profile Modal-->
@@ -85,7 +127,7 @@
             <input
               class="modal__input"
               type="text"
-              name="description"
+              name="about"
               id="modal-profile-description-input"
               minlength="2"
               maxlength="200"
@@ -97,6 +139,27 @@
           ></label>
 
           <button class="modal__save" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+    <!--Confirm Modal-->
+
+    <div class="modal" id="modal-confirm-yes">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          type="button"
+          id="modal-close-yes-button"
+        ></button>
+        <h2 class="modal__heading">Are You Sure?</h2>
+        <form class="modal__form" id="confirm-yes-form">
+          <button
+            type="submit"
+            class="modal__save"
+            id="modal-confirm-yes-button"
+          >
+            Yes
+          </button>
         </form>
       </div>
     </div>
@@ -116,7 +179,7 @@
             <input
               class="modal__input modal__input_type_title"
               type="text"
-              name="title"
+              name="name"
               id="modal-input-title"
               minlength="1"
               maxlength="30"
@@ -131,7 +194,7 @@
             <input
               class="modal__input modal__input_type_url"
               type="url"
-              name="URL"
+              name="link"
               required
               id="modal-input-description"
               placeholder="Image URL"
@@ -144,7 +207,7 @@
             disabled="disabled"
             class="modal__save modal__save_disabled"
           >
-            Save
+            Create
           </button>
         </form>
       </div>
