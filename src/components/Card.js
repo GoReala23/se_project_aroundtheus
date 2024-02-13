@@ -63,7 +63,6 @@ class Card {
 
   handleDeleteCard() {
     this._handleDeleteCard(this._cardId);
-    console.log("delete called");
   }
 
   handleLikeIcon() {

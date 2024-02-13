@@ -283,7 +283,6 @@ document.addEventListener(`DOMContentLoaded`, () => {
   }
 
   function generateCard(cardData) {
-    console.log(cardData, cardData.name, cardData.link);
     const card = new Card(
       {
         name: cardData.name,
