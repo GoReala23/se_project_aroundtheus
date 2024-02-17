@@ -1,4 +1,4 @@
-# Project 3: Around The U.S.
+[# Project 3: Around The U.S.
 
 ### Overview
 
@@ -33,3 +33,4 @@ This project is a profile containing a image of your choosing, profile image wil
 *
 
 [Link to github](https://goreala23.github.io/se_project_aroundtheus/)
+[Project Demo - Around the US](https://www.loom.com/share/ddafe79970524965b6fa076b7f4be275?sid=b7d28da7-d9d4-4aca-a6ad-2d8e0a9ebdbf)
