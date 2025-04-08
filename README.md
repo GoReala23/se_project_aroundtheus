@@ -4,7 +4,7 @@
 
 ---
 
-## 📑 Table of Contents
+##  Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
@@ -37,7 +37,7 @@
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 - HTML5 / CSS3
 - JavaScript (Vanilla)
@@ -47,16 +47,11 @@
 
 ---
 
-## 📸 Screenshots
 
-![Homepage](./screenshots/home.png)  
-![Card Preview](./screenshots/modal.png)
-
-> Be sure to upload screenshots to a `/screenshots/` folder in the repo
 
 ---
 
-## 🎥 Demo Video
+##  Demo Video
 
 Watch the demo: [Loom Video](https://www.loom.com/share/ddafe79970524965b6fa076b7f4be275?sid=b7d28da7-d9d4-4aca-a6ad-2d8e0a9ebdbf)
 
