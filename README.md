@@ -87,7 +87,10 @@ npm run start
 
 ##  Deployment
 
-Live demo: [Around The U.S.]([https://www.loom.com/share/ddafe79970524965b6fa076b7f4be275?sid=b7d28da7-d9d4-4aca-a6ad-2d8e0a9ebdbf](https://goreala23.github.io/se_project_aroundtheus/))
+## 🚀 Deployment
+
+Live demo: [Around The U.S.](https://goreala23.github.io/se_project_aroundtheus/)
+
 
 ---
 
