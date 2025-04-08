@@ -1,36 +1,127 @@
-[# Project 3: Around The U.S.
+# Around The U.S.
 
-### Overview
+**Responsive Photo Gallery Profile App**
 
-- Intro
-- Figma
-- Images
+---
 
-**Intro**
+## 📑 Table of Contents
 
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Screenshots](#screenshots)
+- [Demo Video](#demo-video)
+- [Setup and Installation](#setup-and-installation)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [Future Improvements](#future-improvements)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
 
-**Figma**
+---
 
-- [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
+## 📌 Overview
 
-**Images**
+"Around The U.S." is a responsive web app that allows users to view and interact with a personal photo gallery. Users can explore image cards, like them, and open modal previews for a closer look. The project emphasizes clean, accessible HTML/CSS and well-structured JavaScript logic, making it a strong frontend foundation project.
 
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
+---
 
-Good luck and have fun!
+## ✅ Features
 
-**Description**
+- 👤 Responsive user profile with edit functionality
+- 🖼 Modal previews of photos with captions
+- ❤️ Like buttons on each image card
+- ➕ Add and delete photo cards dynamically
+- 🧱 CSS Grid & Flexbox for layout
+- 📱 Optimized for mobile and desktop with media queries
 
-This project is a profile containing a image of your choosing, profile image will have a description of you are. . Also displays an albums of photos in columns and rows that have a button to be selected for users to like photos.
+---
 
-- Some tools that were used were:
+## 🛠 Tech Stack
 
-* Grid Layout
-* Media queries
-* Buttons
-* BEM Methods
-*
+- HTML5 / CSS3
+- JavaScript (Vanilla)
+- BEM Methodology
+- Webpack
+- Git & GitHub
 
-[Link to github](https://goreala23.github.io/se_project_aroundtheus/)
-[Project Demo - Around the US](https://www.loom.com/share/ddafe79970524965b6fa076b7f4be275?sid=b7d28da7-d9d4-4aca-a6ad-2d8e0a9ebdbf)
+---
+
+## 📸 Screenshots
+
+![Homepage](./screenshots/home.png)  
+![Card Preview](./screenshots/modal.png)
+
+> Be sure to upload screenshots to a `/screenshots/` folder in the repo
+
+---
+
+## 🎥 Demo Video
+
+Watch the demo: [Loom Video](https://www.loom.com/share/ddafe79970524965b6fa076b7f4be275?sid=b7d28da7-d9d4-4aca-a6ad-2d8e0a9ebdbf)
+
+---
+
+## 🧩 Setup and Installation
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/GoReala23/se_project_aroundtheus.git
+```
+
+2. Navigate to the project folder
+
+```bash
+cd se_project_aroundtheus
+```
+
+3. Install dependencies
+
+```bash
+npm install
+```
+
+4. Start development server
+
+```bash
+npm run start
+```
+
+---
+
+## 🚀 Deployment
+
+Live demo: [Around The U.S.](https://www.loom.com/share/ddafe79970524965b6fa076b7f4be275?sid=b7d28da7-d9d4-4aca-a6ad-2d8e0a9ebdbf)
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/newFeature`)
+3. Commit your changes (`git commit -m 'Add newFeature'`)
+4. Push to the branch (`git push origin feature/newFeature`)
+5. Open a pull request
+
+---
+
+## 🔧 Future Improvements
+
+- Add form validation and error messaging
+- Include animations for modal transitions
+- Enhance accessibility with ARIA labels
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 🙌 Acknowledgments
+
+- TripleTen training program
+- Figma design inspiration
+- Inspiration from real-world media gallery UX/UI
