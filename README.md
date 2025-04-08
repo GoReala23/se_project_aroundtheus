@@ -20,20 +20,20 @@
 
 ---
 
-## 📌 Overview
+##  Overview
 
 "Around The U.S." is a responsive web app that allows users to view and interact with a personal photo gallery. Users can explore image cards, like them, and open modal previews for a closer look. The project emphasizes clean, accessible HTML/CSS and well-structured JavaScript logic, making it a strong frontend foundation project.
 
 ---
 
-## ✅ Features
+##  Features
 
-- 👤 Responsive user profile with edit functionality
-- 🖼 Modal previews of photos with captions
-- ❤️ Like buttons on each image card
-- ➕ Add and delete photo cards dynamically
-- 🧱 CSS Grid & Flexbox for layout
-- 📱 Optimized for mobile and desktop with media queries
+-  Responsive user profile with edit functionality
+-  Modal previews of photos with captions
+-  Like buttons on each image card
+-  Add and delete photo cards dynamically
+-  CSS Grid & Flexbox for layout
+-  Optimized for mobile and desktop with media queries
 
 ---
 
@@ -62,7 +62,7 @@ Watch the demo: [Loom Video](https://www.loom.com/share/ddafe79970524965b6fa076b
 
 ---
 
-## 🧩 Setup and Installation
+##  Setup and Installation
 
 1. Clone the repository
 
@@ -90,13 +90,13 @@ npm run start
 
 ---
 
-## 🚀 Deployment
+##  Deployment
 
 Live demo: [Around The U.S.](https://www.loom.com/share/ddafe79970524965b6fa076b7f4be275?sid=b7d28da7-d9d4-4aca-a6ad-2d8e0a9ebdbf)
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/newFeature`)
@@ -106,7 +106,7 @@ Live demo: [Around The U.S.](https://www.loom.com/share/ddafe79970524965b6fa076b
 
 ---
 
-## 🔧 Future Improvements
+##  Future Improvements
 
 - Add form validation and error messaging
 - Include animations for modal transitions
@@ -114,13 +114,13 @@ Live demo: [Around The U.S.](https://www.loom.com/share/ddafe79970524965b6fa076b
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License.
 
 ---
 
-## 🙌 Acknowledgments
+##  Acknowledgments
 
 - TripleTen training program
 - Figma design inspiration
